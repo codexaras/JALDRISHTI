@@ -1,0 +1,39 @@
+{
+  "name": "Jal Drishti — Water footprint of what you eat",
+  "short_name": "Jal Drishti",
+  "description": "Scan or search any agricultural product and see the green, blue and grey water behind it, weighted by where it was grown.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F7F4E9",
+  "theme_color": "#1F5D42",
+  "categories": [
+    "education",
+    "food",
+    "utilities"
+  ],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Scan a product",
+      "url": "/?screen=scan"
+    },
+    {
+      "name": "Demo mode",
+      "url": "/?demo=true"
+    }
+  ]
+}
