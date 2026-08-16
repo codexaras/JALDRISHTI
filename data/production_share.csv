@@ -1,0 +1,668 @@
+crop_id,state,share,rep_district,lat,lon,source
+rice,West Bengal,0.13,West Bengal,23.25,87.85,S4
+rice,Uttar Pradesh,0.12,Uttar Pradesh,27.88,79.91,S4
+rice,Punjab,0.11,Punjab,30.24,75.84,S4
+rice,Telangana,0.09,Telangana,18.67,78.09,S4
+rice,Andhra Pradesh,0.07,Andhra Pradesh,16.31,80.44,S4
+rice,Odisha,0.06,Odisha,20.46,85.88,S4
+rice,Bihar,0.06,Bihar,25.59,85.14,S4
+rice,Chhattisgarh,0.06,Chhattisgarh,21.25,81.63,S4
+rice,Tamil Nadu,0.06,Tamil Nadu,10.79,79.14,S4
+rice,Assam,0.05,Assam,26.75,94.22,S4
+rice,Madhya Pradesh,0.05,Madhya Pradesh,22.72,75.86,S4
+rice,Haryana,0.04,Haryana,29.69,76.99,S4
+rice,Maharashtra,0.03,Maharashtra,16.70,74.24,S4
+rice,Karnataka,0.03,Karnataka,15.85,74.50,S4
+rice,Gujarat,0.02,Gujarat,21.52,70.46,S4
+rice,Jharkhand,0.02,Jharkhand,23.34,85.31,S4
+wheat,Uttar Pradesh,0.31,Uttar Pradesh,28.98,77.71,S4
+wheat,Madhya Pradesh,0.19,Madhya Pradesh,22.72,75.86,S4
+wheat,Punjab,0.16,Punjab,30.90,75.86,S4
+wheat,Haryana,0.11,Haryana,29.69,76.99,S4
+wheat,Rajasthan,0.10,Rajasthan,26.91,75.79,S4
+wheat,Bihar,0.06,Bihar,25.59,85.14,S4
+wheat,Gujarat,0.03,Gujarat,21.52,70.46,S4
+wheat,Maharashtra,0.02,Maharashtra,18.52,73.86,S4
+wheat,Uttarakhand,0.01,Uttarakhand,28.97,79.40,S4
+wheat,Himachal Pradesh,0.01,Himachal Pradesh,32.10,76.27,S4
+sugarcane,Uttar Pradesh,0.45,Uttar Pradesh,28.98,77.71,S4
+sugarcane,Maharashtra,0.20,Maharashtra,16.70,74.24,S4
+sugarcane,Karnataka,0.11,Karnataka,15.85,74.50,S4
+sugarcane,Tamil Nadu,0.06,Tamil Nadu,11.02,76.96,S4
+sugarcane,Bihar,0.04,Bihar,25.59,85.14,S4
+sugarcane,Gujarat,0.04,Gujarat,21.52,70.46,S4
+sugarcane,Haryana,0.03,Haryana,29.69,76.99,S4
+sugarcane,Uttarakhand,0.03,Uttarakhand,28.97,79.40,S4
+sugarcane,Punjab,0.02,Punjab,30.90,75.86,S4
+sugarcane,Andhra Pradesh,0.02,Andhra Pradesh,16.31,80.44,S4
+potato,Uttar Pradesh,0.32,Uttar Pradesh,28.98,77.71,S4
+potato,West Bengal,0.23,West Bengal,23.25,87.85,S4
+potato,Bihar,0.11,Bihar,25.59,85.14,S4
+potato,Gujarat,0.08,Gujarat,23.59,72.37,S4
+potato,Madhya Pradesh,0.07,Madhya Pradesh,22.72,75.86,S4
+potato,Punjab,0.05,Punjab,30.90,75.86,S4
+potato,Assam,0.04,Assam,26.75,94.22,S4
+potato,Chhattisgarh,0.03,Chhattisgarh,21.25,81.63,S4
+potato,Haryana,0.03,Haryana,29.69,76.99,S4
+potato,Karnataka,0.02,Karnataka,15.85,74.50,S4
+potato,Maharashtra,0.02,Maharashtra,18.52,73.86,S4
+onion,Maharashtra,0.39,Maharashtra,20.00,73.79,S4
+onion,Madhya Pradesh,0.16,Madhya Pradesh,22.72,75.86,S4
+onion,Karnataka,0.12,Karnataka,15.85,74.50,S4
+onion,Gujarat,0.07,Gujarat,23.59,72.37,S4
+onion,Bihar,0.06,Bihar,25.59,85.14,S4
+onion,Rajasthan,0.05,Rajasthan,26.91,75.79,S4
+onion,Andhra Pradesh,0.04,Andhra Pradesh,16.31,80.44,S4
+onion,Haryana,0.04,Haryana,29.69,76.99,S4
+onion,Uttar Pradesh,0.04,Uttar Pradesh,28.98,77.71,S4
+onion,Tamil Nadu,0.03,Tamil Nadu,11.02,76.96,S4
+tomato,Madhya Pradesh,0.15,Madhya Pradesh,22.72,75.86,S4
+tomato,Andhra Pradesh,0.14,Andhra Pradesh,16.31,80.44,S4
+tomato,Karnataka,0.12,Karnataka,13.14,78.13,S4
+tomato,Tamil Nadu,0.09,Tamil Nadu,11.02,76.96,S4
+tomato,Maharashtra,0.08,Maharashtra,20.00,73.79,S4
+tomato,Odisha,0.08,Odisha,20.46,85.88,S4
+tomato,Gujarat,0.08,Gujarat,21.52,70.46,S4
+tomato,Chhattisgarh,0.07,Chhattisgarh,21.25,81.63,S4
+tomato,West Bengal,0.07,West Bengal,23.25,87.85,S4
+tomato,Telangana,0.06,Telangana,18.67,78.09,S4
+tomato,Bihar,0.06,Bihar,25.59,85.14,S4
+chickpea,Madhya Pradesh,0.40,Madhya Pradesh,22.72,75.86,S4
+chickpea,Maharashtra,0.15,Maharashtra,21.15,79.09,S4
+chickpea,Rajasthan,0.14,Rajasthan,26.91,75.79,S4
+chickpea,Karnataka,0.09,Karnataka,15.85,74.50,S4
+chickpea,Uttar Pradesh,0.07,Uttar Pradesh,28.98,77.71,S4
+chickpea,Andhra Pradesh,0.05,Andhra Pradesh,16.31,80.44,S4
+chickpea,Telangana,0.04,Telangana,18.67,78.09,S4
+chickpea,Gujarat,0.03,Gujarat,21.52,70.46,S4
+chickpea,Jharkhand,0.02,Jharkhand,23.34,85.31,S4
+chickpea,Chhattisgarh,0.01,Chhattisgarh,21.25,81.63,S4
+pigeonpea,Maharashtra,0.32,Maharashtra,21.15,79.09,S4
+pigeonpea,Karnataka,0.21,Karnataka,15.85,74.50,S4
+pigeonpea,Madhya Pradesh,0.11,Madhya Pradesh,22.72,75.86,S4
+pigeonpea,Uttar Pradesh,0.08,Uttar Pradesh,28.98,77.71,S4
+pigeonpea,Telangana,0.07,Telangana,18.67,78.09,S4
+pigeonpea,Gujarat,0.07,Gujarat,21.52,70.46,S4
+pigeonpea,Jharkhand,0.04,Jharkhand,23.34,85.31,S4
+pigeonpea,Andhra Pradesh,0.04,Andhra Pradesh,16.31,80.44,S4
+pigeonpea,Chhattisgarh,0.03,Chhattisgarh,21.25,81.63,S4
+pigeonpea,Rajasthan,0.03,Rajasthan,26.91,75.79,S4
+groundnut,Gujarat,0.40,Gujarat,21.52,70.46,S4
+groundnut,Rajasthan,0.17,Rajasthan,26.24,73.02,S4
+groundnut,Tamil Nadu,0.11,Tamil Nadu,11.02,76.96,S4
+groundnut,Andhra Pradesh,0.09,Andhra Pradesh,16.31,80.44,S4
+groundnut,Karnataka,0.09,Karnataka,15.85,74.50,S4
+groundnut,Maharashtra,0.06,Maharashtra,20.00,73.79,S4
+groundnut,Madhya Pradesh,0.04,Madhya Pradesh,22.72,75.86,S4
+groundnut,Telangana,0.03,Telangana,18.67,78.09,S4
+groundnut,Odisha,0.01,Odisha,20.46,85.88,S4
+mustard,Rajasthan,0.45,Rajasthan,26.91,75.79,S4
+mustard,Haryana,0.13,Haryana,29.69,76.99,S4
+mustard,Madhya Pradesh,0.12,Madhya Pradesh,22.72,75.86,S4
+mustard,Uttar Pradesh,0.12,Uttar Pradesh,28.98,77.71,S4
+mustard,West Bengal,0.07,West Bengal,23.25,87.85,S4
+mustard,Gujarat,0.05,Gujarat,23.59,72.37,S4
+mustard,Jharkhand,0.03,Jharkhand,23.34,85.31,S4
+mustard,Assam,0.03,Assam,26.75,94.22,S4
+cotton,Gujarat,0.25,Gujarat,21.52,70.46,S4
+cotton,Maharashtra,0.22,Maharashtra,21.15,79.09,S4
+cotton,Telangana,0.16,Telangana,18.67,78.09,S4
+cotton,Rajasthan,0.09,Rajasthan,26.91,75.79,S4
+cotton,Karnataka,0.07,Karnataka,15.85,74.50,S4
+cotton,Haryana,0.07,Haryana,29.69,76.99,S4
+cotton,Madhya Pradesh,0.05,Madhya Pradesh,22.72,75.86,S4
+cotton,Punjab,0.04,Punjab,30.21,74.95,S4
+cotton,Andhra Pradesh,0.03,Andhra Pradesh,16.31,80.44,S4
+cotton,Tamil Nadu,0.02,Tamil Nadu,11.02,76.96,S4
+maize,Karnataka,0.16,Karnataka,15.85,74.50,S4
+maize,Madhya Pradesh,0.14,Madhya Pradesh,22.72,75.86,S4
+maize,Maharashtra,0.10,Maharashtra,20.00,73.79,S4
+maize,Bihar,0.09,Bihar,25.59,85.14,S4
+maize,Tamil Nadu,0.08,Tamil Nadu,11.02,76.96,S4
+maize,Telangana,0.08,Telangana,18.67,78.09,S4
+maize,Rajasthan,0.07,Rajasthan,26.91,75.79,S4
+maize,Uttar Pradesh,0.06,Uttar Pradesh,28.98,77.71,S4
+maize,Andhra Pradesh,0.06,Andhra Pradesh,16.31,80.44,S4
+maize,Himachal Pradesh,0.04,Himachal Pradesh,32.10,76.27,S4
+maize,Gujarat,0.04,Gujarat,21.52,70.46,S4
+maize,Jharkhand,0.04,Jharkhand,23.34,85.31,S4
+maize,West Bengal,0.04,West Bengal,23.25,87.85,S4
+sorghum,Maharashtra,0.48,Maharashtra,21.15,79.09,S4
+sorghum,Karnataka,0.24,Karnataka,15.85,74.50,S4
+sorghum,Madhya Pradesh,0.07,Madhya Pradesh,22.72,75.86,S4
+sorghum,Tamil Nadu,0.07,Tamil Nadu,11.02,76.96,S4
+sorghum,Rajasthan,0.06,Rajasthan,26.91,75.79,S4
+sorghum,Andhra Pradesh,0.04,Andhra Pradesh,16.31,80.44,S4
+sorghum,Telangana,0.04,Telangana,18.67,78.09,S4
+pearl_millet,Rajasthan,0.43,Rajasthan,26.24,73.02,S4
+pearl_millet,Uttar Pradesh,0.16,Uttar Pradesh,28.98,77.71,S4
+pearl_millet,Haryana,0.12,Haryana,29.69,76.99,S4
+pearl_millet,Gujarat,0.12,Gujarat,23.59,72.37,S4
+pearl_millet,Maharashtra,0.09,Maharashtra,20.00,73.79,S4
+pearl_millet,Madhya Pradesh,0.04,Madhya Pradesh,22.72,75.86,S4
+pearl_millet,Karnataka,0.03,Karnataka,15.85,74.50,S4
+pearl_millet,Tamil Nadu,0.01,Tamil Nadu,11.02,76.96,S4
+finger_millet,Karnataka,0.58,Karnataka,15.85,74.50,S4
+finger_millet,Tamil Nadu,0.13,Tamil Nadu,11.02,76.96,S4
+finger_millet,Uttarakhand,0.10,Uttarakhand,28.97,79.40,S4
+finger_millet,Maharashtra,0.06,Maharashtra,20.00,73.79,S4
+finger_millet,Andhra Pradesh,0.05,Andhra Pradesh,16.31,80.44,S4
+finger_millet,Odisha,0.05,Odisha,20.46,85.88,S4
+finger_millet,Telangana,0.03,Telangana,18.67,78.09,S4
+soybean,Madhya Pradesh,0.45,Madhya Pradesh,22.72,75.86,S4
+soybean,Maharashtra,0.38,Maharashtra,21.15,79.09,S4
+soybean,Rajasthan,0.12,Rajasthan,26.91,75.79,S4
+soybean,Karnataka,0.02,Karnataka,15.85,74.50,S4
+soybean,Telangana,0.02,Telangana,18.67,78.09,S4
+soybean,Chhattisgarh,0.01,Chhattisgarh,21.25,81.63,S4
+lentil,Madhya Pradesh,0.40,Madhya Pradesh,22.72,75.86,S4
+lentil,Uttar Pradesh,0.30,Uttar Pradesh,28.98,77.71,S4
+lentil,West Bengal,0.11,West Bengal,23.25,87.85,S4
+lentil,Bihar,0.10,Bihar,25.59,85.14,S4
+lentil,Jharkhand,0.05,Jharkhand,23.34,85.31,S4
+lentil,Rajasthan,0.04,Rajasthan,26.91,75.79,S4
+coconut,Kerala,0.35,Kerala,10.53,76.21,S4
+coconut,Tamil Nadu,0.26,Tamil Nadu,11.02,76.96,S4
+coconut,Karnataka,0.25,Karnataka,15.85,74.50,S4
+coconut,Andhra Pradesh,0.09,Andhra Pradesh,16.31,80.44,S4
+coconut,Odisha,0.02,Odisha,20.46,85.88,S4
+coconut,West Bengal,0.02,West Bengal,23.25,87.85,S4
+coconut,Gujarat,0.01,Gujarat,21.52,70.46,S4
+banana,Tamil Nadu,0.18,Tamil Nadu,11.02,76.96,S4
+banana,Maharashtra,0.14,Maharashtra,20.00,73.79,S4
+banana,Uttar Pradesh,0.13,Uttar Pradesh,28.98,77.71,S4
+banana,Gujarat,0.13,Gujarat,21.52,70.46,S4
+banana,Andhra Pradesh,0.12,Andhra Pradesh,16.31,80.44,S4
+banana,Karnataka,0.09,Karnataka,15.85,74.50,S4
+banana,Kerala,0.06,Kerala,10.53,76.21,S4
+banana,Bihar,0.05,Bihar,25.59,85.14,S4
+banana,Madhya Pradesh,0.05,Madhya Pradesh,22.72,75.86,S4
+banana,West Bengal,0.05,West Bengal,23.25,87.85,S4
+mango,Uttar Pradesh,0.24,Uttar Pradesh,28.98,77.71,S4
+mango,Andhra Pradesh,0.15,Andhra Pradesh,16.31,80.44,S4
+mango,Karnataka,0.11,Karnataka,15.85,74.50,S4
+mango,Bihar,0.10,Bihar,25.59,85.14,S4
+mango,Tamil Nadu,0.08,Tamil Nadu,11.02,76.96,S4
+mango,Gujarat,0.07,Gujarat,21.52,70.46,S4
+mango,West Bengal,0.06,West Bengal,23.25,87.85,S4
+mango,Maharashtra,0.06,Maharashtra,20.00,73.79,S4
+mango,Odisha,0.05,Odisha,20.46,85.88,S4
+mango,Kerala,0.04,Kerala,10.53,76.21,S4
+mango,Telangana,0.04,Telangana,18.67,78.09,S4
+tea,Assam,0.50,Assam,26.75,94.22,S4
+tea,West Bengal,0.27,West Bengal,23.25,87.85,S4
+tea,Tamil Nadu,0.13,Tamil Nadu,11.02,76.96,S4
+tea,Kerala,0.07,Kerala,10.53,76.21,S4
+tea,Karnataka,0.02,Karnataka,15.85,74.50,S4
+tea,Himachal Pradesh,0.01,Himachal Pradesh,32.10,76.27,S4
+coffee,Karnataka,0.70,Karnataka,15.85,74.50,S4
+coffee,Kerala,0.21,Kerala,10.53,76.21,S4
+coffee,Tamil Nadu,0.07,Tamil Nadu,11.02,76.96,S4
+coffee,Andhra Pradesh,0.01,Andhra Pradesh,16.31,80.44,S4
+coffee,Odisha,0.01,Odisha,20.46,85.88,S4
+milk,Uttar Pradesh,0.16,Uttar Pradesh,28.98,77.71,S4
+milk,Rajasthan,0.15,Rajasthan,26.91,75.79,S4
+milk,Madhya Pradesh,0.09,Madhya Pradesh,22.72,75.86,S4
+milk,Gujarat,0.08,Gujarat,23.59,72.37,S4
+milk,Andhra Pradesh,0.07,Andhra Pradesh,16.31,80.44,S4
+milk,Maharashtra,0.07,Maharashtra,18.52,73.86,S4
+milk,Punjab,0.06,Punjab,30.90,75.86,S4
+milk,Bihar,0.06,Bihar,25.59,85.14,S4
+milk,Haryana,0.05,Haryana,29.69,76.99,S4
+milk,Tamil Nadu,0.05,Tamil Nadu,11.02,76.96,S4
+milk,Karnataka,0.05,Karnataka,15.85,74.50,S4
+milk,West Bengal,0.05,West Bengal,23.25,87.85,S4
+milk,Telangana,0.03,Telangana,18.67,78.09,S4
+milk,Odisha,0.02,Odisha,20.46,85.88,S4
+milk,Assam,0.01,Assam,26.75,94.22,S4
+chicken_meat,Tamil Nadu,0.18,Tamil Nadu,11.02,76.96,S4
+chicken_meat,Maharashtra,0.12,Maharashtra,18.52,73.86,S4
+chicken_meat,Andhra Pradesh,0.12,Andhra Pradesh,16.31,80.44,S4
+chicken_meat,Telangana,0.12,Telangana,17.39,78.49,S4
+chicken_meat,West Bengal,0.10,West Bengal,23.25,87.85,S4
+chicken_meat,Karnataka,0.09,Karnataka,15.85,74.50,S4
+chicken_meat,Haryana,0.07,Haryana,29.69,76.99,S4
+chicken_meat,Punjab,0.05,Punjab,30.90,75.86,S4
+chicken_meat,Uttar Pradesh,0.05,Uttar Pradesh,28.98,77.71,S4
+chicken_meat,Kerala,0.05,Kerala,10.53,76.21,S4
+chicken_meat,Bihar,0.05,Bihar,25.59,85.14,S4
+goat_meat,Rajasthan,0.14,Rajasthan,26.91,75.79,S4
+goat_meat,West Bengal,0.13,West Bengal,23.25,87.85,S4
+goat_meat,Uttar Pradesh,0.12,Uttar Pradesh,28.98,77.71,S4
+goat_meat,Bihar,0.10,Bihar,25.59,85.14,S4
+goat_meat,Maharashtra,0.09,Maharashtra,21.15,79.09,S4
+goat_meat,Madhya Pradesh,0.08,Madhya Pradesh,22.72,75.86,S4
+goat_meat,Tamil Nadu,0.07,Tamil Nadu,11.02,76.96,S4
+goat_meat,Andhra Pradesh,0.07,Andhra Pradesh,16.31,80.44,S4
+goat_meat,Karnataka,0.06,Karnataka,15.85,74.50,S4
+goat_meat,Telangana,0.05,Telangana,18.67,78.09,S4
+goat_meat,Jharkhand,0.05,Jharkhand,23.34,85.31,S4
+goat_meat,Odisha,0.04,Odisha,20.46,85.88,S4
+egg,Andhra Pradesh,0.20,Andhra Pradesh,16.31,80.44,S4
+egg,Tamil Nadu,0.17,Tamil Nadu,11.02,76.96,S4
+egg,Telangana,0.13,Telangana,17.39,78.49,S4
+egg,West Bengal,0.10,West Bengal,23.25,87.85,S4
+egg,Karnataka,0.07,Karnataka,15.85,74.50,S4
+egg,Maharashtra,0.06,Maharashtra,18.52,73.86,S4
+egg,Haryana,0.06,Haryana,29.69,76.99,S4
+egg,Kerala,0.05,Kerala,10.53,76.21,S4
+egg,Punjab,0.04,Punjab,30.90,75.86,S4
+egg,Uttar Pradesh,0.04,Uttar Pradesh,28.98,77.71,S4
+egg,Bihar,0.04,Bihar,25.59,85.14,S4
+egg,Odisha,0.04,Odisha,20.46,85.88,S4
+jute,West Bengal,0.75,West Bengal,23.25,87.85,S4
+jute,Bihar,0.12,Bihar,25.59,85.14,S4
+jute,Assam,0.09,Assam,26.75,94.22,S4
+jute,Odisha,0.02,Odisha,20.46,85.88,S4
+jute,Andhra Pradesh,0.01,Andhra Pradesh,16.31,80.44,S4
+jute,Meghalaya,0.01,Meghalaya,25.57,91.89,S4
+okra,Uttar Pradesh,0.16,Uttar Pradesh,28.98,77.71,S4
+okra,West Bengal,0.15,West Bengal,23.25,87.85,S4
+okra,Bihar,0.13,Bihar,25.59,85.14,S4
+okra,Gujarat,0.11,Gujarat,21.52,70.46,S4
+okra,Odisha,0.09,Odisha,20.46,85.88,S4
+okra,Andhra Pradesh,0.08,Andhra Pradesh,16.31,80.44,S4
+okra,Madhya Pradesh,0.07,Madhya Pradesh,22.72,75.86,S4
+okra,Maharashtra,0.07,Maharashtra,20.00,73.79,S4
+okra,Karnataka,0.06,Karnataka,15.85,74.50,S4
+okra,Tamil Nadu,0.04,Tamil Nadu,11.02,76.96,S4
+okra,Telangana,0.04,Telangana,18.67,78.09,S4
+apple,Himachal Pradesh,0.42,Himachal Pradesh,32.10,76.27,S4
+apple,Jammu and Kashmir,0.38,Jammu and Kashmir,32.73,74.87,S4
+apple,Uttarakhand,0.14,Uttarakhand,28.97,79.40,S4
+apple,Arunachal Pradesh,0.03,Arunachal Pradesh,27.10,93.70,S4
+apple,Nagaland,0.03,Nagaland,25.67,94.11,S4
+garlic,Madhya Pradesh,0.38,Madhya Pradesh,22.72,75.86,S4
+garlic,Rajasthan,0.18,Rajasthan,26.91,75.79,S4
+garlic,Uttar Pradesh,0.10,Uttar Pradesh,28.98,77.71,S4
+garlic,Gujarat,0.08,Gujarat,21.52,70.46,S4
+garlic,Maharashtra,0.07,Maharashtra,20.00,73.79,S4
+garlic,Odisha,0.05,Odisha,20.46,85.88,S4
+garlic,Punjab,0.05,Punjab,30.24,75.84,S4
+garlic,Haryana,0.04,Haryana,29.69,76.99,S4
+garlic,Karnataka,0.03,Karnataka,15.85,74.50,S4
+garlic,Assam,0.02,Assam,26.75,94.22,S4
+chilli,Andhra Pradesh,0.30,Andhra Pradesh,16.31,80.44,S4
+chilli,Telangana,0.19,Telangana,18.67,78.09,S4
+chilli,Madhya Pradesh,0.12,Madhya Pradesh,22.72,75.86,S4
+chilli,Karnataka,0.11,Karnataka,15.85,74.50,S4
+chilli,Odisha,0.07,Odisha,20.46,85.88,S4
+chilli,West Bengal,0.06,West Bengal,23.25,87.85,S4
+chilli,Tamil Nadu,0.05,Tamil Nadu,11.02,76.96,S4
+chilli,Assam,0.04,Assam,26.75,94.22,S4
+chilli,Bihar,0.03,Bihar,25.59,85.14,S4
+chilli,Maharashtra,0.03,Maharashtra,20.00,73.79,S4
+green_pea,Uttar Pradesh,0.38,Uttar Pradesh,28.98,77.71,S4
+green_pea,Madhya Pradesh,0.22,Madhya Pradesh,22.72,75.86,S4
+green_pea,Jharkhand,0.09,Jharkhand,23.34,85.31,S4
+green_pea,Punjab,0.07,Punjab,30.24,75.84,S4
+green_pea,Bihar,0.06,Bihar,25.59,85.14,S4
+green_pea,Himachal Pradesh,0.05,Himachal Pradesh,32.10,76.27,S4
+green_pea,Odisha,0.05,Odisha,20.46,85.88,S4
+green_pea,Uttarakhand,0.04,Uttarakhand,28.97,79.40,S4
+green_pea,Haryana,0.04,Haryana,29.69,76.99,S4
+carrot,Haryana,0.20,Haryana,29.69,76.99,S4
+carrot,West Bengal,0.15,West Bengal,23.25,87.85,S4
+carrot,Karnataka,0.14,Karnataka,15.85,74.50,S4
+carrot,Uttar Pradesh,0.12,Uttar Pradesh,28.98,77.71,S4
+carrot,Punjab,0.11,Punjab,30.24,75.84,S4
+carrot,Assam,0.09,Assam,26.75,94.22,S4
+carrot,Madhya Pradesh,0.07,Madhya Pradesh,22.72,75.86,S4
+carrot,Bihar,0.06,Bihar,25.59,85.14,S4
+carrot,Odisha,0.06,Odisha,20.46,85.88,S4
+black_gram,Madhya Pradesh,0.24,Madhya Pradesh,22.72,75.86,S4
+black_gram,Rajasthan,0.16,Rajasthan,26.91,75.79,S4
+black_gram,Uttar Pradesh,0.13,Uttar Pradesh,28.98,77.71,S4
+black_gram,Andhra Pradesh,0.12,Andhra Pradesh,16.31,80.44,S4
+black_gram,Tamil Nadu,0.09,Tamil Nadu,11.02,76.96,S4
+black_gram,Maharashtra,0.09,Maharashtra,20.00,73.79,S4
+black_gram,Karnataka,0.07,Karnataka,15.85,74.50,S4
+black_gram,Jharkhand,0.05,Jharkhand,23.34,85.31,S4
+black_gram,Bihar,0.05,Bihar,25.59,85.14,S4
+kidney_bean,Maharashtra,0.24,Maharashtra,20.00,73.79,S4
+kidney_bean,Karnataka,0.20,Karnataka,15.85,74.50,S4
+kidney_bean,Madhya Pradesh,0.16,Madhya Pradesh,22.72,75.86,S4
+kidney_bean,Himachal Pradesh,0.13,Himachal Pradesh,32.10,76.27,S4
+kidney_bean,Uttarakhand,0.10,Uttarakhand,28.97,79.40,S4
+kidney_bean,Jammu and Kashmir,0.09,Jammu and Kashmir,32.73,74.87,S4
+kidney_bean,Punjab,0.08,Punjab,30.24,75.84,S4
+mung_bean,Rajasthan,0.38,Rajasthan,26.91,75.79,S4
+mung_bean,Maharashtra,0.14,Maharashtra,20.00,73.79,S4
+mung_bean,Karnataka,0.12,Karnataka,15.85,74.50,S4
+mung_bean,Madhya Pradesh,0.10,Madhya Pradesh,22.72,75.86,S4
+mung_bean,Andhra Pradesh,0.07,Andhra Pradesh,16.31,80.44,S4
+mung_bean,Bihar,0.06,Bihar,25.59,85.14,S4
+mung_bean,Tamil Nadu,0.05,Tamil Nadu,11.02,76.96,S4
+mung_bean,Gujarat,0.05,Gujarat,21.52,70.46,S4
+mung_bean,Odisha,0.03,Odisha,20.46,85.88,S4
+cauliflower,West Bengal,0.24,West Bengal,23.25,87.85,S4
+cauliflower,Madhya Pradesh,0.15,Madhya Pradesh,22.72,75.86,S4
+cauliflower,Bihar,0.14,Bihar,25.59,85.14,S4
+cauliflower,Odisha,0.10,Odisha,20.46,85.88,S4
+cauliflower,Gujarat,0.09,Gujarat,21.52,70.46,S4
+cauliflower,Haryana,0.08,Haryana,29.69,76.99,S4
+cauliflower,Uttar Pradesh,0.07,Uttar Pradesh,28.98,77.71,S4
+cauliflower,Maharashtra,0.05,Maharashtra,20.00,73.79,S4
+cauliflower,Assam,0.05,Assam,26.75,94.22,S4
+cauliflower,Jharkhand,0.03,Jharkhand,23.34,85.31,S4
+brinjal,West Bengal,0.23,West Bengal,23.25,87.85,S4
+brinjal,Odisha,0.17,Odisha,20.46,85.88,S4
+brinjal,Gujarat,0.11,Gujarat,21.52,70.46,S4
+brinjal,Bihar,0.10,Bihar,25.59,85.14,S4
+brinjal,Madhya Pradesh,0.08,Madhya Pradesh,22.72,75.86,S4
+brinjal,Andhra Pradesh,0.07,Andhra Pradesh,16.31,80.44,S4
+brinjal,Maharashtra,0.06,Maharashtra,20.00,73.79,S4
+brinjal,Karnataka,0.06,Karnataka,15.85,74.50,S4
+brinjal,Uttar Pradesh,0.06,Uttar Pradesh,28.98,77.71,S4
+brinjal,Chhattisgarh,0.06,Chhattisgarh,21.25,81.63,S4
+sunflower,Karnataka,0.44,Karnataka,15.85,74.50,S4
+sunflower,Haryana,0.15,Haryana,29.69,76.99,S4
+sunflower,Odisha,0.10,Odisha,20.46,85.88,S4
+sunflower,Andhra Pradesh,0.09,Andhra Pradesh,16.31,80.44,S4
+sunflower,Maharashtra,0.08,Maharashtra,20.00,73.79,S4
+sunflower,Telangana,0.06,Telangana,18.67,78.09,S4
+sunflower,Punjab,0.05,Punjab,30.24,75.84,S4
+sunflower,Bihar,0.03,Bihar,25.59,85.14,S4
+cheese,Uttar Pradesh,0.18,Uttar Pradesh,28.98,77.71,S4
+cheese,Rajasthan,0.16,Rajasthan,26.91,75.79,S4
+cheese,Madhya Pradesh,0.10,Madhya Pradesh,22.72,75.86,S4
+cheese,Gujarat,0.10,Gujarat,21.52,70.46,S4
+cheese,Punjab,0.08,Punjab,30.24,75.84,S4
+cheese,Maharashtra,0.08,Maharashtra,20.00,73.79,S4
+cheese,Haryana,0.07,Haryana,29.69,76.99,S4
+cheese,Bihar,0.07,Bihar,25.59,85.14,S4
+cheese,Andhra Pradesh,0.06,Andhra Pradesh,16.31,80.44,S4
+cheese,Karnataka,0.05,Karnataka,15.85,74.50,S4
+cheese,Tamil Nadu,0.05,Tamil Nadu,11.02,76.96,S4
+butter,Uttar Pradesh,0.18,Uttar Pradesh,28.98,77.71,S4
+butter,Rajasthan,0.16,Rajasthan,26.91,75.79,S4
+butter,Madhya Pradesh,0.10,Madhya Pradesh,22.72,75.86,S4
+butter,Gujarat,0.10,Gujarat,21.52,70.46,S4
+butter,Punjab,0.08,Punjab,30.24,75.84,S4
+butter,Maharashtra,0.08,Maharashtra,20.00,73.79,S4
+butter,Haryana,0.07,Haryana,29.69,76.99,S4
+butter,Bihar,0.07,Bihar,25.59,85.14,S4
+butter,Andhra Pradesh,0.06,Andhra Pradesh,16.31,80.44,S4
+butter,Karnataka,0.05,Karnataka,15.85,74.50,S4
+butter,Tamil Nadu,0.05,Tamil Nadu,11.02,76.96,S4
+bitter_gourd,West Bengal,0.16,West Bengal,23.25,87.85,S4
+bitter_gourd,Uttar Pradesh,0.14,Uttar Pradesh,28.98,77.71,S4
+bitter_gourd,Bihar,0.11,Bihar,25.59,85.14,S4
+bitter_gourd,Madhya Pradesh,0.10,Madhya Pradesh,22.72,75.86,S4
+bitter_gourd,Maharashtra,0.09,Maharashtra,20.00,73.79,S4
+bitter_gourd,Gujarat,0.08,Gujarat,21.52,70.46,S4
+bitter_gourd,Odisha,0.08,Odisha,20.46,85.88,S4
+bitter_gourd,Karnataka,0.07,Karnataka,15.85,74.50,S4
+bitter_gourd,Andhra Pradesh,0.06,Andhra Pradesh,16.31,80.44,S4
+bitter_gourd,Tamil Nadu,0.06,Tamil Nadu,11.02,76.96,S4
+bitter_gourd,Assam,0.05,Assam,26.75,94.22,S4
+bottle_gourd,West Bengal,0.16,West Bengal,23.25,87.85,S4
+bottle_gourd,Uttar Pradesh,0.14,Uttar Pradesh,28.98,77.71,S4
+bottle_gourd,Bihar,0.11,Bihar,25.59,85.14,S4
+bottle_gourd,Madhya Pradesh,0.10,Madhya Pradesh,22.72,75.86,S4
+bottle_gourd,Maharashtra,0.09,Maharashtra,20.00,73.79,S4
+bottle_gourd,Gujarat,0.08,Gujarat,21.52,70.46,S4
+bottle_gourd,Odisha,0.08,Odisha,20.46,85.88,S4
+bottle_gourd,Karnataka,0.07,Karnataka,15.85,74.50,S4
+bottle_gourd,Andhra Pradesh,0.06,Andhra Pradesh,16.31,80.44,S4
+bottle_gourd,Tamil Nadu,0.06,Tamil Nadu,11.02,76.96,S4
+bottle_gourd,Assam,0.05,Assam,26.75,94.22,S4
+ridge_gourd,West Bengal,0.16,West Bengal,23.25,87.85,S4
+ridge_gourd,Uttar Pradesh,0.14,Uttar Pradesh,28.98,77.71,S4
+ridge_gourd,Bihar,0.11,Bihar,25.59,85.14,S4
+ridge_gourd,Madhya Pradesh,0.10,Madhya Pradesh,22.72,75.86,S4
+ridge_gourd,Maharashtra,0.09,Maharashtra,20.00,73.79,S4
+ridge_gourd,Gujarat,0.08,Gujarat,21.52,70.46,S4
+ridge_gourd,Odisha,0.08,Odisha,20.46,85.88,S4
+ridge_gourd,Karnataka,0.07,Karnataka,15.85,74.50,S4
+ridge_gourd,Andhra Pradesh,0.06,Andhra Pradesh,16.31,80.44,S4
+ridge_gourd,Tamil Nadu,0.06,Tamil Nadu,11.02,76.96,S4
+ridge_gourd,Assam,0.05,Assam,26.75,94.22,S4
+ash_gourd,West Bengal,0.16,West Bengal,23.25,87.85,S4
+ash_gourd,Uttar Pradesh,0.14,Uttar Pradesh,28.98,77.71,S4
+ash_gourd,Bihar,0.11,Bihar,25.59,85.14,S4
+ash_gourd,Madhya Pradesh,0.10,Madhya Pradesh,22.72,75.86,S4
+ash_gourd,Maharashtra,0.09,Maharashtra,20.00,73.79,S4
+ash_gourd,Gujarat,0.08,Gujarat,21.52,70.46,S4
+ash_gourd,Odisha,0.08,Odisha,20.46,85.88,S4
+ash_gourd,Karnataka,0.07,Karnataka,15.85,74.50,S4
+ash_gourd,Andhra Pradesh,0.06,Andhra Pradesh,16.31,80.44,S4
+ash_gourd,Tamil Nadu,0.06,Tamil Nadu,11.02,76.96,S4
+ash_gourd,Assam,0.05,Assam,26.75,94.22,S4
+snake_gourd,West Bengal,0.16,West Bengal,23.25,87.85,S4
+snake_gourd,Uttar Pradesh,0.14,Uttar Pradesh,28.98,77.71,S4
+snake_gourd,Bihar,0.11,Bihar,25.59,85.14,S4
+snake_gourd,Madhya Pradesh,0.10,Madhya Pradesh,22.72,75.86,S4
+snake_gourd,Maharashtra,0.09,Maharashtra,20.00,73.79,S4
+snake_gourd,Gujarat,0.08,Gujarat,21.52,70.46,S4
+snake_gourd,Odisha,0.08,Odisha,20.46,85.88,S4
+snake_gourd,Karnataka,0.07,Karnataka,15.85,74.50,S4
+snake_gourd,Andhra Pradesh,0.06,Andhra Pradesh,16.31,80.44,S4
+snake_gourd,Tamil Nadu,0.06,Tamil Nadu,11.02,76.96,S4
+snake_gourd,Assam,0.05,Assam,26.75,94.22,S4
+capsicum,West Bengal,0.16,West Bengal,23.25,87.85,S4
+capsicum,Uttar Pradesh,0.14,Uttar Pradesh,28.98,77.71,S4
+capsicum,Bihar,0.11,Bihar,25.59,85.14,S4
+capsicum,Madhya Pradesh,0.10,Madhya Pradesh,22.72,75.86,S4
+capsicum,Maharashtra,0.09,Maharashtra,20.00,73.79,S4
+capsicum,Gujarat,0.08,Gujarat,21.52,70.46,S4
+capsicum,Odisha,0.08,Odisha,20.46,85.88,S4
+capsicum,Karnataka,0.07,Karnataka,15.85,74.50,S4
+capsicum,Andhra Pradesh,0.06,Andhra Pradesh,16.31,80.44,S4
+capsicum,Tamil Nadu,0.06,Tamil Nadu,11.02,76.96,S4
+capsicum,Assam,0.05,Assam,26.75,94.22,S4
+drumstick,Kerala,0.34,Kerala,10.53,76.21,S4
+drumstick,Karnataka,0.28,Karnataka,15.85,74.50,S4
+drumstick,Tamil Nadu,0.20,Tamil Nadu,11.02,76.96,S4
+drumstick,Andhra Pradesh,0.10,Andhra Pradesh,16.31,80.44,S4
+drumstick,Maharashtra,0.05,Maharashtra,20.00,73.79,S4
+drumstick,Goa,0.03,Goa,15.52,73.86,S4
+french_beans,West Bengal,0.16,West Bengal,23.25,87.85,S4
+french_beans,Uttar Pradesh,0.14,Uttar Pradesh,28.98,77.71,S4
+french_beans,Bihar,0.11,Bihar,25.59,85.14,S4
+french_beans,Madhya Pradesh,0.10,Madhya Pradesh,22.72,75.86,S4
+french_beans,Maharashtra,0.09,Maharashtra,20.00,73.79,S4
+french_beans,Gujarat,0.08,Gujarat,21.52,70.46,S4
+french_beans,Odisha,0.08,Odisha,20.46,85.88,S4
+french_beans,Karnataka,0.07,Karnataka,15.85,74.50,S4
+french_beans,Andhra Pradesh,0.06,Andhra Pradesh,16.31,80.44,S4
+french_beans,Tamil Nadu,0.06,Tamil Nadu,11.02,76.96,S4
+french_beans,Assam,0.05,Assam,26.75,94.22,S4
+cluster_beans,West Bengal,0.16,West Bengal,23.25,87.85,S4
+cluster_beans,Uttar Pradesh,0.14,Uttar Pradesh,28.98,77.71,S4
+cluster_beans,Bihar,0.11,Bihar,25.59,85.14,S4
+cluster_beans,Madhya Pradesh,0.10,Madhya Pradesh,22.72,75.86,S4
+cluster_beans,Maharashtra,0.09,Maharashtra,20.00,73.79,S4
+cluster_beans,Gujarat,0.08,Gujarat,21.52,70.46,S4
+cluster_beans,Odisha,0.08,Odisha,20.46,85.88,S4
+cluster_beans,Karnataka,0.07,Karnataka,15.85,74.50,S4
+cluster_beans,Andhra Pradesh,0.06,Andhra Pradesh,16.31,80.44,S4
+cluster_beans,Tamil Nadu,0.06,Tamil Nadu,11.02,76.96,S4
+cluster_beans,Assam,0.05,Assam,26.75,94.22,S4
+beetroot,West Bengal,0.16,West Bengal,23.25,87.85,S4
+beetroot,Uttar Pradesh,0.14,Uttar Pradesh,28.98,77.71,S4
+beetroot,Bihar,0.11,Bihar,25.59,85.14,S4
+beetroot,Madhya Pradesh,0.10,Madhya Pradesh,22.72,75.86,S4
+beetroot,Maharashtra,0.09,Maharashtra,20.00,73.79,S4
+beetroot,Gujarat,0.08,Gujarat,21.52,70.46,S4
+beetroot,Odisha,0.08,Odisha,20.46,85.88,S4
+beetroot,Karnataka,0.07,Karnataka,15.85,74.50,S4
+beetroot,Andhra Pradesh,0.06,Andhra Pradesh,16.31,80.44,S4
+beetroot,Tamil Nadu,0.06,Tamil Nadu,11.02,76.96,S4
+beetroot,Assam,0.05,Assam,26.75,94.22,S4
+radish,West Bengal,0.16,West Bengal,23.25,87.85,S4
+radish,Uttar Pradesh,0.14,Uttar Pradesh,28.98,77.71,S4
+radish,Bihar,0.11,Bihar,25.59,85.14,S4
+radish,Madhya Pradesh,0.10,Madhya Pradesh,22.72,75.86,S4
+radish,Maharashtra,0.09,Maharashtra,20.00,73.79,S4
+radish,Gujarat,0.08,Gujarat,21.52,70.46,S4
+radish,Odisha,0.08,Odisha,20.46,85.88,S4
+radish,Karnataka,0.07,Karnataka,15.85,74.50,S4
+radish,Andhra Pradesh,0.06,Andhra Pradesh,16.31,80.44,S4
+radish,Tamil Nadu,0.06,Tamil Nadu,11.02,76.96,S4
+radish,Assam,0.05,Assam,26.75,94.22,S4
+sweet_potato,Odisha,0.22,Odisha,20.46,85.88,S4
+sweet_potato,West Bengal,0.20,West Bengal,23.25,87.85,S4
+sweet_potato,Uttar Pradesh,0.14,Uttar Pradesh,28.98,77.71,S4
+sweet_potato,Bihar,0.12,Bihar,25.59,85.14,S4
+sweet_potato,Madhya Pradesh,0.10,Madhya Pradesh,22.72,75.86,S4
+sweet_potato,Assam,0.09,Assam,26.75,94.22,S4
+sweet_potato,Tamil Nadu,0.07,Tamil Nadu,11.02,76.96,S4
+sweet_potato,Kerala,0.06,Kerala,10.53,76.21,S4
+colocasia,Odisha,0.22,Odisha,20.46,85.88,S4
+colocasia,West Bengal,0.20,West Bengal,23.25,87.85,S4
+colocasia,Uttar Pradesh,0.14,Uttar Pradesh,28.98,77.71,S4
+colocasia,Bihar,0.12,Bihar,25.59,85.14,S4
+colocasia,Madhya Pradesh,0.10,Madhya Pradesh,22.72,75.86,S4
+colocasia,Assam,0.09,Assam,26.75,94.22,S4
+colocasia,Tamil Nadu,0.07,Tamil Nadu,11.02,76.96,S4
+colocasia,Kerala,0.06,Kerala,10.53,76.21,S4
+yam,Odisha,0.22,Odisha,20.46,85.88,S4
+yam,West Bengal,0.20,West Bengal,23.25,87.85,S4
+yam,Uttar Pradesh,0.14,Uttar Pradesh,28.98,77.71,S4
+yam,Bihar,0.12,Bihar,25.59,85.14,S4
+yam,Madhya Pradesh,0.10,Madhya Pradesh,22.72,75.86,S4
+yam,Assam,0.09,Assam,26.75,94.22,S4
+yam,Tamil Nadu,0.07,Tamil Nadu,11.02,76.96,S4
+yam,Kerala,0.06,Kerala,10.53,76.21,S4
+fenugreek_leaf,West Bengal,0.20,West Bengal,23.25,87.85,S4
+fenugreek_leaf,Uttar Pradesh,0.16,Uttar Pradesh,28.98,77.71,S4
+fenugreek_leaf,Maharashtra,0.12,Maharashtra,20.00,73.79,S4
+fenugreek_leaf,Bihar,0.11,Bihar,25.59,85.14,S4
+fenugreek_leaf,Gujarat,0.10,Gujarat,21.52,70.46,S4
+fenugreek_leaf,Karnataka,0.09,Karnataka,15.85,74.50,S4
+fenugreek_leaf,Madhya Pradesh,0.08,Madhya Pradesh,22.72,75.86,S4
+fenugreek_leaf,Tamil Nadu,0.08,Tamil Nadu,11.02,76.96,S4
+fenugreek_leaf,Odisha,0.06,Odisha,20.46,85.88,S4
+coriander_leaf,West Bengal,0.20,West Bengal,23.25,87.85,S4
+coriander_leaf,Uttar Pradesh,0.16,Uttar Pradesh,28.98,77.71,S4
+coriander_leaf,Maharashtra,0.12,Maharashtra,20.00,73.79,S4
+coriander_leaf,Bihar,0.11,Bihar,25.59,85.14,S4
+coriander_leaf,Gujarat,0.10,Gujarat,21.52,70.46,S4
+coriander_leaf,Karnataka,0.09,Karnataka,15.85,74.50,S4
+coriander_leaf,Madhya Pradesh,0.08,Madhya Pradesh,22.72,75.86,S4
+coriander_leaf,Tamil Nadu,0.08,Tamil Nadu,11.02,76.96,S4
+coriander_leaf,Odisha,0.06,Odisha,20.46,85.88,S4
+mint_leaf,West Bengal,0.20,West Bengal,23.25,87.85,S4
+mint_leaf,Uttar Pradesh,0.16,Uttar Pradesh,28.98,77.71,S4
+mint_leaf,Maharashtra,0.12,Maharashtra,20.00,73.79,S4
+mint_leaf,Bihar,0.11,Bihar,25.59,85.14,S4
+mint_leaf,Gujarat,0.10,Gujarat,21.52,70.46,S4
+mint_leaf,Karnataka,0.09,Karnataka,15.85,74.50,S4
+mint_leaf,Madhya Pradesh,0.08,Madhya Pradesh,22.72,75.86,S4
+mint_leaf,Tamil Nadu,0.08,Tamil Nadu,11.02,76.96,S4
+mint_leaf,Odisha,0.06,Odisha,20.46,85.88,S4
+curry_leaf,Kerala,0.34,Kerala,10.53,76.21,S4
+curry_leaf,Karnataka,0.28,Karnataka,15.85,74.50,S4
+curry_leaf,Tamil Nadu,0.20,Tamil Nadu,11.02,76.96,S4
+curry_leaf,Andhra Pradesh,0.10,Andhra Pradesh,16.31,80.44,S4
+curry_leaf,Maharashtra,0.05,Maharashtra,20.00,73.79,S4
+curry_leaf,Goa,0.03,Goa,15.52,73.86,S4
+spring_onion,West Bengal,0.20,West Bengal,23.25,87.85,S4
+spring_onion,Uttar Pradesh,0.16,Uttar Pradesh,28.98,77.71,S4
+spring_onion,Maharashtra,0.12,Maharashtra,20.00,73.79,S4
+spring_onion,Bihar,0.11,Bihar,25.59,85.14,S4
+spring_onion,Gujarat,0.10,Gujarat,21.52,70.46,S4
+spring_onion,Karnataka,0.09,Karnataka,15.85,74.50,S4
+spring_onion,Madhya Pradesh,0.08,Madhya Pradesh,22.72,75.86,S4
+spring_onion,Tamil Nadu,0.08,Tamil Nadu,11.02,76.96,S4
+spring_onion,Odisha,0.06,Odisha,20.46,85.88,S4
+mushroom,Punjab,0.28,Punjab,30.24,75.84,S4
+mushroom,Haryana,0.22,Haryana,29.69,76.99,S4
+mushroom,Uttarakhand,0.14,Uttarakhand,28.97,79.40,S4
+mushroom,Himachal Pradesh,0.12,Himachal Pradesh,32.10,76.27,S4
+mushroom,Maharashtra,0.10,Maharashtra,20.00,73.79,S4
+mushroom,Odisha,0.08,Odisha,20.46,85.88,S4
+mushroom,Tamil Nadu,0.06,Tamil Nadu,11.02,76.96,S4
+sweet_corn,West Bengal,0.16,West Bengal,23.25,87.85,S4
+sweet_corn,Uttar Pradesh,0.14,Uttar Pradesh,28.98,77.71,S4
+sweet_corn,Bihar,0.11,Bihar,25.59,85.14,S4
+sweet_corn,Madhya Pradesh,0.10,Madhya Pradesh,22.72,75.86,S4
+sweet_corn,Maharashtra,0.09,Maharashtra,20.00,73.79,S4
+sweet_corn,Gujarat,0.08,Gujarat,21.52,70.46,S4
+sweet_corn,Odisha,0.08,Odisha,20.46,85.88,S4
+sweet_corn,Karnataka,0.07,Karnataka,15.85,74.50,S4
+sweet_corn,Andhra Pradesh,0.06,Andhra Pradesh,16.31,80.44,S4
+sweet_corn,Tamil Nadu,0.06,Tamil Nadu,11.02,76.96,S4
+sweet_corn,Assam,0.05,Assam,26.75,94.22,S4
+pomegranate,Maharashtra,0.58,Maharashtra,20.00,73.79,S4
+pomegranate,Gujarat,0.14,Gujarat,21.52,70.46,S4
+pomegranate,Karnataka,0.12,Karnataka,15.85,74.50,S4
+pomegranate,Andhra Pradesh,0.08,Andhra Pradesh,16.31,80.44,S4
+pomegranate,Rajasthan,0.05,Rajasthan,26.91,75.79,S4
+pomegranate,Madhya Pradesh,0.03,Madhya Pradesh,22.72,75.86,S4
+pineapple,West Bengal,0.28,West Bengal,23.25,87.85,S4
+pineapple,Assam,0.24,Assam,26.75,94.22,S4
+pineapple,Kerala,0.16,Kerala,10.53,76.21,S4
+pineapple,Tripura,0.12,Tripura,23.84,91.28,S4
+pineapple,Karnataka,0.10,Karnataka,15.85,74.50,S4
+pineapple,Meghalaya,0.10,Meghalaya,25.57,91.89,S4
+sapota,Karnataka,0.30,Karnataka,15.85,74.50,S4
+sapota,Maharashtra,0.26,Maharashtra,20.00,73.79,S4
+sapota,Gujarat,0.18,Gujarat,21.52,70.46,S4
+sapota,Tamil Nadu,0.14,Tamil Nadu,11.02,76.96,S4
+sapota,Andhra Pradesh,0.12,Andhra Pradesh,16.31,80.44,S4
+custard_apple,Maharashtra,0.36,Maharashtra,20.00,73.79,S4
+custard_apple,Andhra Pradesh,0.20,Andhra Pradesh,16.31,80.44,S4
+custard_apple,Karnataka,0.16,Karnataka,15.85,74.50,S4
+custard_apple,Gujarat,0.14,Gujarat,21.52,70.46,S4
+custard_apple,Madhya Pradesh,0.14,Madhya Pradesh,22.72,75.86,S4
+jackfruit,Kerala,0.34,Kerala,10.53,76.21,S4
+jackfruit,Karnataka,0.28,Karnataka,15.85,74.50,S4
+jackfruit,Tamil Nadu,0.20,Tamil Nadu,11.02,76.96,S4
+jackfruit,Andhra Pradesh,0.10,Andhra Pradesh,16.31,80.44,S4
+jackfruit,Maharashtra,0.05,Maharashtra,20.00,73.79,S4
+jackfruit,Goa,0.03,Goa,15.52,73.86,S4
+lemon,Andhra Pradesh,0.28,Andhra Pradesh,16.31,80.44,S4
+lemon,Maharashtra,0.20,Maharashtra,20.00,73.79,S4
+lemon,Gujarat,0.14,Gujarat,21.52,70.46,S4
+lemon,Tamil Nadu,0.12,Tamil Nadu,11.02,76.96,S4
+lemon,Karnataka,0.10,Karnataka,15.85,74.50,S4
+lemon,Rajasthan,0.09,Rajasthan,26.91,75.79,S4
+lemon,Odisha,0.07,Odisha,20.46,85.88,S4
+turmeric,Telangana,0.32,Telangana,18.67,78.09,S4
+turmeric,Maharashtra,0.20,Maharashtra,20.00,73.79,S4
+turmeric,Tamil Nadu,0.16,Tamil Nadu,11.02,76.96,S4
+turmeric,Karnataka,0.12,Karnataka,15.85,74.50,S4
+turmeric,Andhra Pradesh,0.10,Andhra Pradesh,16.31,80.44,S4
+turmeric,Odisha,0.10,Odisha,20.46,85.88,S4
+ginger,Karnataka,0.24,Karnataka,15.85,74.50,S4
+ginger,Assam,0.18,Assam,26.75,94.22,S4
+ginger,Meghalaya,0.14,Meghalaya,25.57,91.89,S4
+ginger,West Bengal,0.12,West Bengal,23.25,87.85,S4
+ginger,Odisha,0.12,Odisha,20.46,85.88,S4
+ginger,Kerala,0.10,Kerala,10.53,76.21,S4
+ginger,Nagaland,0.10,Nagaland,25.67,94.11,S4
+cumin,Gujarat,0.62,Gujarat,21.52,70.46,S4
+cumin,Rajasthan,0.34,Rajasthan,26.91,75.79,S4
+cumin,Madhya Pradesh,0.04,Madhya Pradesh,22.72,75.86,S4
+coriander_seed,Gujarat,0.28,Gujarat,21.52,70.46,S4
+coriander_seed,Rajasthan,0.24,Rajasthan,26.91,75.79,S4
+coriander_seed,Madhya Pradesh,0.16,Madhya Pradesh,22.72,75.86,S4
+coriander_seed,Andhra Pradesh,0.12,Andhra Pradesh,16.31,80.44,S4
+coriander_seed,Telangana,0.08,Telangana,18.67,78.09,S4
+coriander_seed,Karnataka,0.07,Karnataka,15.85,74.50,S4
+coriander_seed,Tamil Nadu,0.05,Tamil Nadu,11.02,76.96,S4
+black_pepper,Kerala,0.62,Kerala,10.53,76.21,S4
+black_pepper,Karnataka,0.26,Karnataka,15.85,74.50,S4
+black_pepper,Tamil Nadu,0.12,Tamil Nadu,11.02,76.96,S4
+cardamom,Kerala,0.58,Kerala,10.53,76.21,S4
+cardamom,Karnataka,0.28,Karnataka,15.85,74.50,S4
+cardamom,Tamil Nadu,0.14,Tamil Nadu,11.02,76.96,S4
+cashew,Maharashtra,0.24,Maharashtra,20.00,73.79,S4
+cashew,Andhra Pradesh,0.20,Andhra Pradesh,16.31,80.44,S4
+cashew,Odisha,0.16,Odisha,20.46,85.88,S4
+cashew,Karnataka,0.14,Karnataka,15.85,74.50,S4
+cashew,Kerala,0.12,Kerala,10.53,76.21,S4
+cashew,Tamil Nadu,0.08,Tamil Nadu,11.02,76.96,S4
+cashew,Goa,0.06,Goa,15.52,73.86,S4
+almond,Jammu and Kashmir,0.44,Jammu and Kashmir,32.73,74.87,S4
+almond,Himachal Pradesh,0.32,Himachal Pradesh,32.10,76.27,S4
+almond,Uttarakhand,0.18,Uttarakhand,28.97,79.40,S4
+almond,Meghalaya,0.03,Meghalaya,25.57,91.89,S4
+almond,Nagaland,0.03,Nagaland,25.67,94.11,S4
+walnut,Jammu and Kashmir,0.44,Jammu and Kashmir,32.73,74.87,S4
+walnut,Himachal Pradesh,0.32,Himachal Pradesh,32.10,76.27,S4
+walnut,Uttarakhand,0.18,Uttarakhand,28.97,79.40,S4
+walnut,Meghalaya,0.03,Meghalaya,25.57,91.89,S4
+walnut,Nagaland,0.03,Nagaland,25.67,94.11,S4

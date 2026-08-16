@@ -1,0 +1,169 @@
+product_id,name_en,name_hi,name_mr,name_ta,type,default_serving_g,source
+rice_raw,Rice,चावल,तांदूळ,அரிசி,raw_crop,1000,S1
+wheat_raw,Wheat,गेहूँ,गहू,கோதுமை,raw_crop,1000,S1
+onion_raw,Onion,प्याज़,कांदा,வெங்காயம்,raw_crop,1000,S1
+potato_raw,Potato,आलू,बटाटा,உருளைக்கிழங்கு,raw_crop,1000,S1
+tomato_raw,Tomato,टमाटर,टोमॅटो,தக்காளி,raw_crop,1000,S1
+okra_raw,Okra (Bhindi),भिंडी,भेंडी,வெண்டைக்காய்,raw_crop,250,S1
+bajra_raw,Pearl Millet (Bajra),बाजरा,बाजरी,கம்பு,raw_crop,1000,S1
+jowar_raw,Sorghum (Jowar),ज्वार,ज्वारी,சோளம்,raw_crop,1000,S1
+ragi_raw,Finger Millet (Ragi),रागी,नाचणी,கேழ்வரகு,raw_crop,1000,S1
+maize_raw,Maize,मक्का,मका,மக்காச்சோளம்,raw_crop,1000,S1
+sugarcane_raw,Sugarcane,गन्ना,ऊस,கரும்பு,raw_crop,1000,S1
+banana_raw,Banana,केला,केळं,வாழைப்பழம்,raw_crop,1000,S1
+mango_raw,Mango,आम,आंबा,மாம்பழம்,raw_crop,1000,S1
+apple_raw,Apple,सेब,सफरचंद,ஆப்பிள்,raw_crop,1000,S1
+coconut_raw,Coconut,नारियल,नारळ,தேங்காய்,raw_crop,1000,S1
+chickpea_raw,Chickpea,चना,हरभरा,கொண்டைக்கடலை,raw_crop,1000,S1
+lentil_raw,Lentil,मसूर,मसूर,மைசூர் பருப்பு,raw_crop,1000,S1
+groundnut_raw,Groundnut,मूंगफली,शेंगदाणे,நிலக்கடலை,raw_crop,1000,S1
+soybean_raw,Soybean,सोयाबीन,सोयाबीन,சோயா,raw_crop,1000,S1
+milk_raw,Milk,दूध,दूध,பால்,raw_crop,1000,S2
+egg_raw,Egg,अंडा,अंडं,முட்டை,raw_crop,1000,S2
+chicken_raw,Chicken,चिकन,चिकन,கோழி இறைச்சி,raw_crop,1000,S2
+tea_raw,Tea Leaves,चाय पत्ती,चहा पावडर,தேயிலை,raw_crop,1000,S1
+coffee_raw,Coffee,कॉफ़ी,कॉफी,காபி,raw_crop,1000,S1
+cotton_tshirt,Cotton T-Shirt,सूती टी-शर्ट,सुती टी-शर्ट,பருத்தி டி-சர்ட்,non_food,200,S1
+jeans_pair,Pair of Jeans,जींस,जीन्स,ஜீன்ஸ்,non_food,700,S1
+cotton_raw,Cotton,कपास,कापूस,பருத்தி,raw_crop,1000,S1
+cotton_saree,Cotton Saree,सूती साड़ी,सुती साडी,பருத்தி புடவை,non_food,500,S1
+jute_bag,Jute Bag,जूट बैग,ताग पिशवी,சணல் பை,non_food,150,S1
+biryani_chicken,Chicken Biryani,चिकन बिरयानी,चिकन बिर्याणी,சிக்கன் பிரியாணி,cooked_dish,350,S1+S2
+biryani_veg,Vegetable Biryani,वेज बिरयानी,व्हेज बिर्याणी,காய்கறி பிரியாணி,cooked_dish,300,S1
+dal_tadka,Dal Tadka,दाल तड़का,डाळ तडका,பருப்பு தாளிப்பு,cooked_dish,200,S1
+dal_rice,Dal Chawal,दाल चावल,वरण भात,பருப்பு சாதம்,cooked_dish,400,S1
+roti,Roti / Chapati,रोटी,चपाती,சப்பாத்தி,cooked_dish,40,S1
+idli,Idli,इडली,इडली,இட்லி,cooked_dish,150,S1
+dosa,Dosa,डोसा,डोसा,தோசை,cooked_dish,120,S1
+masala_dosa,Masala Dosa,मसाला डोसा,मसाला डोसा,மசாலா தோசை,cooked_dish,200,S1
+poha,Poha,पोहा,पोहे,அவல்,cooked_dish,200,S1
+upma,Upma,उपमा,उपमा,உப்புமா,cooked_dish,200,S1
+chole_bhature,Chole Bhature,छोले भटूरे,छोले भटुरे,சோலே பட்டூரே,cooked_dish,350,S1
+rajma_chawal,Rajma Chawal,राजमा चावल,राजमा भात,ராஜ்மா சாதம்,cooked_dish,400,S1
+paneer_butter_masala,Paneer Butter Masala,पनीर बटर मसाला,पनीर बटर मसाला,பன்னீர் பட்டர் மசாலா,cooked_dish,250,S2
+aloo_paratha,Aloo Paratha,आलू पराठा,बटाटा पराठा,உருளைக்கிழங்கு பராத்தா,cooked_dish,150,S1
+samosa,Samosa,समोसा,समोसा,சமோசா,cooked_dish,100,S1
+vada_pav,Vada Pav,वड़ा पाव,वडा पाव,வடை பாவ்,cooked_dish,150,S1
+pav_bhaji,Pav Bhaji,पाव भाजी,पाव भाजी,பாவ் பாஜி,cooked_dish,300,S1
+curd_rice,Curd Rice,दही चावल,दही भात,தயிர் சாதம்,cooked_dish,300,S2
+sambar_rice,Sambar Rice,सांभर चावल,सांबार भात,சாம்பார் சாதம்,cooked_dish,350,S1
+bhindi_masala,Bhindi Masala,भिंडी मसाला,भेंडी मसाला,வெண்டைக்காய் மசாலா,cooked_dish,200,S1
+khichdi,Khichdi,खिचड़ी,खिचडी,கிச்சடி,cooked_dish,350,S1
+pulao,Pulao,पुलाव,पुलाव,புலாவ்,cooked_dish,300,S1
+chai,Masala Chai,चाय,चहा,தேநீர்,cooked_dish,150,S1+S2
+filter_coffee,Filter Coffee,फ़िल्टर कॉफ़ी,फिल्टर कॉफी,பில்டர் காபி,cooked_dish,150,S1+S2
+omelette,Omelette,ऑमलेट,ऑम्लेट,ஆம்லெட்,cooked_dish,120,S2
+egg_curry,Egg Curry,अंडा करी,अंडा करी,முட்டை குழம்பு,cooked_dish,250,S2
+chicken_curry,Chicken Curry,चिकन करी,चिकन करी,சிக்கன் குழம்பு,cooked_dish,250,S2
+mutton_curry,Mutton Curry,मटन करी,मटण करी,ஆட்டிறைச்சி குழம்பு,cooked_dish,250,S2
+parle_g_biscuit,Parle-G Biscuits,पारले-जी बिस्किट,पारले-जी बिस्कीट,பார்லே-ஜி பிஸ்கட்,packaged,100,S1+S2
+biscuit_marie,Marie Biscuits,मारी बिस्किट,मारी बिस्कीट,மேரி பிஸ்கட்,packaged,100,S1+S2
+bread_white,White Bread,सफ़ेद ब्रेड,पांढरा ब्रेड,வெள்ளை ரொட்டி,packaged,100,S1
+instant_noodles,Instant Noodles,इंस्टेंट नूडल्स,इन्स्टंट नूडल्स,இன்ஸ்டன்ட் நூடுல்ஸ்,packaged,70,S1
+bitter_gourd_raw,Bitter Gourd (Karela),करेला,कारले,பாகற்காய்,raw_crop,250,S1:category-avg
+bottle_gourd_raw,Bottle Gourd (Lauki),लौकी,दुधी भोपळा,சுரைக்காய்,raw_crop,250,S1:category-avg
+ridge_gourd_raw,Ridge Gourd (Turai),तुरई,दोडका,பீர்க்கங்காய்,raw_crop,250,S1:category-avg
+ash_gourd_raw,Ash Gourd (Petha),पेठा,कोहळा,பூசணிக்காய்,raw_crop,250,S1:approx
+snake_gourd_raw,Snake Gourd,चिचिंडा,पडवळ,புடலங்காய்,raw_crop,250,S1:category-avg
+capsicum_raw,Capsicum / Bell Pepper,शिमला मिर्च,ढोबळी मिरची,குடைமிளகாய்,raw_crop,250,S1:approx
+drumstick_raw,Drumstick (Moringa),सहजन,शेवगा,முருங்கைக்காய்,raw_crop,250,S1:category-avg
+french_beans_raw,French Beans,फ्रेंच बीन्स,फरसबी,பீன்ஸ்,raw_crop,250,S1
+cluster_beans_raw,Cluster Beans (Gavar),ग्वार फली,गवार,கொத்தவரங்காய்,raw_crop,250,S1:approx
+beetroot_raw,Beetroot,चुकंदर,बीट,பீட்ரூட்,raw_crop,250,S1:approx
+radish_raw,Radish (Mooli),मूली,मुळा,முள்ளங்கி,raw_crop,250,S1:approx
+sweet_potato_raw,Sweet Potato,शकरकंद,रताळे,சர்க்கரைவள்ளிக்கிழங்கு,raw_crop,250,S1
+colocasia_raw,Colocasia (Arbi),अरबी,अळू,சேப்பங்கிழங்கு,raw_crop,250,S1
+yam_raw,Yam (Suran),सूरन,सुरण,சேனைக்கிழங்கு,raw_crop,250,S1
+fenugreek_leaf_raw,Fenugreek Leaves (Methi),मेथी,मेथी,வெந்தயக் கீரை,raw_crop,250,S1:approx
+coriander_leaf_raw,Coriander Leaves,धनिया पत्ती,कोथिंबीर,கொத்தமல்லி,raw_crop,250,S1:approx
+mint_leaf_raw,Mint (Pudina),पुदीना,पुदिना,புதினா,raw_crop,250,S1:approx
+curry_leaf_raw,Curry Leaves,करी पत्ता,कढीपत्ता,கறிவேப்பிலை,raw_crop,250,S1:approx
+spring_onion_raw,Spring Onion,हरा प्याज़,कांदा पात,வெங்காயத்தாள்,raw_crop,250,S1:approx
+mushroom_raw,Mushroom,मशरूम,अळिंबी,காளான்,raw_crop,250,S1
+sweet_corn_raw,Sweet Corn,भुट्टा,मका कणीस,இனிப்பு சோளம்,raw_crop,250,S1:approx
+pomegranate_raw,Pomegranate,अनार,डाळिंब,மாதுளை,raw_crop,250,S1:category-avg
+pineapple_raw,Pineapple,अनानास,अननस,அன்னாசி,raw_crop,250,S1
+sapota_raw,Sapota (Chikoo),चीकू,चिकू,சப்போட்டா,raw_crop,250,S1:category-avg
+custard_apple_raw,Custard Apple (Sitaphal),सीताफल,सीताफळ,சீதாப்பழம்,raw_crop,250,S1:category-avg
+jackfruit_raw,Jackfruit,कटहल,फणस,பலாப்பழம்,raw_crop,250,S1:category-avg
+lemon_raw,Lemon / Lime,नींबू,लिंबू,எலுமிச்சை,raw_crop,250,S1
+turmeric_raw,Turmeric,हल्दी,हळद,மஞ்சள்,raw_crop,250,S1:category-avg
+ginger_raw,Ginger,अदरक,आले,இஞ்சி,raw_crop,250,S1:approx
+cumin_raw,Cumin (Jeera),जीरा,जिरे,சீரகம்,raw_crop,250,S1:category-avg
+coriander_seed_raw,Coriander Seed,धनिया,धणे,கொத்தமல்லி விதை,raw_crop,250,S1:category-avg
+black_pepper_raw,Black Pepper,काली मिर्च,काळी मिरी,மிளகு,raw_crop,250,S1
+cardamom_raw,Cardamom (Elaichi),इलायची,वेलची,ஏலக்காய்,raw_crop,250,S1:category-avg
+cashew_raw,Cashew Nut,काजू,काजू,முந்திரி,raw_crop,250,S1
+almond_raw,Almond,बादाम,बदाम,பாதாம்,raw_crop,250,S1
+walnut_raw,Walnut,अखरोट,अक्रोड,அக்ரூட்,raw_crop,250,S1
+barley_raw,Barley,जौ,सातू,பார்லி,raw_crop,1000,S1
+pigeonpea_raw,Pigeon Pea (Tur),अरहर,तूर,துவரை,raw_crop,250,S1:approx
+mung_bean_raw,Mung Bean,मूंग,मूग,பாசிப்பயறு,raw_crop,250,S1:approx
+black_gram_raw,Black Gram (Urad),उड़द,उडीद,உளுந்து,raw_crop,250,S1:approx
+kidney_bean_raw,Kidney Bean (Rajma),राजमा,राजमा,ராஜ்மா,raw_crop,250,S1
+dry_pea_raw,Dry Pea,सूखा मटर,वाटाणा,பட்டாணி,raw_crop,500,S1
+mustard_raw,Mustard / Rapeseed,सरसों,मोहरी,கடுகு,raw_crop,250,S1
+sunflower_raw,Sunflower Seed,सूरजमुखी,सूर्यफूल,சூரியகாந்தி,raw_crop,250,S1
+sesame_raw,Sesame,तिल,तीळ,எள்,raw_crop,100,S1
+cabbage_raw,Cabbage,पत्ता गोभी,कोबी,முட்டைகோஸ்,raw_crop,500,S1
+cauliflower_raw,Cauliflower,फूल गोभी,फ्लॉवर,காலிஃபிளவர்,raw_crop,500,S1
+brinjal_raw,Brinjal,बैंगन,वांगे,கத்தரிக்காய்,raw_crop,250,S1:approx
+carrot_raw,Carrot,गाजर,गाजर,கேரட்,raw_crop,250,S1
+green_pea_raw,Green Pea,हरा मटर,वाटाणा,பட்டாணி,raw_crop,250,S1:approx
+spinach_raw,Spinach,पालक,पालक,கீரை,raw_crop,250,S1
+chilli_raw,Chilli,मिर्च,मिरची,மிளகாய்,raw_crop,250,S1:approx
+garlic_raw,Garlic,लहसुन,लसूण,பூண்டு,raw_crop,250,S1
+pumpkin_raw,Pumpkin,कद्दू,भोपळा,பூசணி,raw_crop,500,S1
+cucumber_raw,Cucumber,खीरा,काकडी,வெள்ளரி,raw_crop,250,S1
+orange_raw,Orange,संतरा,संत्रं,ஆரஞ்சு,raw_crop,200,S1
+grapes_raw,Grapes,अंगूर,द्राक्षं,திராட்சை,raw_crop,250,S1
+papaya_raw,Papaya,पपीता,पपई,பப்பாளி,raw_crop,300,S1
+watermelon_raw,Watermelon,तरबूज़,कलिंगड,தர்பூசணி,raw_crop,500,S1
+guava_raw,Guava,अमरूद,पेरू,கொய்யா,raw_crop,150,S1:approx
+jute_raw,Jute,जूट,ताग,சணல்,raw_crop,250,S1:approx
+goat_meat_raw,Goat Meat (Mutton),मटन,मटण,ஆட்டிறைச்சி,raw_crop,250,S2
+sheep_meat_raw,Sheep Meat,भेड़ का मांस,मेंढीचे मांस,செம்மறி இறைச்சி,raw_crop,250,S2
+buffalo_meat_raw,Buffalo / Bovine Meat,भैंस का मांस,म्हशीचे मांस,எருமை இறைச்சி,raw_crop,250,S2
+butter_raw,Butter,मक्खन,लोणी,வெண்ணெய்,raw_crop,250,S2
+cheese_raw,Cheese / Paneer,पनीर,पनीर,பன்னீர்,raw_crop,250,S2
+oats_raw,Oats,जई,ओट्स,ஓட்ஸ்,raw_crop,1000,S1:table3
+rye_raw,Rye,राई,राय,ரை,raw_crop,1000,S1:table3
+buckwheat_raw,Buckwheat (Kuttu),कुट्टू,कुट्टू,குட்டு,raw_crop,1000,S1:table3
+broad_beans_raw,"Broad Beans, dry (Bakla)",बाकला,पावटा,அவரை,raw_crop,1000,S1:table3
+soy_curd_raw,Soya Curd (Tofu),टोफू,टोफू,டோஃபு,raw_crop,1000,S1:table3
+copra_raw,Copra,खोपरा,खोबरं,கொப்பரை,raw_crop,1000,S1:table3
+linseed_raw,Linseed (Alsi),अलसी,जवस,ஆளி விதை,raw_crop,1000,S1:table3
+safflower_raw,Safflower Seed (Kardi),कुसुम,करडई,குசும்பா,raw_crop,1000,S1:table3
+poppy_raw,Poppy Seed (Khus Khus),खसखस,खसखस,கசகசா,raw_crop,1000,S1:table3
+maize_oil_raw,Maize (Corn) Oil,मक्का तेल,मका तेल,சோள எண்ணெய்,raw_crop,1000,S1:table3
+cottonseed_oil_raw,"Cottonseed Oil, refined",बिनौला तेल,सरकी तेल,பருத்தி விதை எண்ணெய்,raw_crop,1000,S1:table3
+pistachio_raw,Pistachio,पिस्ता,पिस्ता,பிஸ்தா,raw_crop,1000,S1:table3
+lettuce_raw,Lettuce,सलाद पत्ता,लेट्युस,லெட்டூஸ்,raw_crop,1000,S1:table3
+cassava_flour_raw,Cassava / Tapioca Flour,टैपिओका आटा,टॅपिओका पीठ,மரவள்ளி மாவு,raw_crop,1000,S1:table3
+tomato_ketchup_raw,Tomato Ketchup,टमाटर केचप,टोमॅटो केचप,தக்காளி கெட்சப்,raw_crop,1000,S1:table3
+tomato_paste_raw,Tomato Paste,टमाटर पेस्ट,टोमॅटो पेस्ट,தக்காளி விழுது,raw_crop,1000,S1:table3
+potato_starch_raw,Potato Starch,आलू स्टार्च,बटाटा स्टार्च,உருளைக்கிழங்கு மாவு,raw_crop,1000,S1:table3
+wheat_starch_raw,Wheat Starch,गेहूँ स्टार्च,गहू स्टार्च,கோதுமை மாவு,raw_crop,1000,S1:table3
+dry_pasta_raw,Dry Pasta,पास्ता,पास्ता,பாஸ்தா,raw_crop,1000,S1:table3
+cinnamon_raw,Cinnamon (Dalchini),दालचीनी,दालचिनी,பட்டை,raw_crop,1000,S1:table3
+clove_raw,Clove (Laung),लौंग,लवंग,கிராம்பு,raw_crop,1000,S1:table3
+plantain_raw,Plantain (Raw Banana),कच्चा केला,कच्चं केळं,வாழைக்காய்,raw_crop,1000,S1:table3
+tangerine_raw,Tangerine / Kinnow,किन्नू,संत्रं,கமலா ஆரஞ்சு,raw_crop,1000,S1:table3
+grapefruit_raw,Grapefruit (Chakotra),चकोतरा,चकोतरा,பம்பரமாசு,raw_crop,1000,S1:table3
+pear_raw,Pear,नाशपाती,पेअर,பேரிக்காய்,raw_crop,1000,S1:table3
+peach_raw,Peach,आड़ू,पीच,பீச்,raw_crop,1000,S1:table3
+plum_raw,Plum (Aloobukhara),आलूबुखारा,आलुबुखार,பிளம்,raw_crop,1000,S1:table3
+apricot_raw,Apricot (Khubani),खुबानी,जर्दाळू,ஆப்ரிகாட்,raw_crop,1000,S1:table3
+strawberry_raw,Strawberry,स्ट्रॉबेरी,स्ट्रॉबेरी,ஸ்ட்ராபெரி,raw_crop,1000,S1:table3
+dates_raw,Dates (Khajur),खजूर,खजूर,பேரீச்சம்பழம்,raw_crop,1000,S1:table3
+avocado_raw,Avocado,एवोकाडो,अ‍ॅव्होकॅडो,வெண்ணெய் பழம்,raw_crop,1000,S1:table3
+kiwi_raw,Kiwi,कीवी,किवी,கிவி,raw_crop,1000,S1:table3
+olive_raw,Olive,जैतून,जैतून,ஆலிவ்,raw_crop,1000,S1:table3
+sugar_beet_raw,Sugar Beet,चुकंदर,साखर बीट,சர்க்கரை பீட்,raw_crop,1000,S1:table3
+cocoa_raw,Cocoa Beans,कोको,कोको,கோகோ,raw_crop,1000,S1:table3
+chocolate_raw,Chocolate,चॉकलेट,चॉकलेट,சாக்லேட்,raw_crop,1000,S1:table3
+soy_milk_raw,Soy Milk,सोया दूध,सोया दूध,சோயா பால்,raw_crop,1000,S1:table3
+orange_juice_raw,Orange Juice,संतरे का रस,संत्र्याचा रस,ஆரஞ்சு சாறு,raw_crop,1000,S1:table3
+apple_juice_raw,Apple Juice,सेब का रस,सफरचंदाचा रस,ஆப்பிள் சாறு,raw_crop,1000,S1:table3
+beer_raw,Beer (from malt),बियर,बिअर,பீர்,raw_crop,1000,S1:table3
+jaggery,Jaggery (Gur),गुड़,गूळ,வெல்லம்,raw_crop,1000,S1:table3-molasses-derived

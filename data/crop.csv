@@ -1,0 +1,140 @@
+crop_id,name_en,name_hi,name_mr,name_ta,category,wf_green,wf_blue,wf_grey,is_animal,is_food,source
+rice,Rice,चावल,तांदूळ,அரிசி,cereal,1146,341,187,0,1,S1
+wheat,Wheat,गेहूँ,गहू,கோதுமை,cereal,1277,342,207,0,1,S1
+maize,Maize,मक्का,मका,மக்காச்சோளம்,cereal,947,81,194,0,1,S1
+sorghum,Sorghum (Jowar),ज्वार,ज्वारी,சோளம்,cereal,2857,103,87,0,1,S1
+pearl_millet,Pearl Millet (Bajra),बाजरा,बाजरी,கம்பு,cereal,4306,57,136,0,1,S1:approx
+finger_millet,Finger Millet (Ragi),रागी,नाचणी,கேழ்வரகு,cereal,2384,0,89,0,1,S1:approx
+barley,Barley,जौ,सातू,பார்லி,cereal,1213,79,131,0,1,S1
+oats,Oats,जई,ओट्स,ஓட்ஸ்,cereal,1479,181,128,0,1,S1:table3
+rye,Rye,राई,राय,ரை,cereal,1419,25,99,0,1,S1:table3
+buckwheat,Buckwheat (Kuttu),कुट्टू,कुट्टू,குட்டு,cereal,2769,144,229,0,1,S1:table3
+chickpea,Chickpea (Chana),चना,हरभरा,கொண்டைக்கடலை,pulse,2972,224,981,0,1,S1
+pigeonpea,Pigeon Pea (Tur),अरहर,तूर,துவரை,pulse,4739,157,344,0,1,S1:approx
+lentil,Lentil (Masoor),मसूर,मसूर,மைசூர் பருப்பு,pulse,4324,489,122,0,1,S1:approx
+mung_bean,Mung Bean,मूंग,मूग,பாசிப்பயறு,pulse,3180,141,734,0,1,S1:table2-category
+black_gram,Black Gram (Urad),उड़द,उडीद,உளுந்து,pulse,3180,141,734,0,1,S1:table2-category
+kidney_bean,Kidney Bean (Rajma),राजमा,राजमा,ராஜ்மா,pulse,3945,125,983,0,1,S1
+dry_pea,Dry Pea,सूखा मटर,वाटाणा,பட்டாணி,pulse,1453,33,493,0,1,S1
+broad_beans,"Broad Beans, dry (Bakla)",बाकला,पावटा,அவரை,pulse,1317,205,496,0,1,S1:table3
+soy_curd,Soya Curd (Tofu),टोफू,टोफू,டோஃபு,pulse,2397,83,44,0,1,S1:table3
+groundnut,Groundnut,मूंगफली,शेंगदाणे,நிலக்கடலை,oilseed,2469,79,234,0,1,S1
+mustard,Mustard / Rapeseed,सरसों,मोहरी,கடுகு,oilseed,1703,231,337,0,1,S1
+soybean,Soybean,सोयाबीन,सोयाबीन,சோயா,oilseed,2037,70,37,0,1,S1
+sunflower,Sunflower Seed,सूरजमुखी,सूर्यफूल,சூரியகாந்தி,oilseed,3013,61,292,0,1,S1
+sesame,Sesame,तिल,तीळ,எள்,oilseed,8460,509,402,0,1,S1
+coconut,Coconut,नारियल,नारळ,தேங்காய்,oilseed,2669,0,18,0,1,S1
+copra,Copra,खोपरा,खोबरं,கொப்பரை,oilseed,2079,1,12,0,1,S1:table3
+linseed,Linseed (Alsi),अलसी,जवस,ஆளி விதை,oilseed,4730,268,170,0,1,S1:table3
+safflower,Safflower Seed (Kardi),कुसुम,करडई,குசும்பா,oilseed,6000,938,283,0,1,S1:table3
+castor,Castor Oil Seed,अरंडी,एरंड,ஆமணக்கு,oilseed,8423,1175,298,0,0,S1:table3
+poppy,Poppy Seed (Khus Khus),खसखस,खसखस,கசகசா,oilseed,1723,0,464,0,1,S1:table3
+maize_oil,Maize (Corn) Oil,मक्का तेल,मका तेल,சோள எண்ணெய்,oilseed,1996,171,409,0,1,S1:table3
+cottonseed_oil,"Cottonseed Oil, refined",बिनौला तेल,सरकी तेल,பருத்தி விதை எண்ணெய்,oilseed,2242,1283,432,0,1,S1:table3
+potato,Potato,आलू,बटाटा,உருளைக்கிழங்கு,vegetable,191,33,63,0,1,S1
+onion,Onion,प्याज़,कांदा,வெங்காயம்,vegetable,192,88,65,0,1,S1
+tomato,Tomato,टमाटर,टोमॅटो,தக்காளி,vegetable,108,63,43,0,1,S1
+cabbage,Cabbage,पत्ता गोभी,कोबी,முட்டைகோஸ்,vegetable,181,26,73,0,1,S1
+cauliflower,Cauliflower,फूल गोभी,फ्लॉवर,காலிஃபிளவர்,vegetable,189,21,75,0,1,S1
+brinjal,Brinjal,बैंगन,वांगे,கத்தரிக்காய்,vegetable,234,33,95,0,1,S1:approx
+okra,Okra (Bhindi),भिंडी,भेंडी,வெண்டைக்காய்,vegetable,234,33,95,0,1,S1:approx
+carrot,Carrot,गाजर,गाजर,கேரட்,vegetable,106,28,61,0,1,S1
+green_pea,Green Pea,हरा मटर,वाटाणा,பட்டாணி,vegetable,510,43,42,0,1,S1:approx
+spinach,Spinach,पालक,पालक,கீரை,vegetable,118,14,160,0,1,S1:table3
+lettuce,Lettuce,सलाद पत्ता,लेट्युस,லெட்டூஸ்,vegetable,133,28,77,0,1,S1:table3
+chilli,Chilli,मिर्च,मिरची,மிளகாய்,vegetable,279,42,58,0,1,S1:approx
+garlic,Garlic,लहसुन,लसूण,பூண்டு,vegetable,400,141,48,0,1,S1
+pumpkin,Pumpkin,कद्दू,भोपळा,பூசணி,vegetable,228,24,84,0,1,S1
+cucumber,Cucumber,खीरा,काकडी,வெள்ளரி,vegetable,206,42,105,0,1,S1
+banana,Banana,केला,केळं,வாழைப்பழம்,fruit,660,97,33,0,1,S1
+plantain,Plantain (Raw Banana),कच्चा केला,कच्चं केळं,வாழைக்காய்,fruit,1570,27,6,0,1,S1:table3
+mango,Mango,आम,आंबा,மாம்பழம்,fruit,1314,362,124,0,1,S1
+apple,Apple,सेब,सफरचंद,ஆப்பிள்,fruit,561,133,127,0,1,S1
+orange,Orange,संतरा,संत्रं,ஆரஞ்சு,fruit,400,110,50,0,1,S1
+tangerine,Tangerine / Kinnow,किन्नू,संत्रं,கமலா ஆரஞ்சு,fruit,479,118,152,0,1,S1:table3
+grapefruit,Grapefruit (Chakotra),चकोतरा,चकोतरा,பம்பரமாசு,fruit,367,85,54,0,1,S1:table3
+grapes,Grapes,अंगूर,द्राक्षं,திராட்சை,fruit,425,97,87,0,1,S1
+papaya,Papaya,पपीता,पपई,பப்பாளி,fruit,399,50,11,0,1,S1
+watermelon,Watermelon,तरबूज़,कलिंगड,தர்பூசணி,fruit,147,25,63,0,1,S1
+guava,Guava,अमरूद,पेरू,கொய்யா,fruit,1314,362,124,0,1,S1
+pear,Pear,नाशपाती,पेअर,பேரிக்காய்,fruit,645,94,183,0,1,S1:table3
+peach,Peach,आड़ू,पीच,பீச்,fruit,583,188,139,0,1,S1:table3
+plum,Plum (Aloobukhara),आलूबुखारा,आलुबुखार,பிளம்,fruit,1570,188,422,0,1,S1:table3
+apricot,Apricot (Khubani),खुबानी,जर्दाळू,ஆப்ரிகாட்,fruit,694,502,92,0,1,S1:table3
+strawberry,Strawberry,स्ट्रॉबेरी,स्ट्रॉबेरी,ஸ்ட்ராபெரி,fruit,201,109,37,0,1,S1:table3
+dates,Dates (Khajur),खजूर,खजूर,பேரீச்சம்பழம்,fruit,930,1250,98,0,1,S1:table3
+avocado,Avocado,एवोकाडो,अ‍ॅव्होकॅडो,வெண்ணெய் பழம்,fruit,849,283,849,0,1,S1:table3
+kiwi,Kiwi,कीवी,किवी,கிவி,fruit,307,168,38,0,1,S1:table3
+olive,Olive,जैतून,जैतून,ஆலிவ்,fruit,2470,499,45,0,1,S1:table3
+sugarcane,Sugarcane,गन्ना,ऊस,கரும்பு,sugar,139,57,13,0,1,S1
+sugar_beet,Sugar Beet,चुकंदर,साखर बीट,சர்க்கரை பீட்,sugar,82,26,25,0,1,S1:table3
+cane_molasses,Cane Molasses (Gur base),शीरा,मळी,வெல்லப்பாகு,sugar,350,144,33,0,1,S1:table3
+cotton,Cotton (seed cotton),कपास,कापूस,பருத்தி,fibre,2282,1306,807,0,0,S1:approx
+jute,Jute,जूट,ताग,சணல்,fibre,2350,60,150,0,0,S1:approx
+flax_fibre,Flax Fibre,अलसी रेशा,जवस तंतू,ஆளி நார்,fibre,2637,443,401,0,0,S1:table3
+hemp_fibre,Hemp Fibre,भांग रेशा,भांग तंतू,சணல் நார்,fibre,1824,0,624,0,0,S1:table3
+sisal,Sisal,सिसल,सिसल,சிசல்,fibre,6112,708,222,0,0,S1:table3
+tobacco,"Tobacco, unmanufactured",तंबाकू,तंबाखू,புகையிலை,fibre,2021,205,700,0,0,S1:table3
+rubber,Natural Rubber,रबड़,रबर,ரப்பர்,fibre,12964,361,422,0,0,S1:table3
+tea,Tea,चाय,चहा,தேயிலை,beverage,7254,898,704,0,1,S1
+coffee,Coffee (green),कॉफ़ी,कॉफी,காபி,beverage,15249,116,532,0,1,S1
+cocoa,Cocoa Beans,कोको,कोको,கோகோ,beverage,19745,4,179,0,1,S1:table3
+chocolate,Chocolate,चॉकलेट,चॉकलेट,சாக்லேட்,beverage,16805,198,193,0,1,S1:table3
+soy_milk,Soy Milk,सोया दूध,सोया दूध,சோயா பால்,beverage,3574,123,65,0,1,S1:table3
+orange_juice,Orange Juice,संतरे का रस,संत्र्याचा रस,ஆரஞ்சு சாறு,beverage,729,199,90,0,1,S1:table3
+apple_juice,Apple Juice,सेब का रस,सफरचंदाचा रस,ஆப்பிள் சாறு,beverage,780,185,176,0,1,S1:table3
+beer,Beer (from malt),बियर,बिअर,பீர்,beverage,254,16,27,0,1,S1:table3
+milk,Milk,दूध,दूध,பால்,animal,863,86,72,1,1,S2:NEEDS_SOURCE
+chicken_meat,Chicken,चिकन,चिकन,கோழி இறைச்சி,animal,3545,313,467,1,1,S2:NEEDS_SOURCE
+goat_meat,Goat Meat (Mutton),मटन,मटण,ஆட்டிறைச்சி,animal,5185,203,133,1,1,S2:NEEDS_SOURCE
+sheep_meat,Sheep Meat,भेड़ का मांस,मेंढीचे मांस,செம்மறி இறைச்சி,animal,9813,522,77,1,1,S2:NEEDS_SOURCE
+buffalo_meat,Buffalo / Bovine Meat,भैंस का मांस,म्हशीचे मांस,எருமை இறைச்சி,animal,14414,550,451,1,1,S2:NEEDS_SOURCE
+egg,Egg,अंडा,अंडं,முட்டை,animal,2592,244,429,1,1,S2:NEEDS_SOURCE
+butter,Butter,मक्खन,लोणी,வெண்ணெய்,animal,4695,465,393,1,1,S2:NEEDS_SOURCE
+cheese,Cheese / Paneer,पनीर,पनीर,பன்னீர்,animal,4278,424,358,1,1,S2:NEEDS_SOURCE
+bitter_gourd,Bitter Gourd (Karela),करेला,कारले,பாகற்காய்,vegetable,194,43,85,0,1,S1:table2-category
+bottle_gourd,Bottle Gourd (Lauki),लौकी,दुधी भोपळा,சுரைக்காய்,vegetable,194,43,85,0,1,S1:table2-category
+ridge_gourd,Ridge Gourd (Turai),तुरई,दोडका,பீர்க்கங்காய்,vegetable,194,43,85,0,1,S1:table2-category
+ash_gourd,Ash Gourd (Petha),पेठा,कोहळा,பூசணிக்காய்,vegetable,228,24,84,0,1,S1:approx
+snake_gourd,Snake Gourd,चिचिंडा,पडवळ,புடலங்காய்,vegetable,194,43,85,0,1,S1:table2-category
+capsicum,Capsicum / Bell Pepper,शिमला मिर्च,ढोबळी मिरची,குடைமிளகாய்,vegetable,279,42,58,0,1,S1:approx
+drumstick,Drumstick (Moringa),सहजन,शेवगा,முருங்கைக்காய்,vegetable,194,43,85,0,1,S1:table2-category
+french_beans,French Beans / String Beans,फ्रेंच बीन्स,फरसबी,பீன்ஸ்,vegetable,301,104,143,0,1,S1:table3
+cluster_beans,Cluster Beans (Gavar),ग्वार फली,गवार,கொத்தவரங்காய்,vegetable,301,104,143,0,1,S1:approx
+beetroot,Beetroot,चुकंदर,बीट,பீட்ரூட்,vegetable,106,28,61,0,1,S1:approx
+radish,Radish (Mooli),मूली,मुळा,முள்ளங்கி,vegetable,106,28,61,0,1,S1:approx
+sweet_potato,Sweet Potato,शकरकंद,रताळे,சர்க்கரைவள்ளிக்கிழங்கு,vegetable,313,50,20,0,1,S1
+colocasia,Colocasia / Taro (Arbi),अरबी,अळू,சேப்பங்கிழங்கு,vegetable,587,3,15,0,1,S1:table3
+yam,Yam (Suran),सूरन,सुरण,சேனைக்கிழங்கு,vegetable,341,0,1,0,1,S1:table3
+cassava_flour,Cassava / Tapioca Flour,टैपिओका आटा,टॅपिओका पीठ,மரவள்ளி மாவு,vegetable,1833,1,44,0,1,S1:table3
+fenugreek_leaf,Fenugreek Leaves (Methi),मेथी,मेथी,வெந்தயக் கீரை,vegetable,118,14,160,0,1,S1:approx
+coriander_leaf,Coriander Leaves,धनिया पत्ती,कोथिंबीर,கொத்தமல்லி,vegetable,118,14,160,0,1,S1:approx
+mint_leaf,Mint (Pudina),पुदीना,पुदिना,புதினா,vegetable,118,14,160,0,1,S1:approx
+curry_leaf,Curry Leaves,करी पत्ता,कढीपत्ता,கறிவேப்பிலை,vegetable,118,14,160,0,1,S1:approx
+spring_onion,Spring Onion,हरा प्याज़,कांदा पात,வெங்காயத்தாள்,vegetable,192,88,65,0,1,S1:approx
+mushroom,Mushroom,मशरूम,अळिंबी,காளான்,vegetable,267,44,11,0,1,S1
+sweet_corn,Sweet Corn,भुट्टा,मका कणीस,இனிப்பு சோளம்,vegetable,455,157,88,0,1,S1:table3
+tomato_ketchup,Tomato Ketchup,टमाटर केचप,टोमॅटो केचप,தக்காளி கெட்சப்,vegetable,270,158,107,0,1,S1:table3
+tomato_paste,Tomato Paste,टमाटर पेस्ट,टोमॅटो पेस्ट,தக்காளி விழுது,vegetable,431,253,171,0,1,S1:table3
+potato_starch,Potato Starch,आलू स्टार्च,बटाटा स्टार्च,உருளைக்கிழங்கு மாவு,vegetable,1005,173,333,0,1,S1:table3
+wheat_starch,Wheat Starch,गेहूँ स्टार्च,गहू स्टार्च,கோதுமை மாவு,cereal,1004,269,163,0,1,S1:table3
+dry_pasta,Dry Pasta,पास्ता,पास्ता,பாஸ்தா,cereal,1292,347,210,0,1,S1:table3
+pomegranate,Pomegranate,अनार,डाळिंब,மாதுளை,fruit,727,147,93,0,1,S1:table2-category
+pineapple,Pineapple,अनानास,अननस,அன்னாசி,fruit,215,9,31,0,1,S1
+sapota,Sapota (Chikoo),चीकू,चिकू,சப்போட்டா,fruit,727,147,93,0,1,S1:table2-category
+custard_apple,Custard Apple (Sitaphal),सीताफल,सीताफळ,சீதாப்பழம்,fruit,727,147,93,0,1,S1:table2-category
+jackfruit,Jackfruit,कटहल,फणस,பலாப்பழம்,fruit,727,147,93,0,1,S1:table2-category
+lemon,Lemon / Lime,नींबू,लिंबू,எலுமிச்சை,fruit,432,149,61,0,1,S1
+turmeric,Turmeric,हल्दी,हळद,மஞ்சள்,spice,5872,744,432,0,1,S1:table2-category
+ginger,Ginger,अदरक,आले,இஞ்சி,vegetable,1557,207,95,0,1,S1:approx
+cumin,Cumin (Jeera),जीरा,जिरे,சீரகம்,spice,5872,744,432,0,1,S1:table2-category
+coriander_seed,Coriander Seed,धनिया,धणे,கொத்தமல்லி விதை,spice,5872,744,432,0,1,S1:table2-category
+black_pepper,Black Pepper,काली मिर्च,काळी मिरी,மிளகு,spice,6611,1440,554,0,1,S1
+cardamom,Cardamom (Elaichi),इलायची,वेलची,ஏலக்காய்,spice,30683,2623,1014,0,1,S1:table3
+cinnamon,Cinnamon (Dalchini),दालचीनी,दालचिनी,பட்டை,spice,14853,41,632,0,1,S1:table3
+clove,Clove (Laung),लौंग,लवंग,கிராம்பு,spice,59834,30,1341,0,1,S1:table3
+cashew,Cashew Nut,काजू,काजू,முந்திரி,nut,12853,921,444,0,1,S1:table3
+almond,"Almond, with shell",बादाम,बदाम,பாதாம்,nut,4632,1908,1507,0,1,S1:table3
+walnut,"Walnut, with shell",अखरोट,अक्रोड,அக்ரூட்,nut,2805,1299,814,0,1,S1:table3
+pistachio,Pistachio,पिस्ता,पिस्ता,பிஸ்தா,nut,3095,7602,666,0,1,S1:table3
+areca,Areca Nut (Supari),सुपारी,सुपारी,பாக்கு,nut,10621,139,406,0,0,S1:table3

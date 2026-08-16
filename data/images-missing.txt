@@ -1,0 +1,6 @@
+tea_raw: http 429
+tomato_ketchup_raw: http 429
+tomato_paste_raw: http 429
+upma: http 429
+vada_pav: http 429
+yam_raw: http 429

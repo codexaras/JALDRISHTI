@@ -1,0 +1,37 @@
+state,district,soe_pct,category,band_min,band_max,assessment_year,precision,source
+Punjab,STATE_AVERAGE,156.36,over_exploited,100,160,2025,exact,CGWB Dynamic Ground Water Resources Assessment 2025
+Rajasthan,STATE_AVERAGE,147.11,over_exploited,100,160,2025,exact,CGWB Dynamic Ground Water Resources Assessment 2025
+Haryana,STATE_AVERAGE,136.75,over_exploited,100,160,2025,exact,CGWB Dynamic Ground Water Resources Assessment 2025
+Dadra and Nagar Haveli and Daman and Diu,STATE_AVERAGE,130,over_exploited,100,160,2024,band_midpoint,"CGWB 2024 National Compilation, State/UT-wise categorisation (band only)"
+Delhi,STATE_AVERAGE,92.1,critical,90,100,2025,exact,CGWB Dynamic Ground Water Resources Assessment 2025
+Chandigarh,STATE_AVERAGE,80,semi_critical,70,90,2024,band_midpoint,"CGWB 2024 National Compilation, State/UT-wise categorisation (band only)"
+Puducherry,STATE_AVERAGE,80,semi_critical,70,90,2024,band_midpoint,"CGWB 2024 National Compilation, State/UT-wise categorisation (band only)"
+Tamil Nadu,STATE_AVERAGE,80,semi_critical,70,90,2024,band_midpoint,"CGWB 2024 National Compilation, State/UT-wise categorisation (band only)"
+Uttar Pradesh,STATE_AVERAGE,80,semi_critical,70,90,2024,band_midpoint,"CGWB 2024 National Compilation, State/UT-wise categorisation (band only)"
+Himachal Pradesh,STATE_AVERAGE,38.5,safe,0,70,2025,exact,CGWB Dynamic Ground Water Resources Assessment 2025
+Andaman and Nicobar Islands,STATE_AVERAGE,35,safe,0,70,2024,band_midpoint,"CGWB 2024 National Compilation, State/UT-wise categorisation (band only)"
+Arunachal Pradesh,STATE_AVERAGE,35,safe,0,70,2024,band_midpoint,"CGWB 2024 National Compilation, State/UT-wise categorisation (band only)"
+Assam,STATE_AVERAGE,35,safe,0,70,2024,band_midpoint,"CGWB 2024 National Compilation, State/UT-wise categorisation (band only)"
+Bihar,STATE_AVERAGE,35,safe,0,70,2024,band_midpoint,"CGWB 2024 National Compilation, State/UT-wise categorisation (band only)"
+Chhattisgarh,STATE_AVERAGE,35,safe,0,70,2024,band_midpoint,"CGWB 2024 National Compilation, State/UT-wise categorisation (band only)"
+Goa,STATE_AVERAGE,35,safe,0,70,2024,band_midpoint,"CGWB 2024 National Compilation, State/UT-wise categorisation (band only)"
+Gujarat,STATE_AVERAGE,35,safe,0,70,2024,band_midpoint,"CGWB 2024 National Compilation, State/UT-wise categorisation (band only)"
+Jammu and Kashmir,STATE_AVERAGE,35,safe,0,70,2024,band_midpoint,"CGWB 2024 National Compilation, State/UT-wise categorisation (band only)"
+Jharkhand,STATE_AVERAGE,35,safe,0,70,2024,band_midpoint,"CGWB 2024 National Compilation, State/UT-wise categorisation (band only)"
+Karnataka,STATE_AVERAGE,35,safe,0,70,2024,band_midpoint,"CGWB 2024 National Compilation, State/UT-wise categorisation (band only)"
+Kerala,STATE_AVERAGE,35,safe,0,70,2024,band_midpoint,"CGWB 2024 National Compilation, State/UT-wise categorisation (band only)"
+Ladakh,STATE_AVERAGE,35,safe,0,70,2024,band_midpoint,"CGWB 2024 National Compilation, State/UT-wise categorisation (band only)"
+Lakshadweep,STATE_AVERAGE,35,safe,0,70,2024,band_midpoint,"CGWB 2024 National Compilation, State/UT-wise categorisation (band only)"
+Madhya Pradesh,STATE_AVERAGE,35,safe,0,70,2024,band_midpoint,"CGWB 2024 National Compilation, State/UT-wise categorisation (band only)"
+Maharashtra,STATE_AVERAGE,35,safe,0,70,2024,band_midpoint,"CGWB 2024 National Compilation, State/UT-wise categorisation (band only)"
+Manipur,STATE_AVERAGE,35,safe,0,70,2024,band_midpoint,"CGWB 2024 National Compilation, State/UT-wise categorisation (band only)"
+Mizoram,STATE_AVERAGE,35,safe,0,70,2024,band_midpoint,"CGWB 2024 National Compilation, State/UT-wise categorisation (band only)"
+Nagaland,STATE_AVERAGE,35,safe,0,70,2024,band_midpoint,"CGWB 2024 National Compilation, State/UT-wise categorisation (band only)"
+Odisha,STATE_AVERAGE,35,safe,0,70,2024,band_midpoint,"CGWB 2024 National Compilation, State/UT-wise categorisation (band only)"
+Sikkim,STATE_AVERAGE,35,safe,0,70,2024,band_midpoint,"CGWB 2024 National Compilation, State/UT-wise categorisation (band only)"
+Telangana,STATE_AVERAGE,35,safe,0,70,2024,band_midpoint,"CGWB 2024 National Compilation, State/UT-wise categorisation (band only)"
+Tripura,STATE_AVERAGE,35,safe,0,70,2024,band_midpoint,"CGWB 2024 National Compilation, State/UT-wise categorisation (band only)"
+Uttarakhand,STATE_AVERAGE,35,safe,0,70,2024,band_midpoint,"CGWB 2024 National Compilation, State/UT-wise categorisation (band only)"
+West Bengal,STATE_AVERAGE,35,safe,0,70,2024,band_midpoint,"CGWB 2024 National Compilation, State/UT-wise categorisation (band only)"
+Andhra Pradesh,STATE_AVERAGE,29.83,safe,0,70,2024,exact,CGWB Dynamic Ground Water Resources Assessment 2024
+Meghalaya,STATE_AVERAGE,4.6,safe,0,70,2024,exact,CGWB Dynamic Ground Water Resources Assessment 2024

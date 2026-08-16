@@ -1,0 +1,563 @@
+alias_text,norm_text,lang,product_id
+Chawal,chawal,hi,rice_raw
+Bhaat,bhaat,hi,rice_raw
+Basmati,basmati,en,rice_raw
+Paddy,paddy,en,rice_raw
+Gehu,gehu,hi,wheat_raw
+Atta,atta,hi,wheat_raw
+Wheat Flour,wheat flour,en,wheat_raw
+Kanda,kanda,mr,onion_raw
+Pyaz,pyaz,hi,onion_raw
+Aloo,aloo,hi,potato_raw
+Batata,batata,mr,potato_raw
+Tamatar,tamatar,hi,tomato_raw
+Ganna,ganna,hi,sugarcane_raw
+Us,us,mr,sugarcane_raw
+Kela,kela,hi,banana_raw
+Aam,aam,hi,mango_raw
+Amba,amba,mr,mango_raw
+Seb,seb,hi,apple_raw
+Nariyal,nariyal,hi,coconut_raw
+Chana,chana,hi,chickpea_raw
+Harbhara,harbhara,mr,chickpea_raw
+Kabuli Chana,kabuli chana,hi,chickpea_raw
+Masoor,masoor,hi,lentil_raw
+Moongfali,moongfali,hi,groundnut_raw
+Peanut,peanut,en,groundnut_raw
+Shengdane,shengdane,mr,groundnut_raw
+Kapas,kapas,hi,cotton_raw
+Doodh,doodh,hi,milk_raw
+Anda,anda,hi,egg_raw
+Eggs,eggs,en,egg_raw
+Murgi,murgi,hi,chicken_raw
+Chai Patti,chai patti,hi,tea_raw
+Kaapi,kaapi,ta,coffee_raw
+Biryani,biryani,en,biryani_chicken
+Biriyani,biriyani,en,biryani_chicken
+Chicken Biriyani,chicken biriyani,en,biryani_chicken
+Murg Biryani,murg biryani,hi,biryani_chicken
+Veg Biryani,veg biryani,en,biryani_veg
+Dal Chaval,dal chaval,hi,dal_rice
+Varan Bhaat,varan bhaat,mr,dal_rice
+Dal Bhat,dal bhat,hi,dal_rice
+Chapati,chapati,en,roti
+Chapathi,chapathi,en,roti
+Phulka,phulka,hi,roti
+Poli,poli,mr,roti
+Idly,idly,en,idli
+Dosai,dosai,ta,dosa
+Masala Dosai,masala dosai,ta,masala_dosa
+Pohe,pohe,mr,poha
+Kanda Poha,kanda poha,mr,poha
+Uppuma,uppuma,ta,upma
+Chhole Bhature,chhole bhature,hi,chole_bhature
+Chole,chole,hi,chole_bhature
+Rajma Rice,rajma rice,en,rajma_chawal
+Paneer Makhani,paneer makhani,hi,paneer_butter_masala
+Butter Paneer,butter paneer,en,paneer_butter_masala
+Paneer,paneer,hi,paneer_butter_masala
+Alu Paratha,alu paratha,hi,aloo_paratha
+Parantha,parantha,hi,aloo_paratha
+Samosas,samosas,en,samosa
+Singhara,singhara,hi,samosa
+Wada Pav,wada pav,mr,vada_pav
+Vadapav,vadapav,en,vada_pav
+Pao Bhaji,pao bhaji,en,pav_bhaji
+Thayir Sadam,thayir sadam,ta,curd_rice
+Dahi Chawal,dahi chawal,hi,curd_rice
+Sambar Sadam,sambar sadam,ta,sambar_rice
+Sambhar Rice,sambhar rice,en,sambar_rice
+Khichadi,khichadi,hi,khichdi
+Kichdi,kichdi,en,khichdi
+Pilaf,pilaf,en,pulao
+Pulav,pulav,hi,pulao
+Tea,tea,en,chai
+Masala Tea,masala tea,en,chai
+Cutting Chai,cutting chai,hi,chai
+Coffee,coffee,en,filter_coffee
+Kaapi Filter,kaapi filter,ta,filter_coffee
+Omlet,omlet,en,omelette
+Anda Bhurji,anda bhurji,hi,omelette
+Egg Masala,egg masala,en,egg_curry
+Murgh Curry,murgh curry,hi,chicken_curry
+Chicken Masala,chicken masala,en,chicken_curry
+Mutton Masala,mutton masala,en,mutton_curry
+Goat Curry,goat curry,en,mutton_curry
+Marie Biscuit,marie biscuit,en,biscuit_marie
+Biscuit,biscuit,en,biscuit_marie
+Bread,bread,en,bread_white
+Pav,pav,hi,bread_white
+Maggi,maggi,en,instant_noodles
+Noodles,noodles,en,instant_noodles
+Ramen,ramen,en,instant_noodles
+Bhindi,bhindi,hi,okra_raw
+Bhendi,bhendi,mr,okra_raw
+Vendakkai,vendakkai,ta,okra_raw
+Ladies Finger,ladies finger,en,okra_raw
+Okra,okra,en,okra_raw
+Parle G,parle g,en,parle_g_biscuit
+Parle-G,parle g,en,parle_g_biscuit
+Glucose Biscuit,glucose biscuit,en,parle_g_biscuit
+Dal Tadka,dal tadka,hi,dal_tadka
+Tadka Dal,tadka dal,hi,dal_tadka
+Toor Dal,toor dal,hi,dal_tadka
+Varan,varan,mr,dal_tadka
+Paruppu,paruppu,ta,dal_tadka
+T-Shirt,t shirt,en,cotton_tshirt
+Tshirt,tshirt,en,cotton_tshirt
+Cotton Shirt,cotton shirt,en,cotton_tshirt
+Banian,banian,hi,cotton_tshirt
+Jeans,jeans,en,jeans_pair
+Denim,denim,en,jeans_pair
+Saree,saree,en,cotton_saree
+Sari,sari,en,cotton_saree
+Jute Bag,jute bag,en,jute_bag
+Tag,tag,mr,jute_bag
+Bhindi Masala,bhindi masala,hi,bhindi_masala
+Bajra,bajra,hi,bajra_raw
+Bajri,bajri,mr,bajra_raw
+Kambu,kambu,ta,bajra_raw
+Pearl Millet,pearl millet,en,bajra_raw
+Jowar,jowar,hi,jowar_raw
+Jwari,jwari,mr,jowar_raw
+Cholam,cholam,ta,jowar_raw
+Sorghum,sorghum,en,jowar_raw
+Ragi,ragi,hi,ragi_raw
+Nachni,nachni,mr,ragi_raw
+Kezhvaragu,kezhvaragu,ta,ragi_raw
+Finger Millet,finger millet,en,ragi_raw
+Millet,millet,en,bajra_raw
+Makka,makka,hi,maize_raw
+Corn,corn,en,maize_raw
+Chai,chai,hi,chai
+Cha,cha,mr,chai
+Chaha,chaha,mr,chai
+Masala Chai,masala chai,hi,chai
+Doodh Chai,doodh chai,hi,chai
+Paal,paal,ta,milk_raw
+Dudh,dudh,mr,milk_raw
+Biryani Chicken,biryani chicken,en,biryani_chicken
+Murgh Biryani,murgh biryani,hi,biryani_chicken
+Chicken,chicken,en,chicken_raw
+Murgh,murgh,hi,chicken_raw
+Kozhi,kozhi,ta,chicken_raw
+Mutton,mutton,hi,mutton_curry
+Sabzi,sabzi,hi,bhindi_masala
+Curd,curd,en,curd_rice
+Dahi,dahi,hi,curd_rice
+Thayir,thayir,ta,curd_rice
+Sambar,sambar,ta,sambar_rice
+Sambhar,sambhar,hi,sambar_rice
+Upma,upma,ta,upma
+Pongal,pongal,ta,curd_rice
+Atta Roti,atta roti,hi,roti
+Phulka Roti,phulka roti,hi,roti
+Naan,naan,hi,roti
+Chapathi,chapathi,ta,roti
+Karela,karela,hi,bitter_gourd_raw
+Karle,karle,mr,bitter_gourd_raw
+Pavakkai,pavakkai,ta,bitter_gourd_raw
+Bitter Melon,bitter melon,en,bitter_gourd_raw
+Lauki,lauki,hi,bottle_gourd_raw
+Dudhi,dudhi,mr,bottle_gourd_raw
+Sorakkai,sorakkai,ta,bottle_gourd_raw
+Calabash,calabash,en,bottle_gourd_raw
+Ghiya,ghiya,hi,bottle_gourd_raw
+Turai,turai,hi,ridge_gourd_raw
+Dodka,dodka,mr,ridge_gourd_raw
+Peerkangai,peerkangai,ta,ridge_gourd_raw
+Tori,tori,hi,ridge_gourd_raw
+Petha,petha,hi,ash_gourd_raw
+Kohala,kohala,mr,ash_gourd_raw
+Poosanikai,poosanikai,ta,ash_gourd_raw
+Winter Melon,winter melon,en,ash_gourd_raw
+Chichinda,chichinda,hi,snake_gourd_raw
+Padwal,padwal,mr,snake_gourd_raw
+Pudalangai,pudalangai,ta,snake_gourd_raw
+Shimla Mirch,shimla mirch,hi,capsicum_raw
+Dhobli Mirchi,dhobli mirchi,mr,capsicum_raw
+Kudaimilagai,kudaimilagai,ta,capsicum_raw
+Bell Pepper,bell pepper,en,capsicum_raw
+Simla Mirch,simla mirch,hi,capsicum_raw
+Sahjan,sahjan,hi,drumstick_raw
+Shevga,shevga,mr,drumstick_raw
+Murungakkai,murungakkai,ta,drumstick_raw
+Moringa,moringa,en,drumstick_raw
+Sahjan Phali,sahjan phali,hi,drumstick_raw
+Farasbi,farasbi,mr,french_beans_raw
+Beans,beans,en,french_beans_raw
+Green Beans,green beans,en,french_beans_raw
+Gavar,gavar,hi,cluster_beans_raw
+Guar,guar,hi,cluster_beans_raw
+Kothavarangai,kothavarangai,ta,cluster_beans_raw
+Chukandar,chukandar,hi,beetroot_raw
+Beet,beet,mr,beetroot_raw
+Mooli,mooli,hi,radish_raw
+Mula,mula,mr,radish_raw
+Mullangi,mullangi,ta,radish_raw
+Shakarkandi,shakarkandi,hi,sweet_potato_raw
+Ratale,ratale,mr,sweet_potato_raw
+Sakkaravalli,sakkaravalli,ta,sweet_potato_raw
+Arbi,arbi,hi,colocasia_raw
+Alu,alu,mr,colocasia_raw
+Seppankizhangu,seppankizhangu,ta,colocasia_raw
+Taro,taro,en,colocasia_raw
+Suran,suran,hi,yam_raw
+Jimikand,jimikand,hi,yam_raw
+Senaikizhangu,senaikizhangu,ta,yam_raw
+Elephant Foot Yam,elephant foot yam,en,yam_raw
+Methi,methi,hi,fenugreek_leaf_raw
+Vendhaya Keerai,vendhaya keerai,ta,fenugreek_leaf_raw
+Fenugreek,fenugreek,en,fenugreek_leaf_raw
+Dhania,dhania,hi,coriander_leaf_raw
+Kothimbir,kothimbir,mr,coriander_leaf_raw
+Kothamalli,kothamalli,ta,coriander_leaf_raw
+Cilantro,cilantro,en,coriander_leaf_raw
+Pudina,pudina,hi,mint_leaf_raw
+Mint,mint,en,mint_leaf_raw
+Kadi Patta,kadi patta,hi,curry_leaf_raw
+Kadipatta,kadipatta,mr,curry_leaf_raw
+Karuveppilai,karuveppilai,ta,curry_leaf_raw
+Hara Pyaz,hara pyaz,hi,spring_onion_raw
+Kanda Pat,kanda pat,mr,spring_onion_raw
+Scallion,scallion,en,spring_onion_raw
+Khumb,khumb,hi,mushroom_raw
+Alimbi,alimbi,mr,mushroom_raw
+Kaalan,kaalan,ta,mushroom_raw
+Bhutta,bhutta,hi,sweet_corn_raw
+Makai,makai,hi,sweet_corn_raw
+Corn,corn,en,sweet_corn_raw
+Makka Cholam,makka cholam,ta,sweet_corn_raw
+Anar,anar,hi,pomegranate_raw
+Dalimb,dalimb,mr,pomegranate_raw
+Mathulai,mathulai,ta,pomegranate_raw
+Ananas,ananas,hi,pineapple_raw
+Annasi,annasi,ta,pineapple_raw
+Chikoo,chikoo,hi,sapota_raw
+Chiku,chiku,mr,sapota_raw
+Sapodilla,sapodilla,en,sapota_raw
+Sitaphal,sitaphal,hi,custard_apple_raw
+Sitafal,sitafal,mr,custard_apple_raw
+Seetha Palam,seetha palam,ta,custard_apple_raw
+Kathal,kathal,hi,jackfruit_raw
+Phanas,phanas,mr,jackfruit_raw
+Palapazham,palapazham,ta,jackfruit_raw
+Nimbu,nimbu,hi,lemon_raw
+Limbu,limbu,mr,lemon_raw
+Elumichai,elumichai,ta,lemon_raw
+Lime,lime,en,lemon_raw
+Haldi,haldi,hi,turmeric_raw
+Halad,halad,mr,turmeric_raw
+Manjal,manjal,ta,turmeric_raw
+Adrak,adrak,hi,ginger_raw
+Ale,ale,mr,ginger_raw
+Inji,inji,ta,ginger_raw
+Jeera,jeera,hi,cumin_raw
+Jire,jire,mr,cumin_raw
+Seeragam,seeragam,ta,cumin_raw
+Dhane,dhane,mr,coriander_seed_raw
+Sabut Dhania,sabut dhania,hi,coriander_seed_raw
+Kali Mirch,kali mirch,hi,black_pepper_raw
+Kali Miri,kali miri,mr,black_pepper_raw
+Milagu,milagu,ta,black_pepper_raw
+Peppercorn,peppercorn,en,black_pepper_raw
+Elaichi,elaichi,hi,cardamom_raw
+Velchi,velchi,mr,cardamom_raw
+Elakkai,elakkai,ta,cardamom_raw
+Kaju,kaju,hi,cashew_raw
+Mundhiri,mundhiri,ta,cashew_raw
+Cashew,cashew,en,cashew_raw
+Badam,badam,hi,almond_raw
+Badam Nut,badam nut,en,almond_raw
+Pathaam,pathaam,ta,almond_raw
+Akhrot,akhrot,hi,walnut_raw
+Akrod,akrod,mr,walnut_raw
+Phool Gobhi,phool gobhi,hi,cauliflower_raw
+Gobi,gobi,hi,cauliflower_raw
+Flower,flower,mr,cauliflower_raw
+Patta Gobhi,patta gobhi,hi,cabbage_raw
+Kobi,kobi,mr,cabbage_raw
+Palak,palak,hi,spinach_raw
+Keerai,keerai,ta,spinach_raw
+Kaddu,kaddu,hi,pumpkin_raw
+Bhopla,bhopla,mr,pumpkin_raw
+Kheera,kheera,hi,cucumber_raw
+Kakdi,kakdi,mr,cucumber_raw
+Santra,santra,hi,orange_raw
+Angoor,angoor,hi,grapes_raw
+Draksha,draksha,mr,grapes_raw
+Papita,papita,hi,papaya_raw
+Tarbooj,tarbooj,hi,watermelon_raw
+Kalingad,kalingad,mr,watermelon_raw
+Amrud,amrud,hi,guava_raw
+Peru,peru,mr,guava_raw
+Til,til,hi,sesame_raw
+Jau,jau,hi,barley_raw
+गोभी,गोभी,hi,cauliflower_raw
+गोबी,गोबी,hi,cauliflower_raw
+फूलगोभी,फूलगोभी,hi,cauliflower_raw
+पत्तागोभी,पत्तागोभी,hi,cabbage_raw
+करेला,करेला,hi,bitter_gourd_raw
+लौकी,लौकी,hi,bottle_gourd_raw
+घीया,घीया,hi,bottle_gourd_raw
+तुरई,तुरई,hi,ridge_gourd_raw
+सहजन,सहजन,hi,drumstick_raw
+शिमला,शिमला,hi,capsicum_raw
+मूली,मूली,hi,radish_raw
+चुकंदर,चुकंदर,hi,beetroot_raw
+शकरकंद,शकरकंद,hi,sweet_potato_raw
+अरबी,अरबी,hi,colocasia_raw
+सूरन,सूरन,hi,yam_raw
+मेथी,मेथी,hi,fenugreek_leaf_raw
+धनिया,धनिया,hi,coriander_leaf_raw
+पुदीना,पुदीना,hi,mint_leaf_raw
+मशरूम,मशरूम,hi,mushroom_raw
+अनार,अनार,hi,pomegranate_raw
+अनानास,अनानास,hi,pineapple_raw
+चीकू,चीकू,hi,sapota_raw
+सीताफल,सीताफल,hi,custard_apple_raw
+कटहल,कटहल,hi,jackfruit_raw
+नींबू,नींबू,hi,lemon_raw
+हल्दी,हल्दी,hi,turmeric_raw
+अदरक,अदरक,hi,ginger_raw
+जीरा,जीरा,hi,cumin_raw
+इलायची,इलायची,hi,cardamom_raw
+काजू,काजू,hi,cashew_raw
+बादाम,बादाम,hi,almond_raw
+अखरोट,अखरोट,hi,walnut_raw
+पालक,पालक,hi,spinach_raw
+कद्दू,कद्दू,hi,pumpkin_raw
+खीरा,खीरा,hi,cucumber_raw
+गाजर,गाजर,hi,carrot_raw
+लहसुन,लहसुन,hi,garlic_raw
+कारले,कारले,mr,bitter_gourd_raw
+दुधी,दुधी,mr,bottle_gourd_raw
+शेवगा,शेवगा,mr,drumstick_raw
+कोबी,कोबी,mr,cabbage_raw
+फ्लॉवर,फ्लॉवर,mr,cauliflower_raw
+मुळा,मुळा,mr,radish_raw
+रताळे,रताळे,mr,sweet_potato_raw
+कोथिंबीर,कोथिंबीर,mr,coriander_leaf_raw
+डाळिंब,डाळिंब,mr,pomegranate_raw
+हळद,हळद,mr,turmeric_raw
+आले,आले,mr,ginger_raw
+पाकற்காய்,பாகற்காய்,ta,bitter_gourd_raw
+முருங்கைக்காய்,முருங்கைக்காய்,ta,drumstick_raw
+மஞ்சள்,மஞ்சள்,ta,turmeric_raw
+இஞ்சி,இஞ்சி,ta,ginger_raw
+முந்திரி,முந்திரி,ta,cashew_raw
+காளான்,காளான்,ta,mushroom_raw
+Oats,oats,en,oats_raw
+जई,जई,hi,oats_raw
+ओट्स,ओट्स,mr,oats_raw
+ஓட்ஸ்,ஓட்ஸ்,ta,oats_raw
+Rye,rye,en,rye_raw
+राई,राई,hi,rye_raw
+राय,राय,mr,rye_raw
+ரை,ரை,ta,rye_raw
+Buckwheat (Kuttu),buckwheat (kuttu),en,buckwheat_raw
+कुट्टू,कुट्टू,hi,buckwheat_raw
+कुट्टू,कुट्टू,mr,buckwheat_raw
+குட்டு,குட்டு,ta,buckwheat_raw
+kuttu,kuttu,en,buckwheat_raw
+kuttu ka atta,kuttu ka atta,en,buckwheat_raw
+"Broad Beans, dry (Bakla)","broad beans, dry (bakla)",en,broad_beans_raw
+बाकला,बाकला,hi,broad_beans_raw
+पावटा,पावटा,mr,broad_beans_raw
+அவரை,அவரை,ta,broad_beans_raw
+bakla,bakla,en,broad_beans_raw
+pavta,pavta,en,broad_beans_raw
+Soya Curd (Tofu),soya curd (tofu),en,soy_curd_raw
+टोफू,टोफू,hi,soy_curd_raw
+टोफू,टोफू,mr,soy_curd_raw
+டோஃபு,டோஃபு,ta,soy_curd_raw
+tofu,tofu,en,soy_curd_raw
+soya paneer,soya paneer,en,soy_curd_raw
+Copra,copra,en,copra_raw
+खोपरा,खोपरा,hi,copra_raw
+खोबरं,खोबरं,mr,copra_raw
+கொப்பரை,கொப்பரை,ta,copra_raw
+khopra,khopra,en,copra_raw
+sukha nariyal,sukha nariyal,en,copra_raw
+Linseed (Alsi),linseed (alsi),en,linseed_raw
+अलसी,अलसी,hi,linseed_raw
+जवस,जवस,mr,linseed_raw
+ஆளி விதை,ஆளி விதை,ta,linseed_raw
+alsi,alsi,en,linseed_raw
+flaxseed,flaxseed,en,linseed_raw
+javas,javas,en,linseed_raw
+Safflower Seed (Kardi),safflower seed (kardi),en,safflower_raw
+कुसुम,कुसुम,hi,safflower_raw
+करडई,करडई,mr,safflower_raw
+குசும்பா,குசும்பா,ta,safflower_raw
+kardi,kardi,en,safflower_raw
+kusum,kusum,en,safflower_raw
+Poppy Seed (Khus Khus),poppy seed (khus khus),en,poppy_raw
+खसखस,खसखस,hi,poppy_raw
+खसखस,खसखस,mr,poppy_raw
+கசகசா,கசகசா,ta,poppy_raw
+khus khus,khus khus,en,poppy_raw
+khaskhas,khaskhas,en,poppy_raw
+Maize (Corn) Oil,maize (corn) oil,en,maize_oil_raw
+मक्का तेल,मक्का तेल,hi,maize_oil_raw
+मका तेल,मका तेल,mr,maize_oil_raw
+சோள எண்ணெய்,சோள எண்ணெய்,ta,maize_oil_raw
+corn oil,corn oil,en,maize_oil_raw
+makka tel,makka tel,en,maize_oil_raw
+"Cottonseed Oil, refined","cottonseed oil, refined",en,cottonseed_oil_raw
+बिनौला तेल,बिनौला तेल,hi,cottonseed_oil_raw
+सरकी तेल,सरकी तेल,mr,cottonseed_oil_raw
+பருத்தி விதை எண்ணெய்,பருத்தி விதை எண்ணெய்,ta,cottonseed_oil_raw
+binaula tel,binaula tel,en,cottonseed_oil_raw
+sarki tel,sarki tel,en,cottonseed_oil_raw
+Pistachio,pistachio,en,pistachio_raw
+पिस्ता,पिस्ता,hi,pistachio_raw
+पिस्ता,पिस्ता,mr,pistachio_raw
+பிஸ்தா,பிஸ்தா,ta,pistachio_raw
+pista,pista,en,pistachio_raw
+Lettuce,lettuce,en,lettuce_raw
+सलाद पत्ता,सलाद पत्ता,hi,lettuce_raw
+लेट्युस,लेट्युस,mr,lettuce_raw
+லெட்டூஸ்,லெட்டூஸ்,ta,lettuce_raw
+salad patta,salad patta,en,lettuce_raw
+Cassava / Tapioca Flour,cassava / tapioca flour,en,cassava_flour_raw
+टैपिओका आटा,टैपिओका आटा,hi,cassava_flour_raw
+टॅपिओका पीठ,टॅपिओका पीठ,mr,cassava_flour_raw
+மரவள்ளி மாவு,மரவள்ளி மாவு,ta,cassava_flour_raw
+tapioca flour,tapioca flour,en,cassava_flour_raw
+sabudana atta,sabudana atta,en,cassava_flour_raw
+Tomato Ketchup,tomato ketchup,en,tomato_ketchup_raw
+टमाटर केचप,टमाटर केचप,hi,tomato_ketchup_raw
+टोमॅटो केचप,टोमॅटो केचप,mr,tomato_ketchup_raw
+தக்காளி கெட்சப்,தக்காளி கெட்சப்,ta,tomato_ketchup_raw
+ketchup,ketchup,en,tomato_ketchup_raw
+tomato sauce,tomato sauce,en,tomato_ketchup_raw
+Tomato Paste,tomato paste,en,tomato_paste_raw
+टमाटर पेस्ट,टमाटर पेस्ट,hi,tomato_paste_raw
+टोमॅटो पेस्ट,टोमॅटो पेस्ट,mr,tomato_paste_raw
+தக்காளி விழுது,தக்காளி விழுது,ta,tomato_paste_raw
+Potato Starch,potato starch,en,potato_starch_raw
+आलू स्टार्च,आलू स्टार्च,hi,potato_starch_raw
+बटाटा स्टार्च,बटाटा स्टार्च,mr,potato_starch_raw
+உருளைக்கிழங்கு மாவு,உருளைக்கிழங்கு மாவு,ta,potato_starch_raw
+Wheat Starch,wheat starch,en,wheat_starch_raw
+गेहूँ स्टार्च,गेहूँ स्टार्च,hi,wheat_starch_raw
+गहू स्टार्च,गहू स्टार्च,mr,wheat_starch_raw
+கோதுமை மாவு,கோதுமை மாவு,ta,wheat_starch_raw
+Dry Pasta,dry pasta,en,dry_pasta_raw
+पास्ता,पास्ता,hi,dry_pasta_raw
+पास्ता,पास्ता,mr,dry_pasta_raw
+பாஸ்தா,பாஸ்தா,ta,dry_pasta_raw
+pasta,pasta,en,dry_pasta_raw
+macaroni,macaroni,en,dry_pasta_raw
+Cinnamon (Dalchini),cinnamon (dalchini),en,cinnamon_raw
+दालचीनी,दालचीनी,hi,cinnamon_raw
+दालचिनी,दालचिनी,mr,cinnamon_raw
+பட்டை,பட்டை,ta,cinnamon_raw
+dalchini,dalchini,en,cinnamon_raw
+dalcheeni,dalcheeni,en,cinnamon_raw
+Clove (Laung),clove (laung),en,clove_raw
+लौंग,लौंग,hi,clove_raw
+लवंग,लवंग,mr,clove_raw
+கிராம்பு,கிராம்பு,ta,clove_raw
+laung,laung,en,clove_raw
+lavang,lavang,en,clove_raw
+Plantain (Raw Banana),plantain (raw banana),en,plantain_raw
+कच्चा केला,कच्चा केला,hi,plantain_raw
+कच्चं केळं,कच्चं केळं,mr,plantain_raw
+வாழைக்காய்,வாழைக்காய்,ta,plantain_raw
+raw banana,raw banana,en,plantain_raw
+kacha kela,kacha kela,en,plantain_raw
+vazhakkai,vazhakkai,en,plantain_raw
+Tangerine / Kinnow,tangerine / kinnow,en,tangerine_raw
+किन्नू,किन्नू,hi,tangerine_raw
+संत्रं,संत्रं,mr,tangerine_raw
+கமலா ஆரஞ்சு,கமலா ஆரஞ்சு,ta,tangerine_raw
+kinnow,kinnow,en,tangerine_raw
+kinnu,kinnu,en,tangerine_raw
+Grapefruit (Chakotra),grapefruit (chakotra),en,grapefruit_raw
+चकोतरा,चकोतरा,hi,grapefruit_raw
+चकोतरा,चकोतरा,mr,grapefruit_raw
+பம்பரமாசு,பம்பரமாசு,ta,grapefruit_raw
+chakotra,chakotra,en,grapefruit_raw
+Pear,pear,en,pear_raw
+नाशपाती,नाशपाती,hi,pear_raw
+पेअर,पेअर,mr,pear_raw
+பேரிக்காய்,பேரிக்காய்,ta,pear_raw
+nashpati,nashpati,en,pear_raw
+Peach,peach,en,peach_raw
+आड़ू,आड़ू,hi,peach_raw
+पीच,पीच,mr,peach_raw
+பீச்,பீச்,ta,peach_raw
+aadu,aadu,en,peach_raw
+Plum (Aloobukhara),plum (aloobukhara),en,plum_raw
+आलूबुखारा,आलूबुखारा,hi,plum_raw
+आलुबुखार,आलुबुखार,mr,plum_raw
+பிளம்,பிளம்,ta,plum_raw
+aloobukhara,aloobukhara,en,plum_raw
+Apricot (Khubani),apricot (khubani),en,apricot_raw
+खुबानी,खुबानी,hi,apricot_raw
+जर्दाळू,जर्दाळू,mr,apricot_raw
+ஆப்ரிகாட்,ஆப்ரிகாட்,ta,apricot_raw
+khubani,khubani,en,apricot_raw
+Strawberry,strawberry,en,strawberry_raw
+स्ट्रॉबेरी,स्ट्रॉबेरी,hi,strawberry_raw
+स्ट्रॉबेरी,स्ट्रॉबेरी,mr,strawberry_raw
+ஸ்ட்ராபெரி,ஸ்ட்ராபெரி,ta,strawberry_raw
+Dates (Khajur),dates (khajur),en,dates_raw
+खजूर,खजूर,hi,dates_raw
+खजूर,खजूर,mr,dates_raw
+பேரீச்சம்பழம்,பேரீச்சம்பழம்,ta,dates_raw
+khajur,khajur,en,dates_raw
+khajoor,khajoor,en,dates_raw
+Avocado,avocado,en,avocado_raw
+एवोकाडो,एवोकाडो,hi,avocado_raw
+अ‍ॅव्होकॅडो,अ‍ॅव्होकॅडो,mr,avocado_raw
+வெண்ணெய் பழம்,வெண்ணெய் பழம்,ta,avocado_raw
+butter fruit,butter fruit,en,avocado_raw
+Kiwi,kiwi,en,kiwi_raw
+कीवी,कीवी,hi,kiwi_raw
+किवी,किवी,mr,kiwi_raw
+கிவி,கிவி,ta,kiwi_raw
+Olive,olive,en,olive_raw
+जैतून,जैतून,hi,olive_raw
+जैतून,जैतून,mr,olive_raw
+ஆலிவ்,ஆலிவ்,ta,olive_raw
+jaitun,jaitun,en,olive_raw
+Sugar Beet,sugar beet,en,sugar_beet_raw
+चुकंदर,चुकंदर,hi,sugar_beet_raw
+साखर बीट,साखर बीट,mr,sugar_beet_raw
+சர்க்கரை பீட்,சர்க்கரை பீட்,ta,sugar_beet_raw
+Cocoa Beans,cocoa beans,en,cocoa_raw
+कोको,कोको,hi,cocoa_raw
+कोको,कोको,mr,cocoa_raw
+கோகோ,கோகோ,ta,cocoa_raw
+Chocolate,chocolate,en,chocolate_raw
+चॉकलेट,चॉकलेट,hi,chocolate_raw
+चॉकलेट,चॉकलेट,mr,chocolate_raw
+சாக்லேட்,சாக்லேட்,ta,chocolate_raw
+Soy Milk,soy milk,en,soy_milk_raw
+सोया दूध,सोया दूध,hi,soy_milk_raw
+सोया दूध,सोया दूध,mr,soy_milk_raw
+சோயா பால்,சோயா பால்,ta,soy_milk_raw
+soya milk,soya milk,en,soy_milk_raw
+Orange Juice,orange juice,en,orange_juice_raw
+संतरे का रस,संतरे का रस,hi,orange_juice_raw
+संत्र्याचा रस,संत्र्याचा रस,mr,orange_juice_raw
+ஆரஞ்சு சாறு,ஆரஞ்சு சாறு,ta,orange_juice_raw
+Apple Juice,apple juice,en,apple_juice_raw
+सेब का रस,सेब का रस,hi,apple_juice_raw
+सफरचंदाचा रस,सफरचंदाचा रस,mr,apple_juice_raw
+ஆப்பிள் சாறு,ஆப்பிள் சாறு,ta,apple_juice_raw
+Beer (from malt),beer (from malt),en,beer_raw
+बियर,बियर,hi,beer_raw
+बिअर,बिअर,mr,beer_raw
+பீர்,பீர்,ta,beer_raw
+Jaggery (Gur),jaggery (gur),en,jaggery
+गुड़,गुड़,hi,jaggery
+गूळ,गूळ,mr,jaggery
+வெல்லம்,வெல்லம்,ta,jaggery
+Gur,gur,hi,jaggery
+Gud,gud,hi,jaggery
+Gul,gul,mr,jaggery
+Vellam,vellam,ta,jaggery

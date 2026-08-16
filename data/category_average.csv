@@ -1,0 +1,15 @@
+category_id,label_en,wf_green,wf_blue,wf_grey,wf_total,source
+sugar_crops,Sugar crops,130,52,15,197,S1:table2
+fodder_crops,Fodder crops,207,27,20,253,S1:table2
+vegetables,Vegetables,194,43,85,322,S1:table2
+roots_and_tubers,Roots and tubers,327,16,43,387,S1:table2
+fruits,Fruits,727,147,93,967,S1:table2
+cereals,Cereals,1232,228,184,1644,S1:table2
+oil_crops,Oil crops,2023,220,121,2364,S1:table2
+tobacco,Tobacco,2021,205,700,2925,S1:table2
+fibres_vegetal,"Fibres, vegetal",3375,163,300,3837,S1:table2
+pulses,Pulses,3180,141,734,4055,S1:table2
+spices,Spices,5872,744,432,7048,S1:table2
+nuts,Nuts,7016,1367,680,9063,S1:table2
+rubber_gums_waxes,"Rubber, gums, waxes",12964,361,422,13748,S1:table2
+stimulants,Stimulants,13731,252,460,14443,S1:table2

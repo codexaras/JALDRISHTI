@@ -1,0 +1,125 @@
+{
+  "8901719101007": {
+    "found": true,
+    "product_found": true,
+    "ean": "8901719101007",
+    "name": "Parle-g",
+    "brand": "Parle",
+    "ingredients": [
+      {
+        "crop_id": "wheat",
+        "raw_grams_per_100g": 48,
+        "yield_fraction": 0.72,
+        "source": "OFF:ingredients_tags (rank-estimated) + S5"
+      },
+      {
+        "crop_id": "sugarcane",
+        "raw_grams_per_100g": 24,
+        "yield_fraction": 0.1,
+        "source": "OFF:ingredients_tags (rank-estimated) + S5"
+      },
+      {
+        "crop_id": "sunflower",
+        "raw_grams_per_100g": 16,
+        "yield_fraction": 0.4,
+        "source": "OFF:ingredients_tags (rank-estimated) + S5:proxy"
+      },
+      {
+        "crop_id": "milk",
+        "raw_grams_per_100g": 12,
+        "yield_fraction": 0.1,
+        "source": "OFF:ingredients_tags (rank-estimated) + S5:approx"
+      }
+    ],
+    "unmatched_tags": [
+      "invert-sugar-syrup",
+      "monosaccharide",
+      "syrup",
+      "invert-sugar",
+      "sugar-syrup"
+    ],
+    "ignored_tags": [
+      "cereal",
+      "disaccharide",
+      "oil-and-fat",
+      "dairy"
+    ],
+    "quality": "medium",
+    "estimated": true
+  },
+  "8901491101813": {
+    "found": true,
+    "product_found": true,
+    "ean": "8901491101813",
+    "name": "Lays american cream onion",
+    "brand": "Lay's",
+    "ingredients": [
+      {
+        "crop_id": "potato",
+        "raw_grams_per_100g": 40.8,
+        "yield_fraction": 1,
+        "source": "OFF:ingredients_tags (rank-estimated) + S1"
+      },
+      {
+        "crop_id": "sunflower",
+        "raw_grams_per_100g": 20.4,
+        "yield_fraction": 0.4,
+        "source": "OFF:ingredients_tags (rank-estimated) + S5:proxy"
+      },
+      {
+        "crop_id": "sugarcane",
+        "raw_grams_per_100g": 13.6,
+        "yield_fraction": 0.1,
+        "source": "OFF:ingredients_tags (rank-estimated) + S5"
+      },
+      {
+        "crop_id": "milk",
+        "raw_grams_per_100g": 10.2,
+        "yield_fraction": 1,
+        "source": "OFF:ingredients_tags (rank-estimated) + S2"
+      },
+      {
+        "crop_id": "cheese",
+        "raw_grams_per_100g": 8.2,
+        "yield_fraction": 1,
+        "source": "OFF:ingredients_tags (rank-estimated) + S2"
+      },
+      {
+        "crop_id": "coconut",
+        "raw_grams_per_100g": 6.8,
+        "yield_fraction": 0.2,
+        "source": "OFF:ingredients_tags (rank-estimated) + S5:proxy"
+      }
+    ],
+    "unmatched_tags": [
+      "tuber",
+      "coating",
+      "lodised salt",
+      "maltodextrin",
+      "cheese-powder",
+      "hydrolysed-vegetable-protein",
+      "protein",
+      "plant-protein",
+      "flavour-enhancer",
+      "as flavouring agent",
+      "to know the specific type of oil used and its saturated fat value",
+      "match the symbol and # with the last character of batch number where ◊ denotes palmolein and # denotes rice bran oil",
+      "627",
+      "631",
+      "nature-identical-flavouring"
+    ],
+    "ignored_tags": [
+      "vegetable",
+      "root-vegetable",
+      "oil-and-fat",
+      "disaccharide",
+      "dairy",
+      "spice",
+      "condiment",
+      "flavouring",
+      "natural-flavouring"
+    ],
+    "quality": "medium",
+    "estimated": true
+  }
+}

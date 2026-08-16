@@ -1,0 +1,15 @@
+process_id,from_crop,to_label,yield_fraction,source
+paddy_to_milled_rice,rice,Milled rice,0.67,S5:milling-ratio
+wheat_to_atta,wheat,Wheat flour (atta),0.80,S5:BUILD_SPEC-2.3
+wheat_to_maida,wheat,Refined flour (maida),0.72,S5:approx
+mustard_to_oil,mustard,Mustard oil,0.33,S5:approx
+groundnut_to_oil,groundnut,Groundnut oil,0.40,S5:approx
+sunflower_to_oil,sunflower,Sunflower oil,0.40,S5:approx
+soybean_to_oil,soybean,Soybean oil,0.18,S5:approx
+sesame_to_oil,sesame,Sesame oil,0.42,S5:approx
+sugarcane_to_sugar,sugarcane,Sugar,0.10,S5:approx
+sugarcane_to_jaggery,sugarcane,Jaggery,0.11,S5:approx
+chickpea_to_besan,chickpea,Gram flour (besan),0.85,S5:approx
+milk_to_curd,milk,Curd,1.00,S5:approx
+milk_to_ghee,milk,Ghee,0.04,S5:approx
+coffee_to_roasted,coffee,Roasted coffee,0.84,S5:approx

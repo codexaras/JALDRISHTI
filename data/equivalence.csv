@@ -1,0 +1,6 @@
+eq_id,litres_per_unit,message_key,min_litres,source
+household_days,55,result.eq.householdDays,110,S7:JJM-55-LPCD
+drinking_days,3,result.eq.drinkingDays,30,S7:ICMR-3L
+bucket,15,result.eq.buckets,45,S7:standard-bucket
+shower,45,result.eq.showers,135,S7:bucket-bath
+tanker,12000,result.eq.tankers,24000,S7:municipal-tanker

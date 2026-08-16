@@ -1,0 +1,27 @@
+city,state,reservoir,pct,capacity_ml,overflowing,updated_on,source
+Mumbai,Maharashtra,Upper Vaitarna,62.0,227047,0,2026-08-01,S8:BMC
+Mumbai,Maharashtra,Modak Sagar,88.5,128925,0,2026-08-01,S8:BMC
+Mumbai,Maharashtra,Tansa,91.2,145080,0,2026-08-01,S8:BMC
+Mumbai,Maharashtra,Middle Vaitarna,74.8,193530,0,2026-08-01,S8:BMC
+Mumbai,Maharashtra,Bhatsa,69.4,717037,0,2026-08-01,S8:BMC
+Mumbai,Maharashtra,Vihar,100.0,27698,1,2026-08-01,S8:BMC
+Mumbai,Maharashtra,Tulsi,100.0,8046,1,2026-08-01,S8:BMC
+Chennai,Tamil Nadu,Poondi,54.3,3231,0,2026-08-01,S8:CMWSSB
+Chennai,Tamil Nadu,Cholavaram,38.9,881,0,2026-08-01,S8:CMWSSB
+Chennai,Tamil Nadu,Red Hills,61.7,3300,0,2026-08-01,S8:CMWSSB
+Chennai,Tamil Nadu,Chembarambakkam,58.2,3645,0,2026-08-01,S8:CMWSSB
+Chennai,Tamil Nadu,Veeranam,47.5,1465,0,2026-08-01,S8:CMWSSB
+Pune,Maharashtra,Khadakwasla,81.0,1970,0,2026-08-01,S8:MWRD
+Pune,Maharashtra,Panshet,76.4,2980,0,2026-08-01,S8:MWRD
+Pune,Maharashtra,Varasgaon,72.1,3250,0,2026-08-01,S8:MWRD
+Pune,Maharashtra,Temghar,58.6,1070,0,2026-08-01,S8:MWRD
+Bengaluru,Karnataka,T G Halli,44.2,3300,0,2026-08-01,S8:BWSSB
+Bengaluru,Karnataka,Hesaraghatta,21.5,1000,0,2026-08-01,S8:BWSSB
+Bengaluru,Karnataka,Krishna Raja Sagara,67.3,49000,0,2026-08-01,S8:BWSSB
+Bengaluru,Karnataka,Kabini,71.8,19520,0,2026-08-01,S8:BWSSB
+Hyderabad,Telangana,Osman Sagar,52.7,3900,0,2026-08-01,S8:HMWSSB
+Hyderabad,Telangana,Himayat Sagar,49.1,2970,0,2026-08-01,S8:HMWSSB
+Hyderabad,Telangana,Singur,63.4,29910,0,2026-08-01,S8:HMWSSB
+Hyderabad,Telangana,Manjira,58.0,5340,0,2026-08-01,S8:HMWSSB
+Delhi,Delhi,Wazirabad Pond,66.0,2400,0,2026-08-01,S8:DJB
+Delhi,Delhi,Bhakra Storage,58.4,93400,0,2026-08-01,S8:DJB

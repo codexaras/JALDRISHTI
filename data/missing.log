@@ -1,0 +1,8 @@
+# Written by the engine only. One line per missing data key, appended at the
+# moment a lookup fails. BUILD_SPEC rule 1: a missing value is logged and raised,
+# never estimated.
+#
+# Format: ISO-8601 timestamp<TAB>table<TAB>key<TAB>context
+#
+# BUILD_SPEC section 9 requires this file to be empty of entries for all five
+# demo items before the demo. Run `npm run data:validate` to check.
