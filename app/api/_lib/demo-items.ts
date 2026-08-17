@@ -9,5 +9,8 @@ export const DEMO_ITEMS = [
   "okra_raw",
   "biryani_chicken",
   "dal_tadka",
-  "cotton_tshirt",
+  // cotton_raw replaced cotton_tshirt: the garment is out of scope (crops in,
+  // textiles out), while cotton the CROP keeps the non-food clause covered
+  // with real Table 3 figures.
+  "cotton_raw",
 ] as const;

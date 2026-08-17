@@ -64,6 +64,10 @@ export function buildBundle(): Bundle {
     wf_grey: num(r, "wf_grey", "crop.csv", at("crop.csv", i)),
     is_animal: numOr(r, "is_animal", 0),
     is_food: numOr(r, "is_food", 1),
+    // Animal crops default hidden: their figures are uncited (M&H 2011 covers
+    // crops only). Derived so /data stays human-owned — an explicit is_visible
+    // column in the CSV overrides this either way.
+    is_visible: numOr(r, "is_visible", numOr(r, "is_animal", 0) === 1 ? 0 : 1),
     source: r.source,
   }));
 

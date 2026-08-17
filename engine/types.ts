@@ -50,6 +50,12 @@ export interface Crop {
   is_animal: number;
   /** 0 for non-food agricultural products (cotton, jute). */
   is_food: number;
+  /**
+   * 0 hides the crop from browsing and from chat retrieval. Defaults to 0 for
+   * animal crops (uncited — M&H 2011 covers crops only) and 1 otherwise; the
+   * CSV can override either way once a human adds the column (R2).
+   */
+  is_visible: number;
   source: string;
 }
 
@@ -341,6 +347,13 @@ export interface CalculationResult {
    * recomputed by every caller.
    */
   impact_l: number;
+  /**
+   * Ingredients whose water was EXCLUDED from this calculation — animal
+   * ingredients, whose footprints have no citable source (M&H 2011 covers
+   * crops only). Named here so the result screen can say so out loud instead
+   * of silently serving a smaller number.
+   */
+  excluded_ingredients: { crop_id: string; name: string }[];
   confidence: Confidence;
   stress_score: number;
   status: StressCategory;

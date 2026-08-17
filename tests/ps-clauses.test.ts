@@ -88,7 +88,7 @@ describe("PS: 'sensitize the people'", () => {
 
   it("never invents advice — no swap when nothing saves water", () => {
     // Every returned swap must be a genuine saving, across the whole catalogue.
-    for (const id of ["milk_raw", "chai", "rice_raw", "bajra_raw"]) {
+    for (const id of ["chai", "rice_raw", "bajra_raw"]) { // milk_raw refuses now: all-animal, uncited
       const r = calculateProduct(id);
       if (r.swap) expect(r.swap.saves_l).toBeGreaterThan(0);
     }

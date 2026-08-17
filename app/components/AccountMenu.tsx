@@ -16,7 +16,6 @@ import { LogOut, User, X } from "lucide-react";
 import { useLang } from "../lib/i18n-client.tsx";
 import {
   createAccount,
-  currentAccount,
   getServerSnapshot,
   getSnapshot,
   initials,
@@ -26,8 +25,16 @@ import {
 } from "../lib/account-store.ts";
 
 export function useAccount() {
-  useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
-  return currentAccount();
+  // The account must be derived from the value the HOOK returns, never read
+  // from the store directly. During hydration React renders with
+  // `getServerSnapshot()` (signed out — the HTML the server sent) and only then
+  // re-renders with the real client state. Calling `currentAccount()` here
+  // bypassed that: the first client render saw localStorage, produced the
+  // avatar where the server had produced the sign-in button, and React threw
+  // "Hydration failed because the server rendered HTML didn't match the
+  // client" on every load with a signed-in profile.
+  const state = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  return state.accounts.find((a) => a.id === state.currentId) ?? null;
 }
 
 export function AccountMenu({ onOpenProfile }: { onOpenProfile: () => void }) {

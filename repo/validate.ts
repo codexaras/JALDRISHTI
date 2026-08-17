@@ -252,7 +252,7 @@ const STATES_AND_UTS = [
 ];
 
 /** The five demo items are locked by name in BUILD_SPEC phase 1. */
-const DEMO_ITEMS = ["parle_g_biscuit", "okra_raw", "biryani_chicken", "dal_tadka", "cotton_tshirt"];
+const DEMO_ITEMS = ["parle_g_biscuit", "okra_raw", "biryani_chicken", "dal_tadka", "cotton_raw"];
 
 function checkPanIndia(b: Bundle) {
   const covered = new Set(b.gw_stress.map((g) => g.state));
@@ -286,10 +286,15 @@ function checkDailyLifeCoverage(b: Bundle) {
  * every test still passed on direct-id lookups.
  */
 function checkVisibility(b: Bundle) {
-  const hidden = new Set(b.product.filter((p) => p.is_visible === 0).map((p) => p.product_id));
-  for (const id of [...DEMO_ITEMS, "cotton_tshirt", "jeans_pair"]) {
+  // Browsable = is_visible AND not a manufactured non-food good — the same
+  // rule repo/db.ts applies. Garments are expected hidden now (crops in,
+  // textiles out); the demo items must remain browsable.
+  const hidden = new Set(
+    b.product.filter((p) => p.is_visible === 0 || p.type === "non_food").map((p) => p.product_id),
+  );
+  for (const id of DEMO_ITEMS) {
     if (hidden.has(id)) {
-      fail(`product: "${id}" is required by the build but has is_visible = 0`);
+      fail(`product: "${id}" is a locked demo item but is not browsable`);
     }
   }
   // Cotton and jute are CROPS — grown, harvested, unambiguously agricultural.

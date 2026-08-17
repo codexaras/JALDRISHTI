@@ -7,18 +7,24 @@
       "type": "packaged"
     },
     "footprint_l": {
-      "green": 255,
+      "green": 253,
       "blue": 35,
       "grey": 31,
-      "total": 321
+      "total": 319
     },
     "impact_l": 79,
+    "excluded_ingredients": [
+      {
+        "crop_id": "milk",
+        "name": "Milk"
+      }
+    ],
     "confidence": {
-      "low": 273,
-      "high": 369,
-      "quality": "medium"
+      "low": 271,
+      "high": 367,
+      "quality": "low"
     },
-    "stress_score": 47,
+    "stress_score": 50,
     "status": "semi_critical",
     "human_equivalent": {
       "key": "result.eq.householdDays",
@@ -287,18 +293,7 @@
         "groundwater_band_midpoint:Maharashtra",
         "groundwater_band_midpoint:Telangana",
         "groundwater_band_midpoint:Bihar",
-        "milk:national_default",
-        "groundwater_band_midpoint:Uttar Pradesh",
-        "groundwater_band_midpoint:Madhya Pradesh",
-        "groundwater_band_midpoint:Gujarat",
-        "groundwater_band_midpoint:Maharashtra",
-        "groundwater_band_midpoint:Bihar",
-        "groundwater_band_midpoint:Tamil Nadu",
-        "groundwater_band_midpoint:Karnataka",
-        "groundwater_band_midpoint:West Bengal",
-        "groundwater_band_midpoint:Telangana",
-        "groundwater_band_midpoint:Odisha",
-        "groundwater_band_midpoint:Assam",
+        "milk:animal_excluded",
         "season_model_applied:kharif"
       ]
     },
@@ -306,7 +301,6 @@
       "CGWB — Dynamic Ground Water Resources Assessment of India",
       "Directorate of Economics & Statistics — Agricultural Statistics at a Glance",
       "Mekonnen & Hoekstra, 2011 — Value of Water Research Report 47, UNESCO-IHE",
-      "Mekonnen & Hoekstra, 2012 — A global assessment of the water footprint of farm animal products",
       "Seasonal irrigation model — Jal Drishti, see data/SOURCES.md (declared model, not a measurement)"
     ]
   },
@@ -324,12 +318,13 @@
       "total": 91
     },
     "impact_l": 30,
+    "excluded_ingredients": [],
     "confidence": {
       "low": 77,
       "high": 105,
       "quality": "medium"
     },
-    "stress_score": 14,
+    "stress_score": 18,
     "status": "semi_critical",
     "human_equivalent": {
       "key": "result.eq.buckets",
@@ -565,23 +560,33 @@
       "type": "cooked_dish"
     },
     "footprint_l": {
-      "green": 477,
-      "blue": 55,
-      "grey": 69,
-      "total": 601
+      "green": 208,
+      "blue": 38,
+      "grey": 35,
+      "total": 281
     },
-    "impact_l": 137,
+    "impact_l": 83,
+    "excluded_ingredients": [
+      {
+        "crop_id": "chicken_meat",
+        "name": "Chicken"
+      },
+      {
+        "crop_id": "milk",
+        "name": "Milk"
+      }
+    ],
     "confidence": {
-      "low": 511,
-      "high": 691,
-      "quality": "medium"
+      "low": 239,
+      "high": 323,
+      "quality": "low"
     },
-    "stress_score": 59,
+    "stress_score": 52,
     "status": "over_exploited",
     "human_equivalent": {
       "key": "result.eq.householdDays",
       "params": {
-        "count": 11
+        "count": 5.1
       }
     },
     "sources": [
@@ -669,23 +674,6 @@
         "impact_blue_l": 3,
         "lat": 18.67,
         "lon": 78.09
-      },
-      {
-        "crop": "chicken_meat",
-        "crop_name": "Chicken",
-        "state": "Tamil Nadu",
-        "district": "STATE_AVERAGE",
-        "level": "state",
-        "precision": "band_midpoint",
-        "band_min": 70,
-        "band_max": 90,
-        "share": 0.18,
-        "status": "semi_critical",
-        "soe_pct": 80,
-        "blue_l": 3,
-        "impact_blue_l": 3,
-        "lat": 11.02,
-        "lon": 76.96
       },
       {
         "crop": "rice",
@@ -788,6 +776,23 @@
         "impact_blue_l": 2,
         "lat": 29.69,
         "lon": 76.99
+      },
+      {
+        "crop": "rice",
+        "crop_name": "Rice",
+        "state": "Assam",
+        "district": "STATE_AVERAGE",
+        "level": "state",
+        "precision": "band_midpoint",
+        "band_min": 0,
+        "band_max": 70,
+        "share": 0.05,
+        "status": "safe",
+        "soe_pct": 35,
+        "blue_l": 1,
+        "impact_blue_l": 1,
+        "lat": 26.75,
+        "lon": 94.22
       }
     ],
     "swap": {
@@ -854,15 +859,7 @@
         "groundwater_band_midpoint:Karnataka",
         "groundwater_band_midpoint:Gujarat",
         "groundwater_band_midpoint:Jharkhand",
-        "chicken_meat:national_default",
-        "groundwater_band_midpoint:Tamil Nadu",
-        "groundwater_band_midpoint:Maharashtra",
-        "groundwater_band_midpoint:Telangana",
-        "groundwater_band_midpoint:West Bengal",
-        "groundwater_band_midpoint:Karnataka",
-        "groundwater_band_midpoint:Uttar Pradesh",
-        "groundwater_band_midpoint:Kerala",
-        "groundwater_band_midpoint:Bihar",
+        "chicken_meat:animal_excluded",
         "onion:national_default",
         "groundwater_band_midpoint:Maharashtra",
         "groundwater_band_midpoint:Madhya Pradesh",
@@ -871,18 +868,7 @@
         "groundwater_band_midpoint:Bihar",
         "groundwater_band_midpoint:Uttar Pradesh",
         "groundwater_band_midpoint:Tamil Nadu",
-        "milk:national_default",
-        "groundwater_band_midpoint:Uttar Pradesh",
-        "groundwater_band_midpoint:Madhya Pradesh",
-        "groundwater_band_midpoint:Gujarat",
-        "groundwater_band_midpoint:Maharashtra",
-        "groundwater_band_midpoint:Bihar",
-        "groundwater_band_midpoint:Tamil Nadu",
-        "groundwater_band_midpoint:Karnataka",
-        "groundwater_band_midpoint:West Bengal",
-        "groundwater_band_midpoint:Telangana",
-        "groundwater_band_midpoint:Odisha",
-        "groundwater_band_midpoint:Assam",
+        "milk:animal_excluded",
         "tomato:national_default",
         "groundwater_band_midpoint:Madhya Pradesh",
         "groundwater_band_midpoint:Karnataka",
@@ -926,7 +912,6 @@
       "CGWB — Dynamic Ground Water Resources Assessment of India",
       "Directorate of Economics & Statistics — Agricultural Statistics at a Glance",
       "Mekonnen & Hoekstra, 2011 — Value of Water Research Report 47, UNESCO-IHE",
-      "Mekonnen & Hoekstra, 2012 — A global assessment of the water footprint of farm animal products",
       "Seasonal irrigation model — Jal Drishti, see data/SOURCES.md (declared model, not a measurement)"
     ]
   },
@@ -944,12 +929,13 @@
       "total": 238
     },
     "impact_l": 31,
+    "excluded_ingredients": [],
     "confidence": {
       "low": 202,
       "high": 274,
       "quality": "medium"
     },
-    "stress_score": 16,
+    "stress_score": 20,
     "status": "over_exploited",
     "human_equivalent": {
       "key": "result.eq.householdDays",
@@ -1256,31 +1242,32 @@
       "Seasonal irrigation model — Jal Drishti, see data/SOURCES.md (declared model, not a measurement)"
     ]
   },
-  "cotton_tshirt": {
+  "cotton_raw": {
     "product": {
-      "id": "cotton_tshirt",
-      "name": "Cotton T-Shirt",
-      "serving_g": 200,
-      "type": "non_food"
+      "id": "cotton_raw",
+      "name": "Cotton",
+      "serving_g": 1000,
+      "type": "raw_crop"
     },
     "footprint_l": {
-      "green": 1491,
-      "blue": 560,
-      "grey": 461,
-      "total": 2512
+      "green": 2609,
+      "blue": 980,
+      "grey": 807,
+      "total": 4396
     },
-    "impact_l": 1143,
+    "impact_l": 2000,
+    "excluded_ingredients": [],
     "confidence": {
-      "low": 2135,
-      "high": 2889,
+      "low": 3737,
+      "high": 5055,
       "quality": "medium"
     },
-    "stress_score": 95,
+    "stress_score": 98,
     "status": "safe",
     "human_equivalent": {
       "key": "result.eq.householdDays",
       "params": {
-        "count": 46
+        "count": 80
       }
     },
     "sources": [
@@ -1296,8 +1283,8 @@
         "share": 0.25,
         "status": "safe",
         "soe_pct": 35,
-        "blue_l": 140,
-        "impact_blue_l": 140,
+        "blue_l": 245,
+        "impact_blue_l": 245,
         "lat": 21.52,
         "lon": 70.46
       },
@@ -1313,8 +1300,8 @@
         "share": 0.22,
         "status": "safe",
         "soe_pct": 35,
-        "blue_l": 123,
-        "impact_blue_l": 123,
+        "blue_l": 215,
+        "impact_blue_l": 215,
         "lat": 21.15,
         "lon": 79.09
       },
@@ -1330,8 +1317,8 @@
         "share": 0.09,
         "status": "over_exploited",
         "soe_pct": 147.11,
-        "blue_l": 50,
-        "impact_blue_l": 106,
+        "blue_l": 88,
+        "impact_blue_l": 185,
         "lat": 26.91,
         "lon": 75.79
       },
@@ -1347,8 +1334,8 @@
         "share": 0.16,
         "status": "safe",
         "soe_pct": 35,
-        "blue_l": 90,
-        "impact_blue_l": 90,
+        "blue_l": 157,
+        "impact_blue_l": 157,
         "lat": 18.67,
         "lon": 78.09
       },
@@ -1364,8 +1351,8 @@
         "share": 0.07,
         "status": "over_exploited",
         "soe_pct": 136.75,
-        "blue_l": 39,
-        "impact_blue_l": 77,
+        "blue_l": 69,
+        "impact_blue_l": 134,
         "lat": 29.69,
         "lon": 76.99
       },
@@ -1381,8 +1368,8 @@
         "share": 0.04,
         "status": "over_exploited",
         "soe_pct": 156.36,
-        "blue_l": 22,
-        "impact_blue_l": 50,
+        "blue_l": 39,
+        "impact_blue_l": 88,
         "lat": 30.21,
         "lon": 74.95
       },
@@ -1398,8 +1385,8 @@
         "share": 0.07,
         "status": "safe",
         "soe_pct": 35,
-        "blue_l": 39,
-        "impact_blue_l": 39,
+        "blue_l": 69,
+        "impact_blue_l": 69,
         "lat": 15.85,
         "lon": 74.5
       },
@@ -1415,8 +1402,8 @@
         "share": 0.05,
         "status": "safe",
         "soe_pct": 35,
-        "blue_l": 28,
-        "impact_blue_l": 28,
+        "blue_l": 49,
+        "impact_blue_l": 49,
         "lat": 22.72,
         "lon": 75.86
       },
@@ -1432,8 +1419,8 @@
         "share": 0.03,
         "status": "safe",
         "soe_pct": 29.83,
-        "blue_l": 17,
-        "impact_blue_l": 17,
+        "blue_l": 29,
+        "impact_blue_l": 29,
         "lat": 16.31,
         "lon": 80.44
       },
@@ -1449,8 +1436,8 @@
         "share": 0.02,
         "status": "semi_critical",
         "soe_pct": 80,
-        "blue_l": 11,
-        "impact_blue_l": 13,
+        "blue_l": 20,
+        "impact_blue_l": 22,
         "lat": 11.02,
         "lon": 76.96
       }
@@ -1460,7 +1447,7 @@
       "ingredients": [
         {
           "crop": "cotton",
-          "raw_g": 200
+          "raw_g": 1000
         }
       ],
       "season": "kharif",

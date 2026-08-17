@@ -20,9 +20,13 @@ import { AskWaterAI } from "./AskWaterAI.tsx";
 import { SourcesMap } from "./SourcesMap.tsx";
 import { ProductImage } from "./ProductImage.tsx";
 import { soeLabel, soeNote } from "../lib/soe.ts";
+import { GLOSSARY } from "../lib/learn-content.ts";
 import type { CalculationResult } from "../../engine/types.ts";
 
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+/** Glossary definition by id — feeds the term tooltips (AMENDMENT_14 §7). */
+const gloss = (id: string) => GLOSSARY.find((g) => g.id === id)?.definition;
 
 export function LiveResult({
   result,
@@ -75,7 +79,7 @@ export function LiveResult({
             <h1>{result.product.name}</h1>
             <p>
               {t("result.perServing", { grams: n(result.product.serving_g) })} ·{" "}
-              {result.lineage.season} · {MONTHS[month - 1]}
+              <span title={gloss(result.lineage.season)}>{result.lineage.season}</span> · {MONTHS[month - 1]}
             </p>
             <span className="confidence">● {t(`confidence.${result.confidence.quality}`)}</span>
           </div>
@@ -103,7 +107,7 @@ export function LiveResult({
             <div>
               <i className="g" />
               <span>
-                <b>{t("water.green")}</b>
+                <b title={gloss("green_water")}>{t("water.green")}</b>
                 <small>{t("water.green.sub")}</small>
               </span>
               <strong>
@@ -113,7 +117,7 @@ export function LiveResult({
             <div>
               <i className="b" />
               <span>
-                <b>{t("water.blue")}</b>
+                <b title={gloss("blue_water")}>{t("water.blue")}</b>
                 <small>{t("water.blue.sub")}</small>
               </span>
               <strong>
@@ -123,7 +127,7 @@ export function LiveResult({
             <div>
               <i className="y" />
               <span>
-                <b>{t("water.grey")}</b>
+                <b title={gloss("grey_water")}>{t("water.grey")}</b>
                 <small>{t("water.grey.sub")}</small>
               </span>
               <strong>
@@ -187,6 +191,15 @@ export function LiveResult({
             ))}
             {result.sources.length > 0 && (
               <p className="sourceNote">{top && t(`status.explain.${top.status}`)}</p>
+            )}
+            {/* §4: an excluded animal ingredient is disclosed, never silently
+                dropped — the smaller total must explain itself. */}
+            {result.excluded_ingredients.length > 0 && (
+              <p className="sourceNote excludedNote">
+                {t("result.excludedNote", {
+                  ingredients: result.excluded_ingredients.map((e) => e.name).join(", "),
+                })}
+              </p>
             )}
           </div>
 

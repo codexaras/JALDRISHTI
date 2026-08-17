@@ -139,11 +139,68 @@ export function getIngredients(productId: string): ProductIngredient[] {
  * legitimately needs every row.
  */
 export function visibleProducts(): Product[] {
-  return db.product.filter((p) => p.is_visible !== 0);
+  return db.product.filter(productVisible);
+}
+
+/**
+ * The scope rule, in one place: a product is browsable when its row is not
+ * hidden AND it is not a manufactured non-food good. "Crops in, textiles out"
+ * — cotton and jute the CROPS stay (they are grown and harvested, with real
+ * Table 3 figures); the t-shirt, jeans, saree and bag made FROM them are out
+ * of the problem statement's scope. Rows stay in the data, reversible in one
+ * CSV edit.
+ */
+function productVisible(p: Product): boolean {
+  return p.is_visible !== 0 && p.type !== "non_food";
 }
 
 export function isVisible(productId: string): boolean {
-  return productById.get(productId)?.is_visible !== 0;
+  const p = productById.get(productId);
+  return p ? productVisible(p) : false;
+}
+
+/** Crop-level scope — animal crops are hidden from browsing and retrieval. */
+export function cropVisible(cropId: string): boolean {
+  return cropById.get(cropId)?.is_visible !== 0;
+}
+
+/**
+ * Every visible product whose recipe includes the given crop — search TIER 4.
+ *
+ * Equivalent to the spec's SQL over product_ingredient ⋈ product ⋈ crop, with
+ * the same WHERE clause, expressed against the in-memory bundle (there is no
+ * SQL engine in the Worker). Visibility routes through the SAME shared helpers
+ * as every other surface (`isVisible`, crop `is_visible`) — plus a second line
+ * of defence on the crop itself: even if a visibility flag were missed
+ * somewhere, an animal or non-food crop can never seed an ingredient match.
+ *
+ * Ranked by the crop's share of the product (raw_grams_per_100g, descending),
+ * so biryani outranks a dish where rice is a garnish. Zero-share rows are
+ * dropped — a "0%" badge is a figure that claims nothing.
+ */
+export function productsContaining(
+  cropId: string,
+): { product: Product; raw_grams_per_100g: number }[] {
+  const crop = cropById.get(cropId);
+  if (!crop || crop.is_visible === 0 || crop.is_animal !== 0 || crop.is_food !== 1) return [];
+
+  // A product can list the same crop twice (e.g. as grain and as flour);
+  // keep its largest share so the row appears once, at its honest rank.
+  const bestShare = new Map<string, number>();
+  for (const pi of db.product_ingredient) {
+    if (pi.crop_id !== cropId || pi.raw_grams_per_100g <= 0) continue;
+    if (!isVisible(pi.product_id)) continue;
+    const prev = bestShare.get(pi.product_id) ?? 0;
+    if (pi.raw_grams_per_100g > prev) bestShare.set(pi.product_id, pi.raw_grams_per_100g);
+  }
+
+  return [...bestShare.entries()]
+    .map(([id, share]) => ({ product: productById.get(id)!, raw_grams_per_100g: share }))
+    .sort(
+      (a, b) =>
+        b.raw_grams_per_100g - a.raw_grams_per_100g ||
+        a.product.product_id.localeCompare(b.product.product_id),
+    );
 }
 
 export function allProducts(): Product[] {

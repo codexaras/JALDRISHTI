@@ -63,11 +63,11 @@ interface Golden {
  * rounded ones, so items landed a point out wherever that crossed a tie band.
  */
 const GOLDEN: Golden[] = [
-  { product_id: "parle_g_biscuit", serving_g: 100, month: 7, total: 321, green: 255, blue: 35, grey: 31, stress_score: 47, verified_by: null },
-  { product_id: "okra_raw", serving_g: 250, month: 7, total: 91, green: 61, blue: 6, grey: 24, stress_score: 14, verified_by: null },
-  { product_id: "biryani_chicken", serving_g: 350, month: 7, total: 601, green: 477, blue: 55, grey: 69, stress_score: 59, verified_by: null },
-  { product_id: "dal_tadka", serving_g: 200, month: 7, total: 238, green: 209, blue: 9, grey: 20, stress_score: 16, verified_by: null },
-  { product_id: "cotton_tshirt", serving_g: 200, month: 7, total: 2512, green: 1491, blue: 560, grey: 461, stress_score: 95, verified_by: null },
+  { product_id: "parle_g_biscuit", serving_g: 100, month: 7, total: 319, green: 253, blue: 35, grey: 31, stress_score: 50, verified_by: null },
+  { product_id: "okra_raw", serving_g: 250, month: 7, total: 91, green: 61, blue: 6, grey: 24, stress_score: 18, verified_by: null },
+  { product_id: "biryani_chicken", serving_g: 350, month: 7, total: 281, green: 208, blue: 38, grey: 35, stress_score: 52, verified_by: null },
+  { product_id: "dal_tadka", serving_g: 200, month: 7, total: 238, green: 209, blue: 9, grey: 20, stress_score: 20, verified_by: null },
+  { product_id: "cotton_raw", serving_g: 1000, month: 7, total: 4396, green: 2609, blue: 980, grey: 807, stress_score: 98, verified_by: null },
 ];
 
 describe("golden: the five locked demo items", () => {

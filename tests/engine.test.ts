@@ -6,7 +6,7 @@ import { score, householdDays, LPCD_BENCHMARK } from "../engine/scoring.ts";
 import { seasonForMonth } from "../engine/season.ts";
 import { sourceCrop } from "../engine/sourcing.ts";
 import { DataMissingError } from "../engine/errors.ts";
-import { calculateProduct, catalogDistribution, allProducts } from "../repo/db.ts";
+import { calculateProduct, catalogDistribution, allProducts, visibleProducts } from "../repo/db.ts";
 import type { GwStress, ProductionShare } from "../engine/types.ts";
 
 /**
@@ -237,7 +237,9 @@ describe("calculate — end to end", () => {
   });
 
   it("never suggests a swap that costs more water", () => {
-    for (const p of allProducts()) {
+    // Visible products only: pure animal products now refuse to price at all
+    // (no citable footprint), which is asserted in its own test.
+    for (const p of visibleProducts()) {
       const r = calculateProduct(p.product_id);
       if (r.swap) expect(r.swap.saves_l).toBeGreaterThan(0);
     }
@@ -257,9 +259,11 @@ describe("calculate — end to end", () => {
     expect(r.citations.some((c) => c.includes("Mekonnen"))).toBe(true);
   });
 
-  it("computes every catalogue product without a miss", () => {
+  it("computes every priceable product; all-animal rows are excluded by design", () => {
     const dist = catalogDistribution();
-    expect(dist).toHaveLength(allProducts().length);
+    // The 8 pure animal products refuse (uncited), so the ranking baseline is
+    // every product MINUS those — uncited items must not shape percentiles.
+    expect(dist).toHaveLength(allProducts().length - 8);
     expect(dist.every((v, i) => i === 0 || v >= dist[i - 1])).toBe(true);
   });
 

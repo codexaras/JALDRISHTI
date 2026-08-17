@@ -118,10 +118,27 @@ export function calculate(input: EngineInput): CalculationResult {
 
   const impactByCrop = new Map<string, CropImpact>();
 
+  const excluded: { crop_id: string; name: string }[] = [];
+
   for (const mass of masses) {
     const crop = footprints.get(mass.crop_id);
     if (!crop) {
       throw new DataMissingError("crop", mass.crop_id, `product ${product.product_id}`);
+    }
+
+    // ANIMAL INGREDIENTS CONTRIBUTE NOTHING — and say so.
+    //
+    // Mekonnen & Hoekstra 2011 covers crops only, so every animal figure in
+    // the dataset is uncited. Rule 1 forbids serving an uncited number, and
+    // deleting the dish would punish the user for our data gap — so the dish
+    // stays, the animal ingredient is excluded from the total, the exclusion
+    // is named in the lineage and on the result screen, and confidence drops
+    // to low because the served total is knowingly incomplete.
+    if (crop.is_animal === 1) {
+      excluded.push({ crop_id: mass.crop_id, name: cropName(crop, lang) });
+      fallbacks.push(`${mass.crop_id}:animal_excluded`);
+      dataQuality = worseQuality(dataQuality, "low");
+      continue;
     }
     citations.add(crop.source);
 
@@ -213,6 +230,18 @@ export function calculate(input: EngineInput): CalculationResult {
     });
   }
 
+  // A product whose EVERY ingredient is animal-derived has no citable water at
+  // all. Serving "0 L" would be a fabricated footprint wearing a number, so it
+  // refuses by name instead. These products are hidden from browsing anyway —
+  // this guards the direct-id path.
+  if (excluded.length > 0 && excluded.length === masses.length) {
+    throw new DataMissingError(
+      "crop",
+      product.product_id,
+      "all ingredients are animal-derived — no citable footprint exists (M&H 2011 covers crops only)",
+    );
+  }
+
   if (blueMultiplier !== 1.0 && fallbacks.some((f) => f.endsWith(":national_default"))) {
     fallbacks.push(`season_model_applied:${season}`);
   }
@@ -283,6 +312,7 @@ export function calculate(input: EngineInput): CalculationResult {
     },
     footprint_l: rounded,
     impact_l: impactRounded,
+    excluded_ingredients: excluded,
     confidence,
     stress_score: score(impactRounded, catalogDistribution),
     status,

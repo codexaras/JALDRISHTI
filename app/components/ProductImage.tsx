@@ -21,12 +21,29 @@ export function ProductImage({ productId, alt }: { productId: string; alt: strin
 
   return (
     // Plain <img> on purpose — see the rule note in eslint.config.mjs.
+    //
+    // The containment styles are INLINE, not left to ancestor selectors. This
+    // bug has now happened twice: a tile classed with only the colour variant
+    // ("photo produce0" on Explore, then "mini produce0" on Profile) missed
+    // the `.produce img` rules entirely, so the image rendered at natural
+    // size — a ~900px wheat photo sitting on top of the page. Carrying the
+    // constraint on the element itself means a wrapper only ever needs
+    // position:relative + overflow:hidden, and tests/product-image.test.ts
+    // asserts every wrapper class has exactly that.
     <img
       src={`/img/products/${productId}.jpg`}
       alt={alt}
       loading="lazy"
       decoding="async"
       onError={() => setFailed(true)}
+      style={{
+        position: "absolute",
+        inset: 0,
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+        display: "block",
+      }}
     />
   );
 }

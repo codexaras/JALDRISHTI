@@ -30,7 +30,9 @@ const EVERYDAY = [
   "biryani_chicken",
   "chai",
   "paneer_butter_masala",
-  "cotton_tshirt",
+  // cotton_raw, not the t-shirt: manufactured textiles are out of scope now,
+  // and cotton the CROP keeps the daily-life slot with real Table 3 figures.
+  "cotton_raw",
 ];
 
 export function HomeGrid({ onPick }: { onPick: (name: string) => void }) {

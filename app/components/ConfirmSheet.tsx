@@ -87,7 +87,19 @@ export function ConfirmSheet({
   // Trailing zeros trimmed: 0.25 not 0.250, 1 not 1.000.
   const shown = unit === "kg" ? Number((serving / 1000).toFixed(3)) : serving;
 
-  const chosen = candidates.find((c) => c.product_id === selected);
+  // TIER 4 — dishes and products that CONTAIN the queried crop. A separate
+  // group, never merged into the candidate list: "Rice" is a direct match,
+  // "biryani" is a product containing rice, and the sheet says which is which.
+  const containing = resolved.containing ?? [];
+
+  // The selection can come from either group, so the header lookup covers both.
+  // Ingredient matches carry no fuzzy score — the "N% match" line only renders
+  // where a score exists, and the badge shows the crop's share instead.
+  const chosen:
+    | { product_id: string; name: string; default_serving_g: number; score?: number; matched_on?: string }
+    | undefined =
+    candidates.find((c) => c.product_id === selected) ??
+    containing.find((m) => m.product_id === selected);
 
   // A scanned packet is confirmable through its ingredients even with no
   // catalogue match — that is the whole point of reading the label.
@@ -119,7 +131,7 @@ export function ConfirmSheet({
               {resolved.brand ? `${resolved.brand} · ` : ""}
               {resolved.ean ? `EAN ${resolved.ean}` : (chosen?.matched_on ?? "")}
             </p>
-            {chosen && <b>{chosen.score}% match</b>}
+            {chosen && chosen.score !== undefined && <b>{chosen.score}% match</b>}
           </div>
         </div>
 
@@ -158,6 +170,47 @@ export function ConfirmSheet({
                 Not in our data: <b>{resolved.unmatched_tags!.slice(0, 4).join(", ")}</b>
               </span>
             )}
+          </div>
+        )}
+
+        {/* Grouped dropdown: the direct crop match sits above in `candidates`;
+            this block is "Products containing rice" — every visible product
+            whose recipe includes the queried crop, ranked by the crop's share.
+            The badge shows that share ("62% rice"); a share that rounds to
+            zero shows no figure at all rather than a meaningless "0%". */}
+        {containing.length > 0 && (
+          <div className="matches">
+            <small>
+              {t("search.containing", { name: resolved.containing_crop?.name ?? "" }).toUpperCase()}
+            </small>
+            {containing.slice(0, 5).map((m) => (
+              <button
+                type="button"
+                key={m.product_id}
+                onClick={() => {
+                  setSelected(m.product_id);
+                  setServing(m.default_serving_g);
+                }}
+                aria-pressed={m.product_id === selected}
+                style={{
+                  border: 0,
+                  background: "none",
+                  padding: 4,
+                  textAlign: "left",
+                  fontWeight: m.product_id === selected ? 700 : 400,
+                }}
+              >
+                {m.name}{" "}
+                {Math.round(m.share_pct) >= 1 && (
+                  <b>
+                    {t("search.sharePct", {
+                      pct: Math.round(m.share_pct),
+                      name: resolved.containing_crop?.name ?? "",
+                    })}
+                  </b>
+                )}
+              </button>
+            ))}
           </div>
         )}
 

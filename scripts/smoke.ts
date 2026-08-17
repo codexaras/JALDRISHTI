@@ -79,7 +79,6 @@ async function searchChecks() {
     // The Hindi word for the fibre resolves to the fibre, not to a garment
     // made from it — searching "cotton" should not jump to a t-shirt.
     ["कपास", "hi", "cotton_raw"],
-    ["t-shirt", "en", "cotton_tshirt"],
   ];
   for (const [q, lang, expected] of cases) {
     const hits = await get<Candidate[]>(`/api/product/search?q=${encodeURIComponent(q)}&lang=${lang}`);
@@ -90,6 +89,11 @@ async function searchChecks() {
       top ? `${top.product_id} @ ${Math.round(top.score * 100)}%` : "no match",
     );
   }
+
+  // Manufactured textiles are out of scope — the garment must not resolve.
+  const tshirt = await get<Candidate[]>("/api/product/search?q=t-shirt&lang=en");
+  check("hidden garment unreachable from search", !tshirt.some((h) => h.product_id === "cotton_tshirt"),
+    tshirt[0] ? `top: ${tshirt[0].product_id}` : "no results");
 
   const junk = await get<Candidate[]>("/api/product/search?q=zzqqxx&lang=en");
   check("nonsense returns no confident hit", junk.every((h) => !h.confident), `${junk.length} suggestions, none confident`);
@@ -131,8 +135,8 @@ async function footprintChecks() {
   check("every source is labelled", labelled, punjab.sources.map((s) => `${s.state}(${s.level})`).join(" "));
 
   // non-food, the "daily life" clause
-  const shirt = await post<Result>("/api/calculate", { product_id: "cotton_tshirt", lang: "en" });
-  check("cotton t-shirt calculates", shirt.footprint_l.total > 0, `${shirt.footprint_l.total} L`);
+  const shirt = await post<Result>("/api/calculate", { product_id: "cotton_raw", lang: "en" });
+  check("cotton (crop) calculates", shirt.footprint_l.total > 0, `${shirt.footprint_l.total} L`);
 
   // Compare, seeded the way the UI seeds it — with a product_id, not a name.
   interface Compare { items: { product: { id: string } }[]; best: string; ranked_by: string }
@@ -188,7 +192,7 @@ async function waterScreenChecks() {
 
   // The home grid's curated picks must all still exist.
   const ids = new Set(cat.items.map((i) => i.product_id));
-  const everyday = ["roti", "dal_tadka", "biryani_chicken", "chai", "paneer_butter_masala", "cotton_tshirt"];
+  const everyday = ["roti", "dal_tadka", "biryani_chicken", "chai", "paneer_butter_masala", "cotton_raw"];
   const missing = everyday.filter((id) => !ids.has(id));
   check("home grid picks all resolve", missing.length === 0, missing.length ? `missing: ${missing.join(", ")}` : "all 6 present");
 }

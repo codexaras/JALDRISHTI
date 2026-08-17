@@ -8,7 +8,15 @@
  * is Python-only, and the JS alternatives bundle poorly into a Worker for what
  * amounts to two well-understood string metrics.
  */
-import { allAliases, visibleProducts, productName } from "../repo/db.ts";
+import {
+  allAliases,
+  cropName,
+  getCrop,
+  getIngredients,
+  productsContaining,
+  productName,
+  visibleProducts,
+} from "../repo/db.ts";
 import type { Lang, Product } from "../engine/types.ts";
 
 export interface Candidate {
@@ -191,4 +199,70 @@ export function resolveText(query: string, lang: Lang = "en", limit = 8): Candid
     })
     .sort((a, b) => b.score - a.score || a.name.localeCompare(b.name))
     .slice(0, limit);
+}
+
+// ─── TIER 4: ingredient match ───────────────────────────────────────────────
+
+export interface IngredientMatch {
+  product_id: string;
+  /** Localised per the active lang, falling back to name_en. */
+  name: string;
+  /** The crop's share of the product, from raw_grams_per_100g. */
+  share_pct: number;
+  default_serving_g: number;
+}
+
+export interface IngredientMatches {
+  crop: { crop_id: string; name: string };
+  matches: IngredientMatch[];
+}
+
+/**
+ * When a query resolves to a base crop, every visible product whose recipe
+ * includes that crop — searching "rice" surfaces biryani, poha and idli
+ * alongside rice itself.
+ *
+ * This tier ADDS to the exact → prefix → fuzzy cascade, it never replaces it:
+ * `resolveText` still returns the direct candidates, and this returns the
+ * "products containing X" group to show beneath them.
+ *
+ * The gate is deliberate: the top cascade hit must be CONFIDENT and be a
+ * `raw_crop` product. "biryani" is a dish, not a crop, so it gets no tier 4;
+ * a garbled query below the threshold gets suggestions, never an ingredient
+ * expansion built on a guess. Crop-level scope (visible, non-animal, food) is
+ * enforced inside `productsContaining` — the shared helper, not a local copy.
+ */
+export function ingredientMatches(query: string, lang: Lang = "en", limit = 8): IngredientMatches | null {
+  const [top] = resolveText(query, lang, 1);
+  if (!top || !top.confident) return null;
+
+  const product = productsById().get(top.product_id);
+  if (!product || product.type !== "raw_crop") return null;
+
+  // A raw crop product carries exactly one ingredient row — its crop.
+  let cropId: string;
+  try {
+    const rows = getIngredients(product.product_id);
+    if (rows.length !== 1) return null;
+    cropId = rows[0].crop_id;
+  } catch {
+    return null;
+  }
+  const crop = getCrop(cropId);
+  if (!crop) return null;
+
+  const matches = productsContaining(cropId)
+    // The crop itself is the direct match in the cascade above — repeating it
+    // under "products containing" would list rice as containing rice.
+    .filter((row) => row.product.product_id !== product.product_id)
+    .slice(0, limit)
+    .map((row) => ({
+      product_id: row.product.product_id,
+      name: productName(row.product, lang),
+      share_pct: row.raw_grams_per_100g,
+      default_serving_g: row.product.default_serving_g,
+    }));
+
+  if (matches.length === 0) return null;
+  return { crop: { crop_id: cropId, name: cropName(crop, lang) }, matches };
 }

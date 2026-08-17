@@ -1,7 +1,7 @@
-import { getProduct, logMissing, productName } from "../../../repo/db.ts";
+import { getProduct, isVisible, logMissing, productName } from "../../../repo/db.ts";
 import { resolveBarcode } from "../../../resolvers/barcode.ts";
 import { resolveImage } from "../../../resolvers/vision.ts";
-import { resolveText, CONFIDENT_THRESHOLD } from "../../../resolvers/textmatch.ts";
+import { resolveText, ingredientMatches, CONFIDENT_THRESHOLD } from "../../../resolvers/textmatch.ts";
 import { bad, fail, isDemo, langOf, ok } from "../_lib/respond.ts";
 import { loadDemoBarcode } from "../_lib/demo.ts";
 import type { Lang } from "../../../engine/types.ts";
@@ -46,6 +46,10 @@ export async function POST(request: Request): Promise<Response> {
         const q = (body.value ?? "").trim();
         if (!q) return bad("value is required");
         const candidates = resolveText(q, lang, 8);
+        // TIER 4 — when the query is a base crop, also offer every visible
+        // product containing it, ranked by the crop's share. Additive: the
+        // cascade's candidates above are untouched.
+        const containing = ingredientMatches(q, lang, 8);
         return ok({
           input_type: body.input_type,
           query: q,
@@ -55,6 +59,8 @@ export async function POST(request: Request): Promise<Response> {
             ...c,
             default_serving_g: safeServing(c.product_id),
           })),
+          containing: containing?.matches ?? [],
+          containing_crop: containing?.crop,
           quality: "high" as const,
         });
       }
@@ -133,10 +139,24 @@ export async function POST(request: Request): Promise<Response> {
           },
           lang,
         });
+        // A match on an out-of-scope product must say so, not vanish —
+        // "we found a t-shirt, but this tool covers agricultural products
+        // only" is an answer; silence reads as a broken camera.
+        const filtered = {
+          items: result.items.map((i) => ({
+            ...i,
+            candidates: (i.candidates ?? [])
+              .filter((c) => isVisible(c.product_id))
+              .map((c) => ({ ...c, default_serving_g: safeServing(c.product_id) })),
+          })),
+        };
+        const droppedAll =
+          result.items.length > 0 && filtered.items.every((i) => i.candidates.length === 0);
+
         return ok({
           input_type: "image",
           ok: result.ok,
-          error: result.error,
+          error: droppedAll ? "out_of_scope" : result.error,
           provider: result.provider,
           confident: result.ok && result.items.some((i) => i.confidence >= 0.6),
           // A photo's candidates hang off each detected item, but every other
@@ -144,13 +164,7 @@ export async function POST(request: Request): Promise<Response> {
           // so all four branches have one shape — the confirmation sheet used
           // to crash reading `.length` off the key this branch omitted.
           candidates: [],
-          items: result.items.map((i) => ({
-            ...i,
-            candidates: (i.candidates ?? []).map((c) => ({
-              ...c,
-              default_serving_g: safeServing(c.product_id),
-            })),
-          })),
+          items: filtered.items,
           quality: "medium" as const,
         });
       }

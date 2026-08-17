@@ -48,6 +48,18 @@ export interface ResolveResult {
   ok?: boolean;
   error?: string;
   items?: { name: string; est_grams: number; confidence: number; candidates: Candidate[] }[];
+  // TIER 4 — text search only: visible products whose recipe includes the
+  // queried crop, ranked by that crop's share. Empty for non-crop queries.
+  containing?: IngredientMatch[];
+  containing_crop?: { crop_id: string; name: string };
+}
+
+export interface IngredientMatch {
+  product_id: string;
+  name: string;
+  /** The crop's share of the product, e.g. 62 for "62% rice". */
+  share_pct: number;
+  default_serving_g: number;
 }
 
 export interface CompareResult {
