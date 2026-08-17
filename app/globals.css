@@ -276,3 +276,76 @@ html[lang="hi"] .primary, html[lang="hi"] .secondary { padding: 13px 16px; }
   .searchShell .searchbox .searchSubmit{position:absolute;top:calc(100% + 10px);left:0;right:0;
     width:100%;height:44px}
 }
+
+/* ── language menu (AMENDMENT_11 §2) ────────────────────────────────────────
+   Replaces a button that cycled through languages — three clicks to reach
+   Tamil, and no way to see the options without passing them. */
+.langMenu{position:relative}
+.langMenu .language{display:inline-flex;align-items:center;gap:6px}
+.langList{position:absolute;top:calc(100% + 8px);right:0;z-index:60;min-width:172px;background:#fff;
+  border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 30px #17352a24;overflow:hidden;padding:4px}
+.langList button{display:flex;align-items:center;gap:8px;width:100%;padding:9px 10px;border:0;background:none;
+  text-align:left;font-size:14px;color:var(--text);border-radius:8px}
+.langList button:hover{background:var(--aqua)}
+.langList button[aria-checked="true"]{font-weight:700;color:var(--green)}
+/* Fixed-width tick column so the labels align whether ticked or not. */
+.langList i{width:15px;flex:none;display:inline-flex;align-items:center;justify-content:center;color:var(--green)}
+
+/* ── local profile (AMENDMENT_11 §1) ────────────────────────────────────────
+   A header control and nothing more — no route is gated by it. */
+.acctMenu{display:flex;align-items:center;gap:6px}
+.acctSignIn{display:inline-flex;align-items:center;gap:6px;border:1px solid #d9ded8;background:#fff;
+  border-radius:20px;padding:7px 14px;font-size:12px;font-weight:600;color:var(--text)}
+.acctSignIn:hover{background:var(--aqua);border-color:var(--aqua)}
+.acctSignOut{width:32px;height:32px;border:0;border-radius:50%;background:transparent;color:var(--muted);
+  display:inline-flex;align-items:center;justify-content:center}
+.acctSignOut:hover{background:var(--aqua);color:var(--green)}
+.acctSheet{max-width:420px}
+.acctSheet label{display:block;margin:14px 0 0;font-size:12px;font-weight:700;color:var(--muted)}
+.acctSheet input{width:100%;margin-top:6px;border:1px solid var(--line);border-radius:10px;
+  padding:11px 13px;font-size:15px;background:#fff}
+.acctNote{font-size:12px;color:var(--muted);margin:6px 0 0}
+.acctHint{display:block;font-size:11px;color:var(--muted);margin-top:7px;line-height:1.5}
+.acctError{color:#a33c33;font-size:12px;font-weight:600;margin:12px 0 0}
+.acctSheet .primary{width:100%;margin-top:18px}
+.acctSwitch{width:100%;border:0;background:none;color:var(--green);font-weight:700;font-size:13px;margin-top:12px}
+.histRow{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:11px 0;
+  border-bottom:1px solid var(--line)}
+.histRow small{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+
+/* ── phone bridge (AMENDMENT_13) ────────────────────────────────────────────
+   The phone is the primary camera; the laptop webcam sits beneath it. */
+.phoneCta{width:100%;margin-top:12px;display:flex;align-items:center;gap:12px;text-align:left;
+  border:1px solid var(--green);background:var(--green);color:#fff;border-radius:13px;padding:14px 16px}
+.phoneCta:hover{background:#164932}
+.phoneCta b{display:block;font-size:14px}
+.phoneCta small{display:block;font-size:11px;opacity:.85;margin-top:2px}
+.bridgeSheet{max-width:420px;text-align:center}
+.bridgeQr{display:inline-block;background:#fff;padding:14px;border-radius:14px;border:1px solid var(--line);margin:16px 0 4px;transition:opacity .25s}
+.bridgeQr.dim{opacity:.28}
+.bridgeNote{font-size:13px;color:var(--muted);margin:10px 0 0;display:flex;align-items:center;justify-content:center;gap:8px}
+.bridgeNote.ok{color:var(--green);font-weight:700}
+.bridgeNote.pulse{animation:bridgePulse 1.8s ease-in-out infinite}
+@keyframes bridgePulse{0%,100%{opacity:1}50%{opacity:.45}}
+@media(prefers-reduced-motion:reduce){.bridgeNote.pulse{animation:none}}
+.bridgeErr{color:#a33c33;font-weight:600;font-size:13px;margin:16px 0}
+.bridgeUrl{display:block;margin-top:16px;font-size:11px;color:var(--muted);text-align:left}
+.bridgeUrl input{width:100%;margin-top:5px;border:1px solid var(--line);border-radius:9px;padding:9px 11px;
+  font-size:11px;font-family:ui-monospace,monospace;background:#f7f8f6;color:var(--text)}
+.bridgeAlt{width:100%;margin-top:18px;border:0;background:none;color:var(--green);font-weight:700;font-size:13px}
+
+/* phone capture page — its own route, nothing existing restyled */
+.mScan{min-height:100vh;display:flex;flex-direction:column;background:var(--cream);color:var(--text)}
+.mHead{background:var(--green);color:#fff;padding:15px 18px;font-size:15px;font-weight:600}
+.mView{flex:1;margin:14px;border-radius:16px;background:#dfe6df;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;color:var(--muted);gap:10px;min-height:280px;overflow:hidden}
+.mIdle p{margin:0;font-size:14px}
+.mCenter{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;text-align:center;gap:12px}
+.mCenter h1{font-size:26px;margin:0}
+.mTick{width:88px;height:88px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center}
+.mNote{color:var(--muted);font-size:14px;margin:0;padding:0 18px;text-align:center}
+.mActions{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:14px 14px 26px}
+.mBtn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:62px;border-radius:14px;
+  border:1px solid var(--green);background:#fff;color:var(--green);font-size:16px;font-weight:700;cursor:pointer}
+.mBtn.primary{background:var(--green);color:#fff}
+.mBtn:disabled{opacity:.5}

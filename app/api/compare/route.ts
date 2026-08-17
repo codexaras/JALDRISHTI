@@ -1,4 +1,4 @@
-import { allProducts, calculateProduct } from "../../../repo/db.ts";
+import { visibleProducts, calculateProduct } from "../../../repo/db.ts";
 import { resolveText } from "../../../resolvers/textmatch.ts";
 import { bad, fail, intOf, langOf, ok } from "../_lib/respond.ts";
 import type { CalculationResult } from "../../../engine/types.ts";
@@ -34,7 +34,7 @@ export async function GET(request: Request): Promise<Response> {
   try {
     const items: CalculationResult[] = [];
     const unresolved: string[] = [];
-    const knownIds = new Set(allProducts().map((p) => p.product_id));
+    const knownIds = new Set(visibleProducts().map((p) => p.product_id));
 
     for (const name of names) {
       // An exact product_id wins before any fuzzy matching.

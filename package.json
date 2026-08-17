@@ -20,13 +20,16 @@
     "test:vision": "node --experimental-strip-types scripts/test-vision.ts",
     "smoke": "node --experimental-strip-types scripts/smoke.ts",
     "images:fetch": "node --experimental-strip-types scripts/fetch-images.ts",
-    "images:download": "node scripts/download-images.mjs"
+    "images:download": "node scripts/download-images.mjs",
+    "preflight": "node scripts/preflight.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.117.1",
     "@svg-maps/india": "^2.0.0",
     "drizzle-orm": "0.45.2",
+    "html5-qrcode": "^2.3.8",
     "lucide-react": "^1.31.0",
+    "qrcode.react": "^4.2.0",
     "react": "19.2.6",
     "react-dom": "19.2.6"
   },

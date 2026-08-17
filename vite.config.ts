@@ -46,9 +46,20 @@ export default defineConfig(async () => {
   const { cloudflare } = await import("@cloudflare/vite-plugin");
 
   return {
-    server: isCodexSeatbeltSandbox
-      ? { watch: { useFsEvents: false, usePolling: true } }
-      : undefined,
+    server: {
+      // AMENDMENT_13: the phone reaches the laptop over the LAN, so the dev
+      // server has to listen on every interface — Vite binds to localhost only
+      // by default, and the QR would point at a host nothing can reach.
+      //
+      // This exposes the dev server to your local network while it runs. That
+      // is the point of the feature, but it is worth knowing on shared WiFi.
+      host: true,
+      // Cloudflare Tunnel hands out a random *.trycloudflare.com hostname, and
+      // Vite rejects unknown Host headers by default — §6 Option A would fail
+      // with "Blocked request" before the QR was ever scanned. Dev server only.
+      allowedHosts: true as const,
+      ...(isCodexSeatbeltSandbox ? { watch: { useFsEvents: false, usePolling: true } } : {}),
+    },
     plugins: [
       vinext(),
       sites(),
