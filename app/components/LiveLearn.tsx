@@ -28,16 +28,15 @@ import { api, type CompareResult } from "../lib/client.ts";
 import { useLang } from "../lib/i18n-client.tsx";
 import { CGWB_SAFE_THRESHOLD } from "../../engine/stress.ts";
 import {
-  ARTICLE,
-  FAQ,
-  GLOSSARY,
-  GUIDE,
-  MYTHS,
-  QUIZ,
   estimateListenMinutes,
+  learnContent,
   listenScript,
+  type LearnContent,
   type StatRef,
 } from "../lib/learn-content.ts";
+
+/** BCP-47 voices for Web Speech, per UI language. */
+const TTS_LANG: Record<string, string> = { en: "en-IN", hi: "hi-IN", mr: "mr-IN", ta: "ta-IN" };
 
 type View = "hub" | "guide" | "article" | "quiz" | "glossary";
 
@@ -82,7 +81,7 @@ function StatLine({ stat, stats }: { stat: StatRef; stats: LearnStats | null }) 
 
 // ─── §8 Listen — Web Speech, hidden where unsupported ───────────────────────
 
-function useListen(text: string) {
+function useListen(text: string, lang: string) {
   const [supported, setSupported] = useState(false);
   const [state, setState] = useState<"idle" | "playing" | "paused">("idle");
 
@@ -101,14 +100,12 @@ function useListen(text: string) {
     if (state === "paused") { synth.resume(); setState("playing"); return; }
     synth.cancel();
     const u = new SpeechSynthesisUtterance(text);
-    // The prose is English (§9 — translations pending native review), so the
-    // voice is en-IN regardless of UI language; anything else reads gibberish.
-    u.lang = "en-IN";
+    u.lang = TTS_LANG[lang] ?? "en-IN";
     u.onend = () => setState("idle");
     u.onerror = () => setState("idle");
     synth.speak(u);
     setState("playing");
-  }, [text, state]);
+  }, [text, state, lang]);
 
   const pause = useCallback(() => { window.speechSynthesis.pause(); setState("paused"); }, []);
   const stop = useCallback(() => { window.speechSynthesis.cancel(); setState("idle"); }, []);
@@ -198,10 +195,12 @@ export function LiveLearn({ onPick }: { onPick: (name: string) => void }) {
   const { t, lang } = useLang();
   const [view, setView] = useState<View>("hub");
   const stats = useLearnStats();
+  const content = useMemo(() => learnContent(lang), [lang]);
+  const { MYTHS, GUIDE, QUIZ, FAQ, GLOSSARY } = content;
 
-  const script = useMemo(() => listenScript(), []);
+  const script = useMemo(() => listenScript(lang), [lang]);
   const minutes = useMemo(() => estimateListenMinutes(script), [script]);
-  const listen = useListen(script);
+  const listen = useListen(script, lang);
 
   // Leaving any view stops the narration (§8: stop on navigation away).
   const go = (v: View) => { listen.stop(); setView(v); };
@@ -220,20 +219,19 @@ export function LiveLearn({ onPick }: { onPick: (name: string) => void }) {
 
   // ─────────────────────────────────────────────────────────────── guide ──
   if (view === "guide") {
-    return <Guide stats={stats} onBack={() => go("hub")} onPick={onPick} englishNote={englishNote} />;
+    return <Guide content={content} stats={stats} onBack={() => go("hub")} onPick={onPick} />;
   }
   if (view === "article") {
-    return <Article stats={stats} onBack={() => go("hub")} onPick={onPick} englishNote={englishNote} />;
+    return <Article content={content} stats={stats} onBack={() => go("hub")} onPick={onPick} />;
   }
   if (view === "quiz") {
-    return <Quiz onBack={() => go("hub")} onPick={onPick} englishNote={englishNote} />;
+    return <Quiz content={content} onBack={() => go("hub")} onPick={onPick} />;
   }
   if (view === "glossary") {
     return (
       <section className="appPage">
         <button className="learnBack" onClick={() => go("hub")}><ArrowLeft size={16} strokeWidth={2} /> {t("learn.back")}</button>
         <div className="pageIntro"><span className="overline">{t("learn.glossary").toUpperCase()}</span><h1>{t("learn.glossary")}</h1></div>
-        {englishNote}
         <div className="glossaryGrid">
           {GLOSSARY.map((g) => (
             <div key={g.id} className="glossaryTerm" id={`term-${g.id}`}>
@@ -251,9 +249,9 @@ export function LiveLearn({ onPick }: { onPick: (name: string) => void }) {
   return (
     <section className="appPage">
       <div className="learnHero">
-        <span className="overline light">LEARN WITH JALDRISHTI</span>
-        <h1>Understanding<br />water footprints</h1>
-        <p>Simple stories and clear science for a water-aware future.</p>
+        <span className="overline light">{t("learn.overline")}</span>
+        <h1>{t("learn.hero1")}<br />{t("learn.hero2")}</h1>
+        <p>{t("learn.heroSub")}</p>
         {/* Hidden entirely where speech synthesis is unsupported — a broken
             control is worse than none. Duration computed, never hardcoded. */}
         {listen.supported && (
@@ -269,34 +267,33 @@ export function LiveLearn({ onPick }: { onPick: (name: string) => void }) {
           </span>
         )}
       </div>
-      {englishNote}
       <div className="learnGrid">
         <article className="featureLesson">
-          <span>FEATURED GUIDE · {GUIDE.length} STEPS</span>
-          <h2>Where does a crop&rsquo;s water come from?</h2>
-          <p>Follow one drop through monsoon clouds, soil, roots and rivers — and see how green, blue and grey water fit together.</p>
-          <button onClick={() => go("guide")}>Start interactive guide →</button>
+          <span>{t("learn.featuredTag", { count: GUIDE.length }).toUpperCase()}</span>
+          <h2>{t("learn.guideTitle")}</h2>
+          <p>{t("learn.guideCardBody")}</p>
+          <button onClick={() => go("guide")}>{t("learn.startGuide")} →</button>
           <div className="cycle"><i>☁</i><b>↓</b><i>◉</i><b>→</b><i>≈</i></div>
         </article>
         <article>
-          <span>PRODUCT STORY</span>
-          <h3>The journey of a grain of rice</h3>
-          <p>From nursery to harvest, explore how place changes the water story.</p>
-          <button onClick={() => go("article")}>Read story →</button>
+          <span>{t("learn.storyTag").toUpperCase()}</span>
+          <h3>{t("learn.storyTitle")}</h3>
+          <p>{t("learn.storyBody")}</p>
+          <button onClick={() => go("article")}>{t("learn.readStory")} →</button>
         </article>
         <article>
-          <span>QUICK QUIZ · {QUIZ.length} QUESTIONS</span>
-          <h3>What do you know about rainwater?</h3>
-          <p>Test your understanding and grow your learning streak.</p>
-          <button onClick={() => go("quiz")}>Take the quiz →</button>
+          <span>{t("learn.quizTag", { count: QUIZ.length }).toUpperCase()}</span>
+          <h3>{t("learn.quizCardTitle")}</h3>
+          <p>{t("learn.quizCardBody")}</p>
+          <button onClick={() => go("quiz")}>{t("learn.takeQuiz")} →</button>
         </article>
       </div>
 
       <div className="myth" onMouseEnter={() => setMythPaused(true)} onMouseLeave={() => setMythPaused(false)}>
-        <span>MYTH</span>
+        <span>{t("learn.myth")}</span>
         <h2>&ldquo;{pair.myth}&rdquo;</h2>
         <i>→</i>
-        <span>FACT</span>
+        <span>{t("learn.fact")}</span>
         <p>{pair.fact}</p>
       </div>
       <div className="mythNav">
@@ -308,7 +305,7 @@ export function LiveLearn({ onPick }: { onPick: (name: string) => void }) {
       </div>
 
       <div className="faq">
-        <h2>Frequently asked questions</h2>
+        <h2>{t("learn.faqTitle")}</h2>
         {FAQ.map((f) => (
           <details key={f.q}>
             <summary>{f.q}<span>＋</span></summary>
@@ -323,10 +320,11 @@ export function LiveLearn({ onPick }: { onPick: (name: string) => void }) {
 
 // ─── §3 the stepped guide ───────────────────────────────────────────────────
 
-function Guide({ stats, onBack, onPick, englishNote }: {
-  stats: LearnStats | null; onBack: () => void; onPick: (name: string) => void; englishNote: React.ReactNode;
+function Guide({ content, stats, onBack, onPick }: {
+  content: LearnContent; stats: LearnStats | null; onBack: () => void; onPick: (name: string) => void;
 }) {
   const { t } = useLang();
+  const { GUIDE } = content;
   const [step, setStep] = useState(0);
   const s = GUIDE[step];
   const last = step === GUIDE.length - 1;
@@ -336,9 +334,8 @@ function Guide({ stats, onBack, onPick, englishNote }: {
       <button className="learnBack" onClick={onBack}><ArrowLeft size={16} strokeWidth={2} /> {t("learn.back")}</button>
       <div className="pageIntro">
         <span className="overline">{t("learn.step", { n: step + 1, total: GUIDE.length })}</span>
-        <h1>Where does a crop&rsquo;s water come from?</h1>
+        <h1>{t("learn.guideTitle")}</h1>
       </div>
-      {englishNote}
       {/* The Farmer stepper's own classes — reused, not restyled. */}
       <div className="progress">
         {GUIDE.map((g, i) => (
@@ -365,10 +362,11 @@ function Guide({ stats, onBack, onPick, englishNote }: {
 
 // ─── §4 the article, with live comparison ───────────────────────────────────
 
-function Article({ stats, onBack, onPick, englishNote }: {
-  stats: LearnStats | null; onBack: () => void; onPick: (name: string) => void; englishNote: React.ReactNode;
+function Article({ content, stats, onBack, onPick }: {
+  content: LearnContent; stats: LearnStats | null; onBack: () => void; onPick: (name: string) => void;
 }) {
   const { t, n, lang } = useLang();
+  const { ARTICLE } = content;
   const [cmp, setCmp] = useState<CompareResult | null>(null);
 
   useEffect(() => {
@@ -403,10 +401,9 @@ function Article({ stats, onBack, onPick, englishNote }: {
     <section className="appPage">
       <button className="learnBack" onClick={onBack}><ArrowLeft size={16} strokeWidth={2} /> {t("learn.back")}</button>
       <div className="pageIntro">
-        <span className="overline">PRODUCT STORY</span>
-        <h1>The journey of a grain of rice</h1>
+        <span className="overline">{t("learn.storyTag").toUpperCase()}</span>
+        <h1>{t("learn.storyTitle")}</h1>
       </div>
-      {englishNote}
       <div className="learnArticle">
         {ARTICLE.map((sec) => (
           <div key={sec.id} className={sec.widget === "bajra-callout" ? "bajraCallout" : "learnSection"}>
@@ -416,7 +413,7 @@ function Article({ stats, onBack, onPick, englishNote }: {
             {sec.widget === "compare-table" && cmp && (
               <table className="learnTable">
                 <thead>
-                  <tr><th /><th>Green</th><th>Blue</th><th>Grey</th><th>Total</th></tr>
+                  <tr><th /><th>{t("water.green")}</th><th>{t("water.blue")}</th><th>{t("water.grey")}</th><th>{t("learn.total")}</th></tr>
                 </thead>
                 <tbody>
                   {cmp.items.map((i) => (
@@ -436,9 +433,9 @@ function Article({ stats, onBack, onPick, englishNote }: {
               <div className="learnBars">
                 {cmp.items.filter((i) => i.product.id !== "wheat_raw").map(bar)}
                 <small>
-                  <i style={{ background: "var(--leaf)" }} /> rain &nbsp;
-                  <i style={{ background: "var(--blue)" }} /> irrigation &nbsp;
-                  <i style={{ background: grey }} /> dilution — the blue segment is the one an aquifer feels
+                  <i style={{ background: "var(--leaf)" }} /> {t("learn.legendRain")} &nbsp;
+                  <i style={{ background: "var(--blue)" }} /> {t("learn.legendIrrigation")} &nbsp;
+                  <i style={{ background: grey }} /> {t("learn.legendDilution")}
                 </small>
               </div>
             )}
@@ -454,10 +451,11 @@ function Article({ stats, onBack, onPick, englishNote }: {
 
 // ─── §5 the quiz ────────────────────────────────────────────────────────────
 
-function Quiz({ onBack, onPick, englishNote }: {
-  onBack: () => void; onPick: (name: string) => void; englishNote: React.ReactNode;
+function Quiz({ content, onBack, onPick }: {
+  content: LearnContent; onBack: () => void; onPick: (name: string) => void;
 }) {
   const { t } = useLang();
+  const { QUIZ } = content;
   const [index, setIndex] = useState(0);
   const [picked, setPicked] = useState<number | null>(null);
   const [score, setScore] = useState(0);
@@ -487,7 +485,7 @@ function Quiz({ onBack, onPick, englishNote }: {
       <section className="appPage">
         <button className="learnBack" onClick={onBack}><ArrowLeft size={16} strokeWidth={2} /> {t("learn.back")}</button>
         <div className="pageIntro">
-          <span className="overline">QUICK QUIZ</span>
+          <span className="overline">{t("learn.quizTagShort").toUpperCase()}</span>
           <h1>{t("learn.quizScore", { score, total: QUIZ.length })}</h1>
           <p>{QUIZ[QUIZ.length - 1].explanation}</p>
         </div>
@@ -505,7 +503,6 @@ function Quiz({ onBack, onPick, englishNote }: {
         <span className="overline">{t("learn.step", { n: index + 1, total: QUIZ.length })}</span>
         <h1>{q.question}</h1>
       </div>
-      {englishNote}
       <div className="quizOptions">
         {q.options.map((opt, i) => {
           const revealed = picked !== null;

@@ -27,7 +27,7 @@ import {
   visibleProducts,
 } from "../../../repo/db.ts";
 import { resolveText } from "../../../resolvers/textmatch.ts";
-import { GLOSSARY } from "../../lib/learn-content.ts";
+import { learnContent } from "../../lib/learn-content.ts";
 import { t } from "../../../i18n/index.ts";
 import type { Crop, GwStress, Lang } from "../../../engine/types.ts";
 
@@ -194,13 +194,13 @@ export function findCrops(question: string, lang: Lang): { productId: string; cr
   return [...found.values()];
 }
 
-export function findConcepts(question: string): { term: string; definition: string }[] {
+export function findConcepts(question: string, lang: Lang = "en"): { term: string; definition: string }[] {
   const q = question.toLowerCase();
   const ids = new Set<string>();
   for (const [phrase, id] of Object.entries(CONCEPT_VARIANTS)) {
     if (q.includes(phrase.toLowerCase())) ids.add(id);
   }
-  return GLOSSARY.filter((g) => ids.has(g.id)).map((g) => ({ term: g.term, definition: g.definition }));
+  return learnContent(lang).GLOSSARY.filter((g) => ids.has(g.id)).map((g) => ({ term: g.term, definition: g.definition }));
 }
 
 // ─── retrieval ──────────────────────────────────────────────────────────────
@@ -235,7 +235,7 @@ const toCropCtx = (crop: Crop, lang: Lang): CropContext => ({
 export function retrieve(question: string, lang: Lang, result?: ResultContext): Retrieved {
   const states = findStates(question);
   const cropsFound = findCrops(question, lang);
-  const concepts = findConcepts(question);
+  const concepts = findConcepts(question, lang);
   const missing: string[] = [];
 
   // Sources — the citation list, no figures involved.

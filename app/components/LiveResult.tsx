@@ -20,13 +20,8 @@ import { AskWaterAI } from "./AskWaterAI.tsx";
 import { SourcesMap } from "./SourcesMap.tsx";
 import { ProductImage } from "./ProductImage.tsx";
 import { soeLabel, soeNote } from "../lib/soe.ts";
-import { GLOSSARY } from "../lib/learn-content.ts";
+import { learnContent } from "../lib/learn-content.ts";
 import type { CalculationResult } from "../../engine/types.ts";
-
-const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-
-/** Glossary definition by id — feeds the term tooltips (AMENDMENT_14 §7). */
-const gloss = (id: string) => GLOSSARY.find((g) => g.id === id)?.definition;
 
 export function LiveResult({
   result,
@@ -41,8 +36,12 @@ export function LiveResult({
   onCompare: () => void;
   reloading?: boolean;
 }) {
-  const { t, tRef, n } = useLang();
+  const { t, tRef, n, lang } = useLang();
   const [showWhy, setShowWhy] = useState(false);
+
+  /** Glossary definition by id — feeds the term tooltips (AMENDMENT_14 §7). */
+  const glossary = useMemo(() => learnContent(lang).GLOSSARY, [lang]);
+  const gloss = (id: string) => glossary.find((g) => g.id === id)?.definition;
 
   const f = result.footprint_l;
 
@@ -79,7 +78,7 @@ export function LiveResult({
             <h1>{result.product.name}</h1>
             <p>
               {t("result.perServing", { grams: n(result.product.serving_g) })} ·{" "}
-              <span title={gloss(result.lineage.season)}>{result.lineage.season}</span> · {MONTHS[month - 1]}
+              <span title={gloss(result.lineage.season)}>{t(`season.${result.lineage.season}`)}</span> · {t(`month.${month}`)}
             </p>
             <span className="confidence">● {t(`confidence.${result.confidence.quality}`)}</span>
           </div>

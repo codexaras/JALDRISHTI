@@ -1,16 +1,18 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import {
-  ARTICLE,
-  FAQ,
-  GLOSSARY,
-  GUIDE,
-  MYTHS,
-  QUIZ,
   SPOKEN_WORDS_PER_MINUTE,
   estimateListenMinutes,
+  learnContent,
   listenScript,
 } from "../app/lib/learn-content.ts";
+import en from "../i18n/en.json" with { type: "json" };
+import hi from "../i18n/hi.json" with { type: "json" };
+import mr from "../i18n/mr.json" with { type: "json" };
+import ta from "../i18n/ta.json" with { type: "json" };
+
+// The English content, resolved exactly the way the UI resolves it.
+const { ARTICLE, FAQ, GLOSSARY, GUIDE, MYTHS, QUIZ } = learnContent("en");
 import { GET as learnStats } from "../app/api/learn/stats/route.ts";
 import { getCrop, allDistricts } from "../repo/db.ts";
 
@@ -31,6 +33,17 @@ describe("AMENDMENT_14: numbers come from the database, not the prose", () => {
     expect(litreClaims).toEqual([]);
     // And no "per kg" figure sneaks in as e.g. "1,673 L/kg".
     expect(source).not.toMatch(/\d[\d,]{2,}\s*L\s*\/\s*kg/i);
+  });
+
+  it("the learn.* prose in every language bundle hardcodes no litre figure", () => {
+    // The prose moved into i18n — the ban moves with it, in all four scripts.
+    for (const [name, bundle] of Object.entries({ en, hi, mr, ta })) {
+      for (const [key, value] of Object.entries(bundle as Record<string, string>)) {
+        if (!key.startsWith("learn.")) continue;
+        const claims = value.match(/\d[\d,]{2,}\s*(?:L\b|litres|liters|लीटर|லிட்டர்)/gi) ?? [];
+        expect(claims, `${name}:${key}`).toEqual([]);
+      }
+    }
   });
 
   it("stat references point at crops and fields that exist", () => {
@@ -121,6 +134,6 @@ describe("AMENDMENT_14: listen duration is computed, never hardcoded", () => {
   });
 
   it("the hub script is substantial enough to be worth a listen button", () => {
-    expect(estimateListenMinutes(listenScript())).toBeGreaterThanOrEqual(2);
+    expect(estimateListenMinutes(listenScript("en"))).toBeGreaterThanOrEqual(2);
   });
 });
