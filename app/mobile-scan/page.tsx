@@ -11,8 +11,19 @@
  */
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Camera, ScanBarcode, Check, RotateCcw } from "lucide-react";
+import { useLang } from "../lib/i18n-client.tsx";
+import { LANGS } from "../../i18n/index.ts";
+import type { Lang } from "../../engine/types.ts";
 
 type Phase = "checking" | "invalid" | "ready" | "sending" | "sent" | "error";
+
+/**
+ * `note` holds an i18n KEY when the message is ours, or a raw string when it
+ * came from the server body. Rendering resolves the first and passes the
+ * second through — so a translated UI never blocks a server detail.
+ */
+const noteText = (t: (k: string) => string, note: string) =>
+  note.startsWith("phone.") ? t(note) : note;
 
 /** Longest edge 1024, JPEG 0.85 — a 4 MB phone photo becomes roughly 200 KB. */
 async function shrink(file: Blob): Promise<{ base64: string; width: number; height: number }> {
@@ -30,6 +41,7 @@ async function shrink(file: Blob): Promise<{ base64: string; width: number; heig
 }
 
 export default function MobileScan() {
+  const { t, setLang } = useLang();
   const [phase, setPhase] = useState<Phase>("checking");
   const [note, setNote] = useState("");
   const [sessionId, setSessionId] = useState<string | null>(null);
@@ -39,14 +51,20 @@ export default function MobileScan() {
   // Validate the session BEFORE anything touches the camera. A permission
   // prompt on a dead session is the most confusing possible failure (§4).
   useEffect(() => {
-    const id = new URLSearchParams(window.location.search).get("s");
+    const params = new URLSearchParams(window.location.search);
+    // The QR carries the laptop's language, so the phone page opens in the
+    // language the demo is being given in — the phone has no switcher.
+    const qrLang = params.get("lang");
+    if (qrLang && (LANGS as string[]).includes(qrLang)) setLang(qrLang as Lang);
+
+    const id = params.get("s");
     let cancelled = false;
     if (!id) {
       // Deferred: setting state synchronously inside an effect cascades renders.
       void Promise.resolve().then(() => {
         if (cancelled) return;
         setPhase("invalid");
-        setNote("No session in this link.");
+        setNote("phone.noSession");
       });
       return () => { cancelled = true; };
     }
@@ -56,10 +74,11 @@ export default function MobileScan() {
         if (r.ok) { setSessionId(id); setPhase("ready"); return; }
         const body = await r.json().catch(() => ({}));
         setPhase("invalid");
-        setNote(r.status === 410 ? "This code has expired." : (body.error ?? "Session not found."));
+        setNote(r.status === 410 ? "phone.expired" : (body.error ?? "phone.notFound"));
       })
-      .catch(() => { if (!cancelled) { setPhase("invalid"); setNote("Could not reach the computer."); } });
+      .catch(() => { if (!cancelled) { setPhase("invalid"); setNote("phone.unreachable"); } });
     return () => { cancelled = true; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- run once; setLang is stable
   }, []);
 
   const send = useCallback(async (type: "image" | "barcode", value: string) => {
@@ -74,13 +93,13 @@ export default function MobileScan() {
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
         setPhase("error");
-        setNote(body.error ?? "The computer could not read that.");
+        setNote(body.error ?? "phone.pushFail");
         return;
       }
       setPhase("sent");
     } catch {
       setPhase("error");
-      setNote("Lost connection to the computer.");
+      setNote("phone.lost");
     }
   }, [sessionId]);
 
@@ -88,7 +107,7 @@ export default function MobileScan() {
     if (!file) return;
     const shrunk = await shrink(file);
     if (shrunk.width < 200 || shrunk.height < 200) {
-      setNote("That image is too small to read. Move closer and try again.");
+      setNote("phone.tooSmall");
       return;
     }
     await send("image", shrunk.base64);
@@ -116,22 +135,22 @@ export default function MobileScan() {
       );
     } catch {
       setScanning(false);
-      setNote("Could not open the camera for barcodes. Use Photo instead.");
+      setNote("phone.barcodeFail");
     }
   };
 
   useEffect(() => () => { void scannerRef.current?.stop().catch(() => {}); }, []);
 
-  if (phase === "checking") return <main className="mScan"><p className="mNote">Connecting…</p></main>;
+  if (phase === "checking") return <main className="mScan"><p className="mNote">{t("phone.connecting")}</p></main>;
 
   if (phase === "invalid") {
     return (
       <main className="mScan">
         <header className="mHead"><b>JalDrishti</b></header>
         <div className="mCenter">
-          <h1>Can&apos;t use this link</h1>
-          <p className="mNote">{note}</p>
-          <p className="mNote">Generate a new code on the computer and scan it again.</p>
+          <h1>{t("phone.invalidTitle")}</h1>
+          <p className="mNote">{noteText(t, note)}</p>
+          <p className="mNote">{t("phone.regenerate")}</p>
         </div>
       </main>
     );
@@ -140,13 +159,13 @@ export default function MobileScan() {
   if (phase === "sent") {
     return (
       <main className="mScan">
-        <header className="mHead"><b>JalDrishti</b> · Connected</header>
+        <header className="mHead"><b>JalDrishti</b> · {t("phone.connected")}</header>
         <div className="mCenter">
           <span className="mTick"><Check size={44} strokeWidth={2.5} /></span>
-          <h1>Sent to your computer</h1>
-          <p className="mNote">The result is on the laptop screen.</p>
+          <h1>{t("phone.sentTitle")}</h1>
+          <p className="mNote">{t("phone.sentBody")}</p>
           <button className="mBtn" onClick={() => { setPhase("ready"); setNote(""); }}>
-            <RotateCcw size={18} strokeWidth={2} /> Scan another
+            <RotateCcw size={18} strokeWidth={2} /> {t("phone.again")}
           </button>
         </div>
       </main>
@@ -155,27 +174,27 @@ export default function MobileScan() {
 
   return (
     <main className="mScan">
-      <header className="mHead"><b>JalDrishti</b> · Connected</header>
+      <header className="mHead"><b>JalDrishti</b> · {t("phone.connected")}</header>
 
       <div id="barcodeBox" className="mView" style={scanning ? undefined : { display: "none" }} />
       {!scanning && (
         <div className="mView mIdle">
           <Camera size={54} strokeWidth={1.5} />
-          <p>Point at one product</p>
+          <p>{t("phone.point")}</p>
         </div>
       )}
 
-      {note && <p className="mNote">{note}</p>}
-      {phase === "sending" && <p className="mNote">Sending…</p>}
+      {note && <p className="mNote">{noteText(t, note)}</p>}
+      {phase === "sending" && <p className="mNote">{t("phone.sending")}</p>}
 
       <div className="mActions">
         <label className="mBtn primary">
-          <Camera size={22} strokeWidth={2} /> Photo
+          <Camera size={22} strokeWidth={2} /> {t("phone.photo")}
           <input type="file" accept="image/*" capture="environment" hidden
                  onChange={(e) => { void onPhoto(e.target.files?.[0]); e.target.value = ""; }} />
         </label>
         <button className="mBtn" onClick={startBarcode} disabled={scanning}>
-          <ScanBarcode size={22} strokeWidth={2} /> Barcode
+          <ScanBarcode size={22} strokeWidth={2} /> {t("search.barcode")}
         </button>
       </div>
     </main>
