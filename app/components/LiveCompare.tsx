@@ -46,7 +46,7 @@ export function LiveCompare({
     } catch (e) {
       setError(e instanceof Error ? e.message : t("state.generic"));
     } finally { setBusy(false); }
-  }, [lang, servingG, month]);
+  }, [lang, servingG, month, t]);
 
   // Refetch when the language or month changes. `items` and `load` are
   // intentionally omitted: preset changes call load() directly, and including
