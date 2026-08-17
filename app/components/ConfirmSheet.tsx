@@ -23,6 +23,15 @@ export interface Confirmed {
   serving_g: number;
   force_state?: string;
   month?: number;
+  /**
+   * A scanned packet's declared ingredients, when there is no catalogue product.
+   *
+   * A barcode resolves to an ingredient list, not a product_id — there are
+   * millions of packets and 168 catalogue rows. Without this the Confirm button
+   * had nothing to submit, so it stayed disabled and the click did nothing at
+   * all: no error, no spinner, because no handler ever ran.
+   */
+  ingredients?: { crop_id: string; raw_grams_per_100g: number; yield_fraction: number; source: string }[];
 }
 
 const STATES = [
@@ -62,8 +71,28 @@ export function ConfirmSheet({
   );
   const [state, setState] = useState("");
 
+  /**
+   * The unit is a DISPLAY choice only. `serving` is always grams, because that
+   * is what the engine takes — converting at the boundary rather than storing
+   * kilograms means a unit switch can never round the mass away.
+   *
+   * Defaults to kg for whole-kilogram servings (raw crops are 1000 g), where
+   * "1 kg" reads better than "1000 grams".
+   */
+  const [unit, setUnit] = useState<"g" | "kg">(() => {
+    const initial = resolved.items?.[0]?.est_grams || candidates[0]?.default_serving_g || resolved.default_serving_g || 100;
+    return initial >= 1000 ? "kg" : "g";
+  });
+
+  // Trailing zeros trimmed: 0.25 not 0.250, 1 not 1.000.
+  const shown = unit === "kg" ? Number((serving / 1000).toFixed(3)) : serving;
+
   const chosen = candidates.find((c) => c.product_id === selected);
-  const canConfirm = Boolean(selected) && serving > 0 && !busy;
+
+  // A scanned packet is confirmable through its ingredients even with no
+  // catalogue match — that is the whole point of reading the label.
+  const scanned = (resolved.ingredients?.length ?? 0) > 0;
+  const canConfirm = (Boolean(selected) || scanned) && serving > 0 && !busy;
 
   return (
     <div className="modalShade" role="dialog" aria-modal="true" aria-label={t("scan.detected")}>
@@ -163,13 +192,24 @@ export function ConfirmSheet({
           <div className="inputGroup">
             <input
               type="number"
-              min={1}
-              value={serving}
-              onChange={(e) => setServing(Math.max(1, Number(e.target.value) || 0))}
+              min={unit === "kg" ? 0.01 : 1}
+              step={unit === "kg" ? 0.05 : 10}
+              value={shown}
+              onChange={(e) => {
+                const typed = Number(e.target.value) || 0;
+                const grams = unit === "kg" ? typed * 1000 : typed;
+                setServing(Math.max(1, Math.round(grams)));
+              }}
               aria-label={t("confirm.quantity")}
             />
-            <select defaultValue="g">
-              <option value="g">grams</option>
+            <select
+              value={unit}
+              onChange={(e) => setUnit(e.target.value as "g" | "kg")}
+              aria-label={t("confirm.quantity")}
+            >
+              {/* Switching unit converts the display, never the mass. */}
+              <option value="g">{t("unit.grams")}</option>
+              <option value="kg">{t("unit.kg")}</option>
             </select>
           </div>
         </label>
@@ -197,6 +237,8 @@ export function ConfirmSheet({
                 name: chosen?.name ?? resolved.name ?? "",
                 serving_g: serving,
                 force_state: state || undefined,
+                // Only when there is no catalogue product to price instead.
+                ingredients: !selected && scanned ? resolved.ingredients : undefined,
               })
             }
           >

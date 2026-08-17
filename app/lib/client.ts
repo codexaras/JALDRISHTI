@@ -41,7 +41,7 @@ export interface ResolveResult {
   name?: string;
   brand?: string;
   estimated_from_ingredient_order?: boolean;
-  ingredients?: { crop_id: string; raw_grams_per_100g: number }[];
+  ingredients?: { crop_id: string; raw_grams_per_100g: number; yield_fraction: number; source: string }[];
   unmatched_tags?: string[];
   default_serving_g?: number;
   // vision
@@ -158,7 +158,10 @@ export const api = {
   }) => request<ResolveResult>("/api/resolve", { method: "POST", body: JSON.stringify(payload) }),
 
   calculate: (payload: {
-    product_id: string;
+    product_id?: string;
+    /** A scanned packet's declared ingredients, when there is no product_id. */
+    ingredients?: { crop_id: string; raw_grams_per_100g: number; yield_fraction: number; source: string }[];
+    name?: string;
     serving_g?: number;
     month?: number;
     lang: Lang;

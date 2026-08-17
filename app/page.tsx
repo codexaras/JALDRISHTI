@@ -2,11 +2,15 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import India from "@svg-maps/india";
-import { api, demoActive, type ResolveResult } from "./lib/client.ts";
+import { api, ApiError, demoActive, type ResolveResult } from "./lib/client.ts";
 import { useLang } from "./lib/i18n-client.tsx";
 import { ConfirmSheet, type Confirmed } from "./components/ConfirmSheet.tsx";
 import { LiveProfile } from "./components/LiveProfile.tsx";
 import { SearchBar } from "./components/SearchBar.tsx";
+import { LanguageMenu } from "./components/LanguageMenu.tsx";
+import { AccountMenu } from "./components/AccountMenu.tsx";
+import { PhoneBridge } from "./components/PhoneBridge.tsx";
+import { recordSearch } from "./lib/account-store.ts";
 import { LiveResult } from "./components/LiveResult.tsx";
 import { LiveCompare } from "./components/LiveCompare.tsx";
 import { BarcodeInput } from "./components/BarcodeInput.tsx";
@@ -14,7 +18,6 @@ import { LiveCamera } from "./components/LiveCamera.tsx";
 import { LiveExplore } from "./components/LiveExplore.tsx";
 import { WaterScreen } from "./components/WaterScreen.tsx";
 import { HomeGrid } from "./components/HomeGrid.tsx";
-import { LANGS, LANG_SHORT } from "../i18n/index.ts";
 import type { CalculationResult } from "../engine/types.ts";
 
 const waterQuotes = ["Every drop carries a story.", "Know water. Value every harvest.", "Awareness is where conservation begins.", "Water connects every field and plate."];
@@ -24,7 +27,7 @@ export default function Home() {
   const [page, setPage] = useState<Page>("home"); const [query, setQuery] = useState("");
   const [scanState, setScanState] = useState<"ready" | "scanning" | "confirm">("ready");
   const [quoteIndex, setQuoteIndex] = useState(0);
-  const { lang, setLang, t } = useLang();
+  const { lang, t } = useLang();
 
   // ── Phase 6a: resolve → CONFIRM → calculate. No path skips the middle step.
   const [resolved, setResolved] = useState<ResolveResult | null>(null);
@@ -61,13 +64,43 @@ export default function Home() {
 
   /** Step 2 — the human has approved an item and a portion. Now we calculate. */
   const confirmAndCalculate = useCallback(async (c: Confirmed) => {
+    // Exhaustively guarded: every exit renders SOMETHING. A click that produces
+    // neither a result nor a message is indistinguishable from a broken app,
+    // which is exactly how the disabled-button bug hid for so long.
     setBusy(true); setError(null);
     try {
-      const r = await api.calculate({ product_id: c.product_id, serving_g: c.serving_g, month, lang, force_state: c.force_state });
+      const r = await api.calculate({
+        // A scanned packet has no catalogue id; its ingredients are the recipe.
+        product_id: c.product_id || undefined,
+        ingredients: c.ingredients,
+        name: c.name,
+        serving_g: c.serving_g,
+        month,
+        lang,
+        force_state: c.force_state,
+      });
+      if (!r || !r.footprint_l) {
+        setError("We received an incomplete result. Please try again.");
+        return;
+      }
       setResult(r); setPending(c); setResolved(null); setScanState("ready"); nav("result");
+      // Local history. A no-op when signed out — browsing anonymously leaves
+      // nothing behind, which is the point of it being optional.
+      recordSearch({ product_id: r.product.id, name: r.product.name, litres: r.footprint_l.total, score: r.stress_score, at: new Date().toISOString() });
     } catch (e) {
-      setError(e instanceof Error ? e.message : "calculation failed");
-    } finally { setBusy(false); }
+      // ApiError carries the structured body, including DATA_MISSING + missing[].
+      const message =
+        e instanceof ApiError
+          ? String((e.body as { message?: string })?.message ?? e.message)
+          : e instanceof Error
+            ? e.message
+            : "Something went wrong. Please try again.";
+      console.error("calculate failed", e);
+      setError(message);
+    } finally {
+      // MUST always run — a stuck spinner is its own kind of dead button.
+      setBusy(false);
+    }
   }, [lang, month]);
 
   /** Season slider — same confirmed item, different month. */
@@ -94,8 +127,8 @@ export default function Home() {
   }, [lang]);
 
   return <main>
-    <header className="topbar"><button className="brand headerBrand" onClick={()=>nav("home")} aria-label="JalDrishti home"><span className="brandCopy"><img className="brandLogo" src="/img/logo.png" alt="JalDrishti" width={614} height={160}/><small className="waterQuote" key={quoteIndex}>{waterQuotes[quoteIndex]}</small></span></button><nav className="desktopnav" aria-label="Primary navigation">{(["home","scan","explore","compare","water","learn"] as Page[]).map(n=><button key={n} className={page===n?"active":""} onClick={()=>nav(n)}>{n==="water"?t("nav.water"):n==="farmer"?"Farmer Calculator":t(`nav.${n}`)}</button>)}</nav><div className="headeractions"><button className="language" onClick={()=>setLang(LANGS[(LANGS.indexOf(lang)+1)%LANGS.length])} aria-label="Change language"><span>अ</span> {LANG_SHORT[lang]}</button><button className="profilebtn" onClick={()=>nav("profile")} aria-label="Profile">AR</button></div></header>
-    {page==="home"&&<HomePage nav={nav} query={query} setQuery={setQuery} onSearch={v=>startResolve("name",v)} onBarcode={v=>startResolve("barcode",v)} onVoice={v=>{setQuery(v);startResolve("voice",v)}} onVoiceInterim={setQuery} busy={busy}/>} {page==="scan"&&<Scanner state={scanState} setState={setScanState} nav={nav} onImage={(b64,mt)=>startResolve("image","",{image:b64,media_type:mt})} onBarcode={v=>startResolve("barcode",v)} busy={busy}/>} {page==="explore"&&<LiveExplore query={query} setQuery={setQuery} onPick={v=>startResolve("name",v)} busy={busy}/>} {page==="result"&&(result?<LiveResult result={result} month={month} onMonthChange={changeMonth} onCompare={()=>nav("compare")} reloading={reloading}/>:<EmptyState title={t("state.empty")} body="Search or scan a product to see its water story." action={()=>nav("home")} actionLabel={t("nav.home")}/>)} {page==="compare"&&<LiveCompare seed={pending?.product_id} servingG={pending?.serving_g} month={month}/>} {page==="water"&&<WaterScreen/>} {page==="farmer"&&<Farmer/>} {page==="learn"&&<Learn/>} {page==="profile"&&<LiveProfile onPick={v=>startResolve("name",v)}/>}
+    <header className="topbar"><button className="brand headerBrand" onClick={()=>nav("home")} aria-label="JalDrishti home"><span className="brandCopy"><img className="brandLogo" src="/img/logo.png" alt="JalDrishti" width={614} height={160}/><small className="waterQuote" key={quoteIndex}>{waterQuotes[quoteIndex]}</small></span></button><nav className="desktopnav" aria-label="Primary navigation">{(["home","scan","explore","compare","water","learn"] as Page[]).map(n=><button key={n} className={page===n?"active":""} onClick={()=>nav(n)}>{n==="water"?t("nav.water"):n==="farmer"?"Farmer Calculator":t(`nav.${n}`)}</button>)}</nav><div className="headeractions"><LanguageMenu/><AccountMenu onOpenProfile={()=>nav("profile")}/></div></header>
+    {page==="home"&&<HomePage nav={nav} query={query} setQuery={setQuery} onSearch={v=>startResolve("name",v)} onBarcode={v=>startResolve("barcode",v)} onVoice={v=>{setQuery(v);startResolve("voice",v)}} onVoiceInterim={setQuery} busy={busy}/>} {page==="scan"&&<Scanner state={scanState} setState={setScanState} nav={nav} onImage={(b64,mt)=>startResolve("image","",{image:b64,media_type:mt})} onBarcode={v=>startResolve("barcode",v)} setResolvedFromBridge={r=>{setResolved(r);setScanState("ready")}} busy={busy}/>} {page==="explore"&&<LiveExplore query={query} setQuery={setQuery} onPick={v=>startResolve("name",v)} busy={busy}/>} {page==="result"&&(result?<LiveResult result={result} month={month} onMonthChange={changeMonth} onCompare={()=>nav("compare")} reloading={reloading}/>:<EmptyState title={t("state.empty")} body="Search or scan a product to see its water story." action={()=>nav("home")} actionLabel={t("nav.home")}/>)} {page==="compare"&&<LiveCompare seed={pending?.product_id} servingG={pending?.serving_g} month={month}/>} {page==="water"&&<WaterScreen/>} {page==="farmer"&&<Farmer/>} {page==="learn"&&<Learn/>} {page==="profile"&&<LiveProfile onPick={v=>startResolve("name",v)}/>}
     {resolved&&<ConfirmSheet resolved={resolved} busy={busy} onConfirm={confirmAndCalculate} onCancel={()=>setResolved(null)}/>}
     {error&&<div className="modalShade" role="presentation"><div className="bottomSheet"><button className="close" onClick={()=>setError(null)}>×</button><span className="success">{t("state.error").toUpperCase()}</span><p style={{marginTop:16,color:"var(--muted)",fontSize:13,lineHeight:1.7}}>{error}</p><div className="sheetActions"><button className="primary" onClick={()=>setError(null)}>{t("state.retry")}</button></div></div></div>}
     {demo&&<div className="demoBadge">● {t("demo.badge")}</div>}
@@ -115,7 +148,7 @@ function HomePage({nav,query,setQuery,onSearch,onBarcode,onVoice,onVoiceInterim,
   <footer><div className="brand inverse"><img className="brandMark" src="/img/logo-mark.png" alt="" width={196} height={256}/><span>Jal<span>Drishti</span></span></div><p>Demo estimates vary with location, season, irrigation, yield and farming practice. They are not direct physical measurements.</p><div><button>Methodology</button><button>Data sources</button><button>Privacy</button></div></footer>
   </>}
 
-function Scanner({state,setState,nav,onImage,onBarcode,busy}:{state:"ready"|"scanning"|"confirm",setState:(s:"ready"|"scanning"|"confirm")=>void,nav:(p:Page)=>void,onImage:(b64:string,mt:string)=>void,onBarcode:(v:string)=>void,busy:boolean}) {return <section className="appPage scanPage"><div className="pageIntro"><span className="overline">CAMERA SCANNER</span><h1>Scan an agricultural product</h1><p>The camera identifies your product; contextual data powers the estimate.</p></div><div className="scannerLayout"><div className={`camera ${state}`}><LiveCamera busy={busy||state==="scanning"} onCapture={(b64,mt)=>{setState("scanning");onImage(b64,mt);setTimeout(()=>setState("ready"),400)}}/><div style={{marginTop:14}}><BarcodeInput onScan={onBarcode} label="Enter a barcode instead"/></div></div><aside className="scanHelp"><h3>For a clearer scan</h3>{[["01","One product at a time","Keep other objects outside the frame."],["02","Use natural light","Avoid strong shadows and glare."],["03","Move a little closer","Fill most of the scanning frame."]].map(x=><div key={x[0]}><b>{x[0]}</b><p><strong>{x[1]}</strong><br/>{x[2]}</p></div>)}<button onClick={()=>nav("explore")}>Search manually instead →</button><small>Supported: cereals, pulses, vegetables, fruits and major cash crops.</small></aside></div></section>}
+function Scanner({state,setState,nav,onImage,onBarcode,setResolvedFromBridge,busy}:{state:"ready"|"scanning"|"confirm",setState:(s:"ready"|"scanning"|"confirm")=>void,nav:(p:Page)=>void,onImage:(b64:string,mt:string)=>void,onBarcode:(v:string)=>void,setResolvedFromBridge:(r:ResolveResult)=>void,busy:boolean}) {return <section className="appPage scanPage"><div className="pageIntro"><span className="overline">CAMERA SCANNER</span><h1>Scan an agricultural product</h1><p>The camera identifies your product; contextual data powers the estimate.</p></div><div className="scannerLayout"><div className={`camera ${state}`}><LiveCamera busy={busy||state==="scanning"} onCapture={(b64,mt)=>{setState("scanning");onImage(b64,mt);setTimeout(()=>setState("ready"),400)}}/><div style={{marginTop:14}}><BarcodeInput onScan={onBarcode} label="Enter a barcode instead"/></div><PhoneBridge onCandidates={setResolvedFromBridge} onUseComputerCamera={()=>{}}/></div><aside className="scanHelp"><h3>For a clearer scan</h3>{[["01","One product at a time","Keep other objects outside the frame."],["02","Use natural light","Avoid strong shadows and glare."],["03","Move a little closer","Fill most of the scanning frame."]].map(x=><div key={x[0]}><b>{x[0]}</b><p><strong>{x[1]}</strong><br/>{x[2]}</p></div>)}<button onClick={()=>nav("explore")}>Search manually instead →</button><small>Supported: cereals, pulses, vegetables, fruits and major cash crops.</small></aside></div></section>}
 
 
 

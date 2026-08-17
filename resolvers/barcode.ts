@@ -98,6 +98,53 @@ function stripLocale(tag: string): string {
 }
 
 /**
+ * Every spelling of a tag worth trying before declaring it unmapped.
+ *
+ * Open Food Facts is crowd-entered and OCR-assisted, so the same ingredient
+ * arrives many ways. A real example from a Lay's packet: the map contains
+ * `iodised-salt`, and OFF sent `"lodised salt"` — a lowercase L where an i
+ * belongs, and a space where a hyphen belongs. Both were reported to the user
+ * as "not in our data", which is a false claim about our own dataset.
+ *
+ * Ordered cheapest-first; the caller takes the first hit.
+ */
+export function tagVariants(raw: string): string[] {
+  const base = stripLocale(raw)
+    .replace(/[\s_]+/g, "-")     // spaces and underscores become hyphens
+    .replace(/-+/g, "-")          // collapse runs
+    .replace(/^-|-$/g, "");
+  if (!base) return [];
+
+  const out = new Set<string>([base]);
+
+  const spellings = (t: string) => {
+    const forms = new Set([t]);
+    // British ↔ American, both directions.
+    for (const [a, b] of [["ised", "ized"], ["isation", "ization"], ["our", "or"], ["ae", "e"]]) {
+      for (const f of [...forms]) {
+        forms.add(f.replaceAll(a, b));
+        forms.add(f.replaceAll(b, a));
+      }
+    }
+    return forms;
+  };
+
+  for (const t of spellings(base)) {
+    out.add(t);
+    // Singular and plural — OFF uses both for the same ingredient.
+    if (t.endsWith("es")) out.add(t.slice(0, -2));
+    if (t.endsWith("s")) out.add(t.slice(0, -1));
+    else out.add(`${t}s`);
+    // OCR confuses l with i at the start of a word ("lodised" for "iodised").
+    // Last resort, and only where it produces a different string.
+    if (t.startsWith("l")) out.add(`i${t.slice(1)}`);
+    out.add(t.replace(/(^|-)l/g, "$1i"));
+  }
+
+  return [...out].filter(Boolean);
+}
+
+/**
  * Zipf weights over ranks, scaled so the ingredients account for 100 g.
  * With n ingredients, ingredient i gets (1/i) / Σ(1/k) of the mass.
  */
@@ -134,7 +181,14 @@ export function mapTags(tags: string[]): {
   for (const raw of tags) {
     const tag = stripLocale(raw);
     if (!tag) continue;
-    const entry = map.get(tag);
+    // Try every spelling before giving up — see tagVariants.
+    let entry = map.get(tag);
+    if (!entry) {
+      for (const variant of tagVariants(raw)) {
+        entry = map.get(variant);
+        if (entry) break;
+      }
+    }
 
     if (entry?.crop_id === NON_CROP) {
       ignored.push(tag);
