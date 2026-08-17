@@ -50,8 +50,8 @@ export function AskWaterAI({ result }: { result: CalculationResult }) {
 
   return (
     <div className="askWater">
-      <span className="overline">ASK WATER AI</span>
-      <h3>Ask about this result</h3>
+      <span className="overline">{t("ask.overline")}</span>
+      <h3>{t("ask.title")}</h3>
 
       <div className="askRow">
         <input
@@ -59,11 +59,11 @@ export function AskWaterAI({ result }: { result: CalculationResult }) {
           onChange={(e) => setQuestion(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && ask(question)}
           placeholder={SUGGESTIONS[lang]?.[0] ?? SUGGESTIONS.en[0]}
-          aria-label="Ask about this result"
+          aria-label={t("ask.title")}
           disabled={busy}
         />
         <button className="primary" onClick={() => ask(question)} disabled={busy || !question.trim()}>
-          {busy ? t("state.loading") : "Ask"}
+          {busy ? t("state.loading") : t("ask.button")}
         </button>
       </div>
 
@@ -80,13 +80,11 @@ export function AskWaterAI({ result }: { result: CalculationResult }) {
       {answer && (
         <p className="askAnswer">
           {answer}
-          {source === "fallback" && <em> — offline answer, from a fixed set of notes.</em>}
+          {source === "fallback" && <em> {t("ask.offline")}</em>}
         </p>
       )}
 
-      <small className="askNote">
-        The assistant only reads the result above. It never calculates a figure of its own.
-      </small>
+      <small className="askNote">{t("ask.note")}</small>
     </div>
   );
 }
