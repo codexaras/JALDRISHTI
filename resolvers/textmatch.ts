@@ -8,7 +8,7 @@
  * is Python-only, and the JS alternatives bundle poorly into a Worker for what
  * amounts to two well-understood string metrics.
  */
-import { allAliases, allProducts, productName } from "../repo/db.ts";
+import { allAliases, visibleProducts, productName } from "../repo/db.ts";
 import type { Lang, Product } from "../engine/types.ts";
 
 export interface Candidate {
@@ -118,7 +118,7 @@ function searchIndex(): Searchable[] {
   if (indexCache) return indexCache;
   const rows: Searchable[] = [];
 
-  for (const p of allProducts()) {
+  for (const p of visibleProducts()) {
     const names: [Lang, string][] = [
       ["en", p.name_en],
       ["hi", p.name_hi],
@@ -147,7 +147,7 @@ function searchIndex(): Searchable[] {
 }
 
 function productsById(): Map<string, Product> {
-  return new Map(allProducts().map((p) => [p.product_id, p]));
+  return new Map(visibleProducts().map((p) => [p.product_id, p]));
 }
 
 /**

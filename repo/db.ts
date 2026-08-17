@@ -127,14 +127,34 @@ export function getIngredients(productId: string): ProductIngredient[] {
   return rows;
 }
 
+/**
+ * Products for BROWSING — the one place visibility is decided.
+ *
+ * AMENDMENT_11 §4: "One shared query helper — do not filter in six places
+ * independently." Search, autocomplete, Explore, Compare and the alias index
+ * all route through this, so a row can never be hidden from one surface and
+ * still appear in another.
+ *
+ * `allProducts` remains the unfiltered set for validation and for anything that
+ * legitimately needs every row.
+ */
+export function visibleProducts(): Product[] {
+  return db.product.filter((p) => p.is_visible !== 0);
+}
+
+export function isVisible(productId: string): boolean {
+  return productById.get(productId)?.is_visible !== 0;
+}
+
 export function allProducts(): Product[] {
   return db.product;
 }
 export function allCrops(): Crop[] {
   return db.crop;
 }
+/** Aliases for hidden products are dropped, or search would reach them anyway. */
 export function allAliases() {
-  return db.alias;
+  return db.alias.filter((a) => isVisible(a.product_id));
 }
 export function allDistricts(): GwStress[] {
   return db.gw_stress;
@@ -374,6 +394,74 @@ export function catalogDistribution(): number[] {
   impacts.sort((a, b) => a - b);
   distributionCache = impacts;
   return impacts;
+}
+
+/**
+ * Calculate an AD-HOC recipe — a scanned packet, not a catalogue product.
+ *
+ * A barcode resolves to the manufacturer's declared ingredient list, and that
+ * product does not exist in our catalogue by design: there are millions of
+ * packets and 168 rows. Previously the confirmation sheet had no `product_id`
+ * to send, so its Confirm button sat permanently disabled and the click did
+ * nothing at all — no error, no spinner, because no handler ever ran.
+ *
+ * This runs the SAME engine over the supplied ingredients. Nothing about the
+ * arithmetic differs; only where the recipe came from. Mass fractions from a
+ * barcode are rank-estimated, so callers pass `resolverQuality: "medium"` and
+ * the result says so.
+ */
+export function calculateRecipe(
+  recipe: { name: string; ingredients: ProductIngredient[] },
+  opts: CalcOptions = {},
+): CalculationResult {
+  const ingredients = recipe.ingredients.filter((i) => cropById.has(i.crop_id));
+  if (ingredients.length === 0) {
+    const err = new DataMissingError("product_ingredient", recipe.name, "no known crops in this recipe");
+    logMissing(err);
+    throw err;
+  }
+
+  const cropIds = new Set(ingredients.map((i) => i.crop_id));
+  const sourcing = new Map<string, ProductionShare[]>();
+  const footprints = new Map<string, Crop>();
+  for (const cropId of cropIds) {
+    const shares = sharesByCrop.get(cropId);
+    if (shares) sourcing.set(cropId, shares);
+    const crop = cropById.get(cropId);
+    if (crop) footprints.set(cropId, crop);
+  }
+
+  const substitutions = new Map<string, Substitution[]>();
+  for (const cropId of cropIds) {
+    const subs = substitutionsByCrop.get(cropId);
+    if (!subs) continue;
+    substitutions.set(cropId, subs);
+    for (const sub of subs) {
+      const target = cropById.get(sub.to_crop);
+      if (target) footprints.set(sub.to_crop, target);
+      const targetShares = sharesByCrop.get(sub.to_crop);
+      if (targetShares) sourcing.set(sub.to_crop, targetShares);
+    }
+  }
+
+  return calculate({
+    product: { product_id: `scanned:${recipe.name}`, name: recipe.name, type: "packaged" },
+    ingredients,
+    sourcing,
+    footprints,
+    cropStates: cropStateByKey,
+    stress: stressByState,
+    substitutions,
+    seasonFactors,
+    equivalences: db.equivalence,
+    servingG: opts.servingG ?? 100,
+    month: opts.month ?? new Date().getUTCMonth() + 1,
+    catalogDistribution: catalogDistribution(),
+    lang: opts.lang ?? "en",
+    // Rank-estimated fractions are never "high" confidence.
+    resolverQuality: opts.resolverQuality ?? "medium",
+    forceState: opts.forceState,
+  });
 }
 
 export function calculateProduct(productId: string, opts: CalcOptions = {}): CalculationResult {

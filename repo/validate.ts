@@ -278,6 +278,30 @@ function checkDailyLifeCoverage(b: Bundle) {
   }
 }
 
+/**
+ * A hidden product must not be one the build depends on.
+ *
+ * `is_visible = 0` removes a row from browsing, so hiding a locked demo item or
+ * a daily-life product would silently amputate a problem-statement clause while
+ * every test still passed on direct-id lookups.
+ */
+function checkVisibility(b: Bundle) {
+  const hidden = new Set(b.product.filter((p) => p.is_visible === 0).map((p) => p.product_id));
+  for (const id of [...DEMO_ITEMS, "cotton_tshirt", "jeans_pair"]) {
+    if (hidden.has(id)) {
+      fail(`product: "${id}" is required by the build but has is_visible = 0`);
+    }
+  }
+  // Cotton and jute are CROPS — grown, harvested, unambiguously agricultural.
+  // Only manufactured garments would ever be out of scope, and they are kept.
+  for (const cropId of ["cotton", "jute"]) {
+    if (!b.crop.some((c) => c.crop_id === cropId)) {
+      fail(`crop: "${cropId}" must remain — it is an agricultural crop, not a manufactured good`);
+    }
+  }
+  warn(`visibility: ${hidden.size} product(s) hidden from browsing: ${[...hidden].join(", ") || "none"}`);
+}
+
 function checkDemoItems(b: Bundle) {
   const products = new Set(b.product.map((p) => p.product_id));
   const withIngredients = new Set(b.product_ingredient.map((i) => i.product_id));
@@ -412,6 +436,7 @@ function main() {
   checkPanIndia(b);
   checkDailyLifeCoverage(b);
   checkDemoItems(b);
+  checkVisibility(b);
   checkNewTables(b);
   reportUnverified(b);
   reportUnsourced(b);

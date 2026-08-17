@@ -122,6 +122,8 @@ export function buildBundle(): Bundle {
     name_ta: r.name_ta,
     type: r.type as Product["type"],
     default_serving_g: num(r, "default_serving_g", "product.csv", at("product.csv", i)),
+    // Absent column means visible — adding the flag must not hide everything.
+    is_visible: numOr(r, "is_visible", 1),
     source: r.source,
   }));
 

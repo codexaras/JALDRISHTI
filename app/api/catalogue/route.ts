@@ -1,4 +1,4 @@
-import { allProducts, calculateProduct, getCrop, getIngredients, productName } from "../../../repo/db.ts";
+import { visibleProducts, calculateProduct, getCrop, getIngredients, productName } from "../../../repo/db.ts";
 import { fail, intOf, langOf, ok } from "../_lib/respond.ts";
 
 /**
@@ -29,35 +29,44 @@ interface CatalogueItem {
   is_food: boolean;
 }
 
-/** Broad groups for the filter row, derived from the crops a product is made of. */
+/**
+ * Broad groups for the filter row, from the crops a product is made of.
+ *
+ * Grouped by the heaviest NON-ANIMAL ingredient. The old rule returned "Animal"
+ * whenever any ingredient was animal, so a splash of milk filed masala chai,
+ * Parle-G and aloo paratha under "Animal" — 14 dishes in a category that should
+ * describe what the food mostly is. Animal products themselves are hidden
+ * (is_visible = 0), so nothing purely animal reaches this function at all.
+ *
+ * Display only. No footprint depends on it.
+ */
+const GROUPS: Record<string, string> = {
+  cereal: "Cereals",
+  pulse: "Pulses",
+  vegetable: "Vegetables",
+  fruit: "Fruits",
+  oilseed: "Oilseeds",
+  nut: "Nuts",
+  spice: "Spices",
+  beverage: "Beverages",
+  sugar: "Sugar",
+  fibre: "Non-food",
+};
+
 function groupOf(productId: string): string {
   try {
     const ingredients = getIngredients(productId);
-    const categories = ingredients
-      .map((i) => getCrop(i.crop_id)?.category)
-      .filter((c) => Boolean(c)) as string[];
-    if (categories.length === 0) return "Other";
+    if (ingredients.length === 0) return "Other";
 
-    if (categories.includes("fibre")) return "Non-food";
-    if (categories.includes("animal")) return "Animal";
-    // The heaviest ingredient decides the group for a mixed dish.
-    const primary = ingredients
-      .slice()
-      .sort((a, b) => b.raw_grams_per_100g - a.raw_grams_per_100g)[0];
-    const category: string = getCrop(primary.crop_id)?.category ?? "Other";
-    const GROUPS: Record<string, string> = {
-      cereal: "Cereals",
-      pulse: "Pulses",
-      vegetable: "Vegetables",
-      fruit: "Fruits",
-      oilseed: "Oilseeds",
-      nut: "Nuts",
-      spice: "Spices",
-      beverage: "Beverages",
-      sugar: "Sugar",
-      animal: "Animal",
-      fibre: "Non-food",
-    };
+    // A garment is a garment whatever else is in it.
+    if (ingredients.some((i) => getCrop(i.crop_id)?.category === "fibre")) return "Non-food";
+
+    const ranked = ingredients
+      .filter((i) => getCrop(i.crop_id)?.category !== "animal")
+      .sort((a, b) => b.raw_grams_per_100g - a.raw_grams_per_100g);
+    if (ranked.length === 0) return "Other";
+
+    const category = getCrop(ranked[0].crop_id)?.category ?? "Other";
     return GROUPS[category] ?? "Other";
   } catch {
     return "Other";
@@ -68,7 +77,7 @@ let cache: CatalogueItem[] | null = null;
 
 function buildCatalogue(lang: ReturnType<typeof langOf>): CatalogueItem[] {
   const items: CatalogueItem[] = [];
-  for (const product of allProducts()) {
+  for (const product of visibleProducts()) {
     try {
       // Month pinned so the grid does not reshuffle as the season changes.
       const r = calculateProduct(product.product_id, { lang, month: 7 });

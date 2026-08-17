@@ -171,6 +171,19 @@ export interface Product {
   name_ta: string;
   type: "raw_crop" | "cooked_dish" | "packaged" | "non_food";
   default_serving_g: number;
+  /**
+   * 0 hides the product from BROWSING — search, autocomplete, Explore, Compare
+   * and aliases — without removing it. AMENDMENT_11 §4.
+   *
+   * Hidden, not deleted, for two reasons. The row stays auditable, and the
+   * product remains calculable by id, so a dish that uses it still resolves and
+   * nothing that already links to it breaks.
+   *
+   * Used for animal products: Mekonnen & Hoekstra 2011 covers CROPS only, so
+   * every animal figure we hold is uncited. Hiding them closes a citation gap,
+   * which is why it is a data-integrity fix and not merely a scope one.
+   */
+  is_visible: number;
   source: string;
 }
 
