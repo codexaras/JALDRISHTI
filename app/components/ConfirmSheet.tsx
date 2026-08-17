@@ -109,7 +109,7 @@ export function ConfirmSheet({
   return (
     <div className="modalShade" role="dialog" aria-modal="true" aria-label={t("scan.detected")}>
       <div className="bottomSheet">
-        <button className="close" onClick={onCancel} aria-label="Close">×</button>
+        <button className="close" onClick={onCancel} aria-label={t("a11y.close")}>×</button>
 
         <span className="success">
           {resolved.confident ? `✓ ${t("scan.detected").toUpperCase()}` : `? ${t("search.suggestions").toUpperCase()}`}
@@ -131,7 +131,7 @@ export function ConfirmSheet({
               {resolved.brand ? `${resolved.brand} · ` : ""}
               {resolved.ean ? `EAN ${resolved.ean}` : (chosen?.matched_on ?? "")}
             </p>
-            {chosen && chosen.score !== undefined && <b>{chosen.score}% match</b>}
+            {chosen && chosen.score !== undefined && <b>{t("confirm.match", { score: chosen.score })}</b>}
           </div>
         </div>
 
@@ -160,14 +160,11 @@ export function ConfirmSheet({
             Saying so is the difference between an estimate and a claim. */}
         {resolved.estimated_from_ingredient_order && (
           <div className="matches">
-            <small>ESTIMATED FROM THE LABEL</small>
-            <span>
-              Ingredient amounts are inferred from their order on the packet, which is listed by
-              descending weight. Treat this as an estimate.
-            </span>
+            <small>{t("confirm.estimatedTitle").toUpperCase()}</small>
+            <span>{t("confirm.estimatedBody")}</span>
             {(resolved.unmatched_tags?.length ?? 0) > 0 && (
               <span>
-                Not in our data: <b>{resolved.unmatched_tags!.slice(0, 4).join(", ")}</b>
+                {t("confirm.notInData")} <b>{resolved.unmatched_tags!.slice(0, 4).join(", ")}</b>
               </span>
             )}
           </div>
@@ -270,7 +267,9 @@ export function ConfirmSheet({
         <label>
           {t("confirm.location")}
           <select value={state} onChange={(e) => setState(e.target.value)}>
-            <option value="">All of India (national mix)</option>
+            {/* State names stay in Latin script: the option VALUE is the
+                force_state the API expects, and the names are proper nouns. */}
+            <option value="">{t("location.national")}</option>
             {STATES.filter(Boolean).map((s) => (
               <option key={s} value={s}>{s}</option>
             ))}
