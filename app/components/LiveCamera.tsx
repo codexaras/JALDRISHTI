@@ -16,6 +16,7 @@
  * rather than left as a silent dead button.
  */
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useLang } from "../lib/i18n-client.tsx";
 
 type Status = "idle" | "starting" | "live" | "denied" | "unsupported" | "insecure";
 
@@ -32,7 +33,10 @@ export function LiveCamera({
   busy?: boolean;
   autoStart?: boolean;
 }) {
+  const { t } = useLang();
   const [status, setStatus] = useState<Status>("idle");
+  // Holds an i18n KEY, resolved at render time so a language switch
+  // retranslates an error that is already on screen.
   const [note, setNote] = useState("");
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
@@ -47,14 +51,12 @@ export function LiveCamera({
     // useful error for it — so check first and say so plainly.
     if (typeof window !== "undefined" && !window.isSecureContext) {
       setStatus("insecure");
-      setNote(
-        "The camera needs a secure connection. Open the site over https:// (or on localhost) and it will work.",
-      );
+      setNote("camera.insecure");
       return;
     }
     if (!navigator.mediaDevices?.getUserMedia) {
       setStatus("unsupported");
-      setNote("This browser cannot open a camera. Upload a photo instead.");
+      setNote("camera.unsupported");
       return;
     }
 
@@ -74,11 +76,7 @@ export function LiveCamera({
     } catch (err) {
       const name = err instanceof Error ? err.name : "";
       setStatus(name === "NotAllowedError" ? "denied" : "unsupported");
-      setNote(
-        name === "NotAllowedError"
-          ? "Camera permission was blocked. Allow it in the address bar, or upload a photo."
-          : "No camera available on this device. Upload a photo instead.",
-      );
+      setNote(name === "NotAllowedError" ? "camera.denied" : "camera.none");
     }
   }, []);
 
@@ -131,10 +129,10 @@ export function LiveCamera({
     <>
       <div className="cameraTop">
         <span>
-          {live ? "● Camera live" : status === "starting" ? "○ Starting camera…" : "○ Camera off"}
+          {live ? `● ${t("camera.live")}` : status === "starting" ? `○ ${t("camera.starting")}` : `○ ${t("camera.off")}`}
         </span>
         {live && (
-          <button onClick={() => { stop(); setStatus("idle"); }} aria-label="Turn camera off" title="Turn camera off">
+          <button onClick={() => { stop(); setStatus("idle"); }} aria-label={t("camera.turnOff")} title={t("camera.turnOff")}>
             ⏻
           </button>
         )}
@@ -155,13 +153,13 @@ export function LiveCamera({
         {!live && (
           <div className="camPlaceholder">
             {status === "starting" ? (
-              <><div className="spinner" /><p>Starting the camera…</p></>
+              <><div className="spinner" /><p>{t("camera.startingBody")}</p></>
             ) : (
               <>
                 <span>◎</span>
-                <p>{note || "The camera is off."}</p>
+                <p>{note ? t(note) : t("camera.offBody")}</p>
                 <button className="camStart" onClick={() => void start()}>
-                  Open camera
+                  {t("camera.open")}
                 </button>
               </>
             )}
@@ -171,24 +169,24 @@ export function LiveCamera({
 
       <p>
         {busy
-          ? "Identifying product…"
+          ? t("scan.scanning")
           : live
-            ? "Place one product inside the frame, then tap the shutter"
-            : "Turn the camera on, or upload a photo"}
+            ? t("camera.hintLive")
+            : t("camera.hintOff")}
       </p>
 
       <button
         className="shutter"
         onClick={capture}
         disabled={!live || busy}
-        aria-label="Capture photo"
+        aria-label={t("camera.shutter")}
         style={!live || busy ? { opacity: 0.4, cursor: "not-allowed" } : undefined}
       >
         <i />
       </button>
 
       <label className="upload" style={{ cursor: "pointer" }}>
-        Upload an image
+        {t("camera.upload")}
         <input
           type="file"
           accept="image/*"
