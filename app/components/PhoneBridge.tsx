@@ -25,6 +25,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { QRCodeSVG } from "qrcode.react";
 import { Smartphone, X } from "lucide-react";
+import { useLang } from "../lib/i18n-client.tsx";
 import type { ResolveResult } from "../lib/client.ts";
 
 type Status = "creating" | "pending" | "connected" | "processing" | "expired" | "error";
@@ -62,6 +63,7 @@ export function PhoneBridge({
   onCandidates: (resolved: ResolveResult) => void;
   onUseComputerCamera: () => void;
 }) {
+  const { t, lang } = useLang();
   const [handheld, setHandheld] = useState(false);
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState<Status>("creating");
@@ -103,7 +105,7 @@ export function PhoneBridge({
     try {
       const res = await fetch("/api/bridge/create", { method: "POST" });
       const body = await res.json();
-      if (!res.ok) { setStatus("error"); setError(body.error ?? "Could not create a session."); return; }
+      if (!res.ok) { setStatus("error"); setError(body.error ?? "bridge.createFail"); return; }
       setSessionId(body.session_id);
       setQrUrl(body.qr_url);
       setNeedsHost(Boolean(body.needs_lan_host));
@@ -114,7 +116,7 @@ export function PhoneBridge({
       setStatus("pending");
     } catch {
       setStatus("error");
-      setError("Could not reach the server.");
+      setError("bridge.serverFail");
     }
   }, [stopPolling]);
 
@@ -183,9 +185,12 @@ export function PhoneBridge({
   // On localhost the server cannot know its own LAN address, so the host comes
   // from the user; only the session id is server-issued.
   const host = lanHost.trim().replace(/^https?:\/\//, "").replace(/\/+$/, "");
-  const effectiveUrl = needsHost
+  const baseUrl = needsHost
     ? (host ? `http://${host}/mobile-scan?s=${sessionId}` : "")
     : qrUrl;
+  // The QR carries the laptop's language, so the phone page opens in the
+  // language the demo is being given in.
+  const effectiveUrl = baseUrl ? `${baseUrl}${baseUrl.includes("?") ? "&" : "?"}lang=${lang}` : "";
   const live = status === "pending" || status === "connected" || status === "processing";
 
   return (
@@ -193,40 +198,40 @@ export function PhoneBridge({
       <button className="phoneCta" onClick={() => { setOpen(true); void createSession(); }}>
         <Smartphone size={20} strokeWidth={2} aria-hidden="true" />
         <span>
-          <b>Take from phone</b>
-          <small>Better camera — the result appears here</small>
+          <b>{t("bridge.cta")}</b>
+          <small>{t("bridge.ctaHint")}</small>
         </span>
       </button>
 
       {open && (
-        <div className="modalShade" role="dialog" aria-modal="true" aria-label="Take from phone">
+        <div className="modalShade" role="dialog" aria-modal="true" aria-label={t("bridge.cta")}>
           <div className="bottomSheet bridgeSheet">
-            <button className="close" onClick={close} aria-label="Close">
+            <button className="close" onClick={close} aria-label={t("a11y.close")}>
               <X size={18} strokeWidth={2} aria-hidden="true" />
             </button>
-            <span className="success">TAKE A PHOTO WITH YOUR PHONE</span>
+            <span className="success">{t("bridge.title").toUpperCase()}</span>
 
             {status === "error" && (
               <>
-                <p className="bridgeErr">{error}</p>
-                <button className="primary" onClick={() => void createSession()}>Try again</button>
+                {/* `error` is an i18n key for our failures, a raw string when
+                    the server body carried its own message. */}
+                <p className="bridgeErr">{error.startsWith("bridge.") ? t(error) : error}</p>
+                <button className="primary" onClick={() => void createSession()}>{t("state.retry")}</button>
               </>
             )}
 
             {status === "expired" && (
               <>
-                <p className="bridgeErr">This code expired.</p>
-                <button className="primary" onClick={() => void createSession()}>Generate new code</button>
+                <p className="bridgeErr">{t("bridge.expired")}</p>
+                <button className="primary" onClick={() => void createSession()}>{t("bridge.newCode")}</button>
               </>
             )}
 
-            {status === "creating" && <p className="bridgeNote">Preparing…</p>}
+            {status === "creating" && <p className="bridgeNote">{t("bridge.preparing")}</p>}
 
             {live && needsHost && (
               <label className="bridgeUrl">
-                {host
-                  ? "Phone address (edit if your laptop's IP changed):"
-                  : "This page is open on localhost, which your phone cannot reach. Enter your laptop's address (ipconfig → IPv4):"}
+                {host ? t("bridge.hostEdit") : t("bridge.hostNeeded")}
                 <input
                   value={lanHost}
                   onChange={(e) => setLanHost(e.target.value)}
@@ -240,19 +245,19 @@ export function PhoneBridge({
                 <div className={`bridgeQr ${status !== "pending" ? "dim" : ""}`}>
                   <QRCodeSVG value={effectiveUrl} size={196} level="M" />
                 </div>
-                {status === "pending" && <p className="bridgeNote pulse">Waiting for phone… · expires in {mmss}</p>}
-                {status === "connected" && <p className="bridgeNote ok">📱 Phone connected — take your photo</p>}
-                {status === "processing" && <p className="bridgeNote"><span className="spinner" /> Reading your photo…</p>}
+                {status === "pending" && <p className="bridgeNote pulse">{t("bridge.waiting", { time: mmss })}</p>}
+                {status === "connected" && <p className="bridgeNote ok">📱 {t("bridge.connected")}</p>}
+                {status === "processing" && <p className="bridgeNote"><span className="spinner" /> {t("bridge.reading")}</p>}
 
                 <label className="bridgeUrl">
-                  Or open on your phone:
+                  {t("bridge.openOnPhone")}
                   <input readOnly value={effectiveUrl} onFocus={(e) => e.currentTarget.select()} />
                 </label>
               </>
             )}
 
             <button className="bridgeAlt" onClick={() => { close(); onUseComputerCamera(); }}>
-              Use this computer&apos;s camera instead
+              {t("bridge.useComputer")}
             </button>
           </div>
         </div>
