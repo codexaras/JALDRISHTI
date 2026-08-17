@@ -51,26 +51,26 @@ export function LiveProfile({ onPick }: { onPick: (name: string) => void }) {
       <div className="profileHead">
         <div className="avatar">JD</div>
         <div>
-          <span className="overline">MY JALDRISHTI</span>
-          <h1>Your water story</h1>
-          <p>All of India (national mix) · {lang.toUpperCase()}</p>
+          <span className="overline">{t("profile.overline")}</span>
+          <h1>{t("profile.title")}</h1>
+          <p>{t("location.national")} · {lang.toUpperCase()}</p>
         </div>
-        <button>Manage preferences</button>
+        <button>{t("profile.manage")}</button>
       </div>
 
       {/* Facts about the dataset, not invented activity — this build has no
           accounts, so there is no history to count. */}
       <div className="profileStats">
-        <div><b>{n(total)}</b><span>Products you can look up</span></div>
-        <div><b>{categories}</b><span>Categories covered</span></div>
-        <div><b>36</b><span>States &amp; UTs with groundwater data</span></div>
+        <div><b>{n(total)}</b><span>{t("profile.statProducts")}</span></div>
+        <div><b>{categories}</b><span>{t("profile.statCategories")}</span></div>
+        <div><b>36</b><span>{t("profile.statStates")}</span></div>
       </div>
 
       <div className="historyLayout">
         <div>
           <div className="sectionTitle">
-            <h2>Staples, per kilogram</h2>
-            <button onClick={() => onPick("rice")}>Look one up →</button>
+            <h2>{t("profile.staples")}</h2>
+            <button onClick={() => onPick("rice")}>{t("profile.lookOne")} →</button>
           </div>
           {items.map((item, i) => (
             <button className="historyRow" onClick={() => onPick(item.name_en)} key={item.product_id}>
@@ -93,12 +93,12 @@ export function LiveProfile({ onPick }: { onPick: (name: string) => void }) {
         </div>
 
         <aside>
-          <h3>Preferences</h3>
-          <p><span>Default location</span><b>All of India (national mix)</b></p>
-          <p><span>Language</span><b>{lang.toUpperCase()}</b></p>
-          <p><span>Reduced motion</span><b>System setting</b></p>
-          <p><span>Scan history</span><b>Region only, never personal</b></p>
-          <button onClick={() => onPick("rice")}>Look up a product →</button>
+          <h3>{t("profile.prefs")}</h3>
+          <p><span>{t("profile.defaultLocation")}</span><b>{t("location.national")}</b></p>
+          <p><span>{t("profile.language")}</span><b>{lang.toUpperCase()}</b></p>
+          <p><span>{t("profile.reducedMotion")}</span><b>{t("profile.systemSetting")}</b></p>
+          <p><span>{t("profile.scanHistory")}</span><b>{t("profile.regionOnly")}</b></p>
+          <button onClick={() => onPick("rice")}>{t("profile.lookup")} →</button>
         </aside>
       </div>
     </section>
