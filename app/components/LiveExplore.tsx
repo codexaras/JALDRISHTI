@@ -73,8 +73,8 @@ export function LiveExplore({
     <section className="appPage">
       <div className="pageIntro row">
         <div>
-          <span className="overline">PRODUCT LIBRARY</span>
-          <h1>Explore water stories</h1>
+          <span className="overline">{t("explore.overline")}</span>
+          <h1>{t("explore.title")}</h1>
           <p>{t("explore.count", { count: items.length })}</p>
         </div>
       </div>
@@ -96,7 +96,7 @@ export function LiveExplore({
       <div className="filters">
         {categories.map((c) => (
           <button key={c} className={category === c ? "active" : ""} onClick={() => pick(c)} disabled={loading}>
-            {c}
+            {t(`category.${c}`)}
           </button>
         ))}
       </div>
@@ -135,7 +135,7 @@ export function LiveExplore({
               <span>{item.name}</span>
             </div>
             <div>
-              <small>{item.category.toUpperCase()}</small>
+              <small>{t(`category.${item.category}`).toUpperCase()}</small>
               <h3>{item.name}</h3>
               <p>{t("result.perServing", { grams: n(item.serving_g) })}</p>
               <b>{n(item.total_l)} L</b>

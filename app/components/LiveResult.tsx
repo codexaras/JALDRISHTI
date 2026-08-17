@@ -144,12 +144,12 @@ export function LiveResult({
           <div className="factorGrid">
             <div>
               <span>⌖</span>
-              <small>TOP SOURCE</small>
+              <small>{t("result.topSource").toUpperCase()}</small>
               <b>{top ? top.state : "—"}</b>
             </div>
             <div>
               <span>≈</span>
-              <small>GROUNDWATER</small>
+              <small>{t("result.groundwaterLabel").toUpperCase()}</small>
               <b>{top ? t(`status.${top.status}`) : "—"}</b>
             </div>
             <div>
@@ -159,8 +159,8 @@ export function LiveResult({
             </div>
             <div>
               <span>☂</span>
-              <small>SEASON</small>
-              <b>{result.lineage.season}</b>
+              <small>{t("result.seasonLabel").toUpperCase()}</small>
+              <b>{t(`season.${result.lineage.season}`)}</b>
             </div>
           </div>
 
@@ -179,13 +179,13 @@ export function LiveResult({
                     {/* An exact figure prints its percentage; a band midpoint
                         prints the BAND. Printing "35%" for a state CGWB only
                         categorised would invent a measurement. */}
-                    {s.crop_name} · {Math.round(s.share * 100)}% of supply · {soeLabel(t, s)}
+                    {s.crop_name} · {Math.round(s.share * 100)}% {t("map.ofSupply")} · {soeLabel(t, s)}
                     {s.precision === "exact" && ` · ${t(`status.${s.status}`)}`}
                   </small>
                 </div>
                 <strong>
                   {n(s.impact_blue_l)} L
-                  {s.impact_blue_l !== s.blue_l && <em> (from {n(s.blue_l)} L)</em>}
+                  {s.impact_blue_l !== s.blue_l && <em> {t("result.fromLitres", { litres: n(s.blue_l) })}</em>}
                 </strong>
               </div>
             ))}
@@ -209,8 +209,7 @@ export function LiveResult({
               <div>
                 <b>{tRef(result.swap.message)}</b>
                 <p>
-                  {t("result.swap")} — saves about {n(result.swap.saves_l)} L of irrigation water at
-                  this portion.
+                  {t("result.swap")} — {t("result.swapSaves", { litres: n(result.swap.saves_l) })}
                 </p>
               </div>
             </div>
@@ -241,19 +240,19 @@ export function LiveResult({
         {showWhy && (
           <div className="whyCard">
             <span className="overline">{t("result.why").toUpperCase()}</span>
-            <h3>What this number rests on</h3>
+            <h3>{t("result.restsOn")}</h3>
             <ul>
               {result.lineage.ingredients.map((i) => (
                 <li key={i.crop}>
-                  <b>{i.crop}</b> — {n(i.raw_g)} g raw
+                  <b>{i.crop}</b> — {t("result.gramsRaw", { grams: n(i.raw_g) })}
                 </li>
               ))}
             </ul>
             <p className="fallbackNote">
-              <b>Where this estimate is weakest:</b>{" "}
+              <b>{t("result.weakest")}</b>{" "}
               {result.lineage.fallbacks_used.length
                 ? result.lineage.fallbacks_used.join(" · ")
-                : "no fallbacks used"}
+                : t("result.noFallbacks")}
             </p>
             <p className="fallbackNote">
               {result.confidence.quality !== "high" && t(`confidence.explain.${result.confidence.quality}`)}
@@ -268,7 +267,7 @@ export function LiveResult({
 
         <div className="source">
           <div>
-            <span className="overline">SOURCE &amp; METHOD</span>
+            <span className="overline">{t("result.sourceMethod").toUpperCase()}</span>
             <h3>{result.citations[0] ?? "—"}</h3>
             {result.citations.slice(1).map((c) => (
               <p key={c}>{c}</p>
@@ -277,7 +276,7 @@ export function LiveResult({
         </div>
 
         <p className="disclaimer">
-          <b>About this estimate:</b> {t("disclaimer")}
+          <b>{t("result.aboutLabel")}</b> {t("disclaimer")}
         </p>
       </div>
     </section>

@@ -14,11 +14,12 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { api, type CompareResult } from "../lib/client.ts";
 import { useLang } from "../lib/i18n-client.tsx";
 
+// Labels are i18n keys — resolved at render so the chips follow the switcher.
 const PRESETS = [
-  { label: "Rice vs millets", items: ["rice", "bajra", "jowar"] },
-  { label: "Proteins", items: ["chicken", "mutton", "paneer", "chana"] },
-  { label: "Breakfast", items: ["idli", "poha", "upma"] },
-  { label: "Everyday", items: ["chai", "roti", "dal tadka"] },
+  { label: "compare.preset.millets", items: ["rice", "bajra", "jowar"] },
+  { label: "compare.preset.proteins", items: ["chicken", "mutton", "paneer", "chana"] },
+  { label: "compare.preset.breakfast", items: ["idli", "poha", "upma"] },
+  { label: "compare.preset.everyday", items: ["chai", "roti", "dal tadka"] },
 ];
 
 export function LiveCompare({
@@ -43,7 +44,7 @@ export function LiveCompare({
     try {
       setData(await api.compare(list, lang, servingG, month));
     } catch (e) {
-      setError(e instanceof Error ? e.message : "compare failed");
+      setError(e instanceof Error ? e.message : t("state.generic"));
     } finally { setBusy(false); }
   }, [lang, servingG, month]);
 
@@ -60,9 +61,9 @@ export function LiveCompare({
   return (
     <section className="appPage">
       <div className="pageIntro">
-        <span className="overline">PRODUCT COMPARISON</span>
-        <h1>Compare in context</h1>
-        <p>{servingG ? `Normalised to ${n(servingG)} g` : "Normalised per default serving"}</p>
+        <span className="overline">{t("compare.overline")}</span>
+        <h1>{t("compare.title")}</h1>
+        <p>{servingG ? t("compare.normalisedTo", { grams: n(servingG) }) : t("compare.normalisedDefault")}</p>
       </div>
 
       <div className="filters">
@@ -73,7 +74,7 @@ export function LiveCompare({
             onClick={() => { setItems(p.items); load(p.items); }}
             disabled={busy}
           >
-            {p.label}
+            {t(p.label)}
           </button>
         ))}
       </div>
@@ -92,14 +93,14 @@ export function LiveCompare({
 
       {data && (
         <div className="comparisonChart" style={busy ? { opacity: 0.55 } : undefined}>
-          <h2>Irrigation water per serving</h2>
+          <h2>{t("compare.chartTitle")}</h2>
           {data.items.map((i) => {
             const pctOf = (v: number) => (data.axis_max_l ? (v / data.axis_max_l) * 100 : 0);
             return (
               <div className="cmpBar" key={i.product.id}>
                 <b>
                   {i.product.name}
-                  {i.product.id === data.best && <span className="cmpBest"> ✓ LIGHTEST</span>}
+                  {i.product.id === data.best && <span className="cmpBest"> ✓ {t("compare.lightest").toUpperCase()}</span>}
                 </b>
                 <span className="cmpTrack">
                   <i className="g" style={{ width: `${pctOf(i.footprint_l.green)}%` }} />
@@ -112,17 +113,15 @@ export function LiveCompare({
           })}
 
           <div className="cmpNote">
-            <b>Ranked by irrigation water, not by total.</b> {data.ranked_by_note} Switching from{" "}
-            {data.items.find((i) => i.product.id === data.worst)?.product.name} to{" "}
-            {data.items.find((i) => i.product.id === data.best)?.product.name} saves about{" "}
-            <b>{n(data.saving_vs_worst_l)} L</b> of irrigation water at this portion.
+            <b>{t("compare.rankedBy")}</b> {data.ranked_by_note}{" "}
+            {t("compare.switching", {
+              from: data.items.find((i) => i.product.id === data.worst)?.product.name ?? "—",
+              to: data.items.find((i) => i.product.id === data.best)?.product.name ?? "—",
+              litres: n(data.saving_vs_worst_l),
+            })}
           </div>
 
-          <small>
-            Bars show green (rainfall), blue (irrigation) and grey (pollution dilution) on one shared
-            axis. A lower total does not automatically make a product nutritionally, culturally or
-            economically better.
-          </small>
+          <small>{t("compare.axisNote")}</small>
         </div>
       )}
     </section>

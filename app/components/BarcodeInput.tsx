@@ -59,7 +59,7 @@ export function BarcodeInput({
   const startCamera = async () => {
     const Ctor = (globalThis as { BarcodeDetector?: BarcodeDetectorCtor }).BarcodeDetector;
     if (!Ctor) {
-      setNote("This browser cannot read barcodes from the camera. Type the number instead.");
+      setNote("barcode.noDetector");
       return;
     }
     try {
@@ -90,7 +90,7 @@ export function BarcodeInput({
       };
       rafRef.current = requestAnimationFrame(tick);
     } catch {
-      setNote("Camera permission denied. Type the number off the packet instead.");
+      setNote("barcode.denied");
     }
   };
 
@@ -109,15 +109,12 @@ export function BarcodeInput({
       )}
 
       {open && (
-        <div className="modalShade" role="dialog" aria-modal="true" aria-label="Barcode">
+        <div className="modalShade" role="dialog" aria-modal="true" aria-label={t("search.barcode")}>
           <div className="bottomSheet">
             <button className="close" onClick={() => { stop(); setOpen(false); }} aria-label={t("search.clear_aria")}><X size={18} strokeWidth={2} aria-hidden="true" /></button>
             <span className="success"><ScanBarcode size={14} strokeWidth={2} aria-hidden="true" /> {t("search.chooser_barcode").toUpperCase()}</span>
-            <h2 style={{ margin: "14px 0 6px" }}>Scan the packet</h2>
-            <p style={{ color: "var(--muted)", fontSize: 12, lineHeight: 1.6 }}>
-              A barcode gives us the manufacturer&apos;s own ingredient list, so the estimate rests on
-              the label rather than on a guess.
-            </p>
+            <h2 style={{ margin: "14px 0 6px" }}>{t("barcode.scanPacket")}</h2>
+            <p style={{ color: "var(--muted)", fontSize: 12, lineHeight: 1.6 }}>{t("barcode.why")}</p>
 
             {scanning && (
               <video
@@ -135,11 +132,11 @@ export function BarcodeInput({
             )}
 
             {note && (
-              <p style={{ color: "var(--muted)", fontSize: 11, marginTop: 10, lineHeight: 1.6 }}>{note}</p>
+              <p style={{ color: "var(--muted)", fontSize: 11, marginTop: 10, lineHeight: 1.6 }}>{t(note)}</p>
             )}
 
             <label>
-              Or type the number under the bars
+              {t("barcode.typeNumber")}
               <input
                 inputMode="numeric"
                 value={manual}
@@ -154,13 +151,13 @@ export function BarcodeInput({
             </label>
 
             <div className="sheetActions">
-              <button className="secondary" onClick={() => { stop(); setOpen(false); }}>Cancel</button>
+              <button className="secondary" onClick={() => { stop(); setOpen(false); }}>{t("action.cancel")}</button>
               <button
                 className="primary"
                 disabled={manual.length < 8}
                 onClick={() => { stop(); setOpen(false); onScan(manual); }}
               >
-                Look up →
+                {t("barcode.lookup")} →
               </button>
             </div>
           </div>

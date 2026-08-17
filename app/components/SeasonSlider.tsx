@@ -8,8 +8,7 @@
  * Debounced 300ms so a drag is one refetch, not twelve.
  */
 import { useEffect, useRef, useState } from "react";
-
-const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+import { useLang } from "../lib/i18n-client.tsx";
 
 function seasonOf(month: number): "kharif" | "rabi" | "zaid" {
   if (month >= 6 && month <= 10) return "kharif";
@@ -30,6 +29,8 @@ export function SeasonSlider({
   // month after the debounce. Holding the in-flight value alongside the month it
   // was dragged from lets the slider stay responsive without an effect that
   // copies a prop into state on every render.
+  const { t } = useLang();
+  const months = Array.from({ length: 12 }, (_, i) => t(`month.${i + 1}`));
   const [draft, setDraft] = useState<{ value: number; from: number } | null>(null);
   const local = draft && draft.from === month ? draft.value : month;
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -47,9 +48,9 @@ export function SeasonSlider({
   return (
     <div className="seasonSlider">
       <div className="seasonHead">
-        <span className="overline">WHEN WAS IT GROWN?</span>
+        <span className="overline">{t("season.when").toUpperCase()}</span>
         <b>
-          {MONTHS[local - 1]} · <em>{season}</em>
+          {months[local - 1]} · <em>{t(`season.${season}`)}</em>
         </b>
       </div>
       <input
@@ -59,22 +60,18 @@ export function SeasonSlider({
         step={1}
         value={local}
         onChange={(e) => handle(Number(e.target.value))}
-        aria-label="Month of production"
+        aria-label={t("season.monthAria")}
         className={`seasonRange ${season}`}
         disabled={busy}
       />
       <div className="seasonScale">
-        {MONTHS.map((m, i) => (
+        {months.map((m, i) => (
           <span key={m} className={i + 1 === local ? "on" : ""}>
             {m[0]}
           </span>
         ))}
       </div>
-      <small>
-        Season changes the split between rainfall and irrigation, not the published total.
-        Kharif crops take much of their water from the monsoon; rabi and summer crops lean on
-        irrigation instead.
-      </small>
+      <small>{t("season.note")}</small>
     </div>
   );
 }
