@@ -213,9 +213,7 @@ export function LiveLearn({ onPick }: { onPick: (name: string) => void }) {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const id = window.setInterval(() => setMyth((m) => (m + 1) % MYTHS.length), 8000);
     return () => window.clearInterval(id);
-  }, [view, mythPaused]);
-
-  const englishNote = lang !== "en" && <p className="learnNote">{t("learn.englishNote")}</p>;
+  }, [view, mythPaused, MYTHS.length]);
 
   // ─────────────────────────────────────────────────────────────── guide ──
   if (view === "guide") {
