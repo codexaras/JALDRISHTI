@@ -21,7 +21,8 @@
     "smoke": "node --experimental-strip-types scripts/smoke.ts",
     "images:fetch": "node --experimental-strip-types scripts/fetch-images.ts",
     "images:download": "node scripts/download-images.mjs",
-    "preflight": "node scripts/preflight.mjs"
+    "preflight": "node scripts/preflight.mjs",
+    "tunnel": "tools\\cloudflared.exe tunnel --url http://localhost:3000"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.117.1",

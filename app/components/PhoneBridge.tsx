@@ -185,8 +185,13 @@ export function PhoneBridge({
   // On localhost the server cannot know its own LAN address, so the host comes
   // from the user; only the session id is server-issued.
   const host = lanHost.trim().replace(/^https?:\/\//, "").replace(/\/+$/, "");
+  // A bare IP (or .local name) is a LAN address — plain http. Anything with a
+  // real domain is a tunnel (npm run tunnel → xxx.trycloudflare.com), which
+  // serves https and works from ANY network — the venue-WiFi/firewall escape
+  // hatch. https also unlocks the phone's in-browser barcode camera.
+  const isLan = /^(localhost|\d+\.\d+\.\d+\.\d+)(:\d+)?$/.test(host) || /\.local(:\d+)?$/.test(host);
   const baseUrl = needsHost
-    ? (host ? `http://${host}/mobile-scan?s=${sessionId}` : "")
+    ? (host ? `${isLan ? "http" : "https"}://${host}/mobile-scan?s=${sessionId}` : "")
     : qrUrl;
   // The QR carries the laptop's language, so the phone page opens in the
   // language the demo is being given in.

@@ -9,3 +9,4 @@ scratch/
 
 # build artefact
 tsconfig.tsbuildinfo
+tools/
