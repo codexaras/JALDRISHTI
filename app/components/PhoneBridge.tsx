@@ -166,6 +166,30 @@ export function PhoneBridge({
     }
   }, [lanHost]);
 
+  /**
+   * Probe the typed address from THIS laptop, so a stale IP is caught the
+   * moment it is typed instead of as a dead QR on the phone. `no-cors` because
+   * the probe crosses origins (localhost → LAN IP): the response is opaque,
+   * but mere resolution proves something answered at that address.
+   *
+   * An OK here proves the ADDRESS is right, not that the phone can reach it —
+   * a network that isolates clients still blocks the phone. The failure text
+   * says which check to do next.
+   */
+  const [hostCheck, setHostCheck] = useState<"idle" | "checking" | "ok" | "fail">("idle");
+  useEffect(() => {
+    const probed = lanHost.trim().replace(/^https?:\/\//, "").replace(/\/+$/, "");
+    if (!open || !needsHost || !probed) { setHostCheck("idle"); return; }
+    let cancelled = false;
+    setHostCheck("checking");
+    const timer = window.setTimeout(() => {
+      fetch(`http://${probed}/api/health`, { mode: "no-cors", signal: AbortSignal.timeout(4000) })
+        .then(() => { if (!cancelled) setHostCheck("ok"); })
+        .catch(() => { if (!cancelled) setHostCheck("fail"); });
+    }, 600); // debounce typing
+    return () => { cancelled = true; window.clearTimeout(timer); };
+  }, [open, needsHost, lanHost]);
+
   useEffect(() => {
     if (!open || !expiresAt) return;
     const t = window.setInterval(() => {
@@ -242,6 +266,9 @@ export function PhoneBridge({
                   onChange={(e) => setLanHost(e.target.value)}
                   placeholder="192.168.1.6:3000"
                 />
+                {hostCheck === "checking" && <small className="bridgeNote">{t("bridge.checking")}</small>}
+                {hostCheck === "ok" && <small className="bridgeNote ok">✓ {t("bridge.checkOk")}</small>}
+                {hostCheck === "fail" && <small className="bridgeErr">✗ {t("bridge.checkFail")}</small>}
               </label>
             )}
 
