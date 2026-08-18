@@ -179,10 +179,15 @@ export function PhoneBridge({
   const [hostCheck, setHostCheck] = useState<"idle" | "checking" | "ok" | "fail">("idle");
   useEffect(() => {
     const probed = lanHost.trim().replace(/^https?:\/\//, "").replace(/\/+$/, "");
-    if (!open || !needsHost || !probed) { setHostCheck("idle"); return; }
     let cancelled = false;
-    setHostCheck("checking");
+    if (!open || !needsHost || !probed) {
+      // Deferred: a synchronous setState in an effect cascades renders.
+      void Promise.resolve().then(() => { if (!cancelled) setHostCheck("idle"); });
+      return () => { cancelled = true; };
+    }
     const timer = window.setTimeout(() => {
+      if (cancelled) return;
+      setHostCheck("checking");
       fetch(`http://${probed}/api/health`, { mode: "no-cors", signal: AbortSignal.timeout(4000) })
         .then(() => { if (!cancelled) setHostCheck("ok"); })
         .catch(() => { if (!cancelled) setHostCheck("fail"); });
