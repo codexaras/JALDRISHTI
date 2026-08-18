@@ -124,8 +124,12 @@ export const DEFAULT_MODEL_CHAIN = [
   "gemini-flash-lite-latest",
   "gemini-3.1-flash-lite",
   "gemini-3.5-flash-lite",
-  "gemini-3.6-flash",
+  // 3.6-flash goes LAST: observed hanging indefinitely (2026-08-18) while
+  // every other model answered in about a second. With the per-model timeout
+  // below it only costs its slice when reached, but there is no reason to
+  // reach it before a model that works.
   "gemini-flash-latest",
+  "gemini-3.6-flash",
 ];
 
 /**
@@ -158,25 +162,53 @@ export class GeminiVisionProvider implements VisionProvider {
     return this.chain[this.preferred];
   }
 
+  /**
+   * Each model gets this long before the chain moves on. Without it, ONE
+   * hanging model spends the caller's entire 20 s budget and the models after
+   * it — which answer in about a second — are never tried. That is exactly
+   * what broke the phone bridge: Google's gemini-3.6-flash started hanging
+   * (not erroring — hanging), and every photo became a 20 s timeout.
+   */
+  static readonly PER_MODEL_TIMEOUT_MS = 6000;
+
   async identify(base64Image: string, mediaType: string, signal?: AbortSignal): Promise<DetectedItem[]> {
     let lastQuotaError: QuotaError | null = null;
+    let lastError: Error | null = null;
 
     // Start from the model that worked last time, then walk the rest.
     for (let step = 0; step < this.chain.length; step++) {
       const index = (this.preferred + step) % this.chain.length;
+
+      // A per-model deadline, composed with the caller's overall signal.
+      const perModel = new AbortController();
+      const timer = setTimeout(() => perModel.abort(), GeminiVisionProvider.PER_MODEL_TIMEOUT_MS);
+      const onOuter = () => perModel.abort();
+      signal?.addEventListener("abort", onOuter, { once: true });
+
       try {
-        const items = await this.callModel(this.chain[index], base64Image, mediaType, signal);
+        const items = await this.callModel(this.chain[index], base64Image, mediaType, perModel.signal);
         this.preferred = index;
         return items;
       } catch (err) {
+        // The REQUEST is over (caller's 20 s budget spent) — stop entirely.
+        if (signal?.aborted) throw err;
         if (err instanceof QuotaError) {
           lastQuotaError = err;
           continue; // this model is dry — try the next
         }
-        throw err;
+        // Anything else — a hang that hit the per-model deadline, a retired
+        // model's 404 (Google removed gemini-2.0/2.5-flash without notice),
+        // a 500 — is a reason to try the NEXT model, never to give up while
+        // models remain. Failing over only on quota is how one bad model
+        // took the whole camera feature down.
+        lastError = err instanceof Error ? err : new Error(String(err));
+        continue;
+      } finally {
+        clearTimeout(timer);
+        signal?.removeEventListener("abort", onOuter);
       }
     }
-    throw lastQuotaError ?? new Error("gemini: no model available");
+    throw lastQuotaError ?? lastError ?? new Error("gemini: no model available");
   }
 
   private async callModel(
